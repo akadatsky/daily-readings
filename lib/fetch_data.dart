@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 import 'update_record.dart';
 
-
 class FetchData extends StatefulWidget {
   const FetchData({Key? key}) : super(key: key);
 
@@ -13,9 +12,9 @@ class FetchData extends StatefulWidget {
 }
 
 class _FetchDataState extends State<FetchData> {
-
   Query dbRef = FirebaseDatabase.instance.ref().child('Students');
-  DatabaseReference reference = FirebaseDatabase.instance.ref().child('Students');
+  DatabaseReference reference =
+      FirebaseDatabase.instance.ref().child('Students');
 
   Widget listItem({required Map student}) {
     return Container(
@@ -51,7 +50,11 @@ class _FetchDataState extends State<FetchData> {
             children: [
               GestureDetector(
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (_) => UpdateRecord(studentKey: student['key'])));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (_) =>
+                              UpdateRecord(studentKey: student['key'])));
                 },
                 child: Row(
                   children: [
@@ -91,20 +94,18 @@ class _FetchDataState extends State<FetchData> {
         appBar: AppBar(
           title: const Text('Fetching data'),
         ),
-        body: Container(
+        body: SizedBox(
           height: double.infinity,
           child: FirebaseAnimatedList(
             query: dbRef,
-            itemBuilder: (BuildContext context, DataSnapshot snapshot, Animation<double> animation, int index) {
-
+            itemBuilder: (BuildContext context, DataSnapshot snapshot,
+                Animation<double> animation, int index) {
               Map student = snapshot.value as Map;
               student['key'] = snapshot.key;
 
               return listItem(student: student);
-
             },
           ),
-        )
-    );
+        ));
   }
 }

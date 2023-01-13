@@ -2,7 +2,6 @@ import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 
 class UpdateRecord extends StatefulWidget {
-
   const UpdateRecord({Key? key, required this.studentKey}) : super(key: key);
 
   final String studentKey;
@@ -12,10 +11,9 @@ class UpdateRecord extends StatefulWidget {
 }
 
 class _UpdateRecordState extends State<UpdateRecord> {
-
-  final  userNameController = TextEditingController();
-  final  userAgeController= TextEditingController();
-  final  userSalaryController =TextEditingController();
+  final userNameController = TextEditingController();
+  final userAgeController = TextEditingController();
+  final userSalaryController = TextEditingController();
 
   late DatabaseReference dbRef;
 
@@ -34,19 +32,17 @@ class _UpdateRecordState extends State<UpdateRecord> {
     userNameController.text = student['name'];
     userAgeController.text = student['age'];
     userSalaryController.text = student['salary'];
-
   }
-
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Updating record'),
+        title: const Text('Updating record'),
       ),
-      body:  Center(
+      body: Center(
         child: Padding(
-          padding: EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
               const SizedBox(
@@ -101,24 +97,22 @@ class _UpdateRecordState extends State<UpdateRecord> {
               ),
               MaterialButton(
                 onPressed: () {
-
                   Map<String, String> students = {
                     'name': userNameController.text,
                     'age': userAgeController.text,
                     'salary': userSalaryController.text
                   };
 
-                  dbRef.child(widget.studentKey).update(students)
-                      .then((value) => {
-                    Navigator.pop(context)
-                  });
-
+                  dbRef
+                      .child(widget.studentKey)
+                      .update(students)
+                      .then((value) => {Navigator.pop(context)});
                 },
-                child: const Text('Update Data'),
                 color: Colors.blue,
                 textColor: Colors.white,
                 minWidth: 300,
                 height: 40,
+                child: const Text('Update Data'),
               ),
             ],
           ),

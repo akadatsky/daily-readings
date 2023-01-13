@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class BibleScreen extends StatelessWidget {
+  static String route = '/bible';
   const BibleScreen({Key? key}) : super(key: key);
 
   @override
