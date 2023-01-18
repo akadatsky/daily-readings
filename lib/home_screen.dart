@@ -2,11 +2,10 @@ import 'dart:convert';
 import 'package:daily_readings/bible_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-
 import 'package:firebase_database/firebase_database.dart';
-
 import 'calendar.dart';
 import 'daily_reading.model.dart';
+
 
 enum Author { spurgeon, ryle }
 

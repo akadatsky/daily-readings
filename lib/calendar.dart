@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 
+
 class Calendar extends StatefulWidget {
   const Calendar({Key? key}) : super(key: key);
 
@@ -10,12 +11,17 @@ class Calendar extends StatefulWidget {
 
 class _CalendarState extends State<Calendar> {
   DateTime today = DateTime.now();
-  DateTime? selectedDay;
+
 
   void _onDaySelected(DateTime day, DateTime focusedDay) {
     setState(() {
       today = day;
     });
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => SelectedDayScreen(day: today),
+      ),
+    );
   }
 
   @override
@@ -44,6 +50,24 @@ class _CalendarState extends State<Calendar> {
             ),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class SelectedDayScreen extends StatelessWidget {
+  final DateTime day;
+  const SelectedDayScreen({super.key, required this.day});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Selected Day"),
+        centerTitle: true,
+      ),
+      body: Center(
+        child: Text("Selected Day: ${day.toString().split(" ")[0]}"),
       ),
     );
   }
