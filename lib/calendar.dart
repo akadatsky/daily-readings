@@ -10,6 +10,7 @@ class Calendar extends StatefulWidget {
 
 class _CalendarState extends State<Calendar> {
   DateTime today = DateTime.now();
+  DateTime? selectedDay;
 
   void _onDaySelected(DateTime day, DateTime focusedDay) {
     setState(() {

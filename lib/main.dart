@@ -13,7 +13,7 @@ import 'stats_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: dailyReadindDatabaseOption);
+  await Firebase.initializeApp(name: "Daily Readings", options: dailyReadindDatabaseOption);
   runApp(const MyApp());
 }
 
