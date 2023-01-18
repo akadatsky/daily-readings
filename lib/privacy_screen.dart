@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class PrivacyScreen extends StatelessWidget {
+  static String route = '/privacy';
   const PrivacyScreen({Key? key}) : super(key: key);
 
   @override

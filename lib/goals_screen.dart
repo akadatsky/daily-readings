@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class GoalsScreen extends StatelessWidget {
+  static String route = '/goals';
+
   const GoalsScreen({Key? key}) : super(key: key);
 
   @override

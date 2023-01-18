@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CopyrightScreen extends StatelessWidget {
+  static String route = '/copyright';
+
   const CopyrightScreen({Key? key}) : super(key: key);
 
   @override

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class FeedbackScreen extends StatelessWidget {
+  static String route = '/feedback';
+
   const FeedbackScreen({Key? key}) : super(key: key);
 
   @override

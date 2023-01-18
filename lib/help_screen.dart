@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class HelpScreen extends StatelessWidget {
+  static String route = '/help';
+
   const HelpScreen({Key? key}) : super(key: key);
 
   @override

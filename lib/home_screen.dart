@@ -3,8 +3,15 @@ import 'package:daily_readings/bible_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'about_screen.dart';
 import 'calendar.dart';
+import 'copyright_screen.dart';
 import 'daily_reading.model.dart';
+import 'feedback_screen.dart';
+import 'goals_screen.dart';
+import 'help_screen.dart';
+import 'privacy_screen.dart';
+import 'stats_screen.dart';
 
 
 enum Author { spurgeon, ryle }
@@ -90,7 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           overflow: TextOverflow.visible,
                           text: TextSpan(
                             text:
-                                '${morningDescription.isNotEmpty ? morningDescription : 'Focus on the Journey, Not the Outcome'}',
+                            '${morningDescription.isNotEmpty ? morningDescription : 'Focus on the Journey, Not the Outcome'}',
                             style: const TextStyle(
                                 color: Colors.black, fontSize: 22),
                           ),
@@ -101,7 +108,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           overflow: TextOverflow.visible,
                           text: TextSpan(
                             text:
-                                '${eveningDescription.isNotEmpty ? eveningDescription : 'Focus on the Journey, Not the Outcome'}',
+                            '${eveningDescription.isNotEmpty ? eveningDescription : 'Focus on the Journey, Not the Outcome'}',
                             style: const TextStyle(
                                 color: Colors.black, fontSize: 22),
                           ),
@@ -179,7 +186,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         leading: const Icon(Icons.stacked_bar_chart),
                         onTap: () {
                           Navigator.pop(context);
-                          Navigator.pushNamed(context, '/stats');
+                          Navigator.pushNamed(context, StatsScreen.route);
                         },
                       ),
                       ListTile(
@@ -187,7 +194,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         leading: const Icon(Icons.looks_one_sharp),
                         onTap: () {
                           Navigator.pop(context);
-                          Navigator.pushNamed(context, '/goals');
+                          Navigator.pushNamed(context, GoalsScreen.route);
                         },
                       ),
                       ListTile(
@@ -195,7 +202,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         leading: const Icon(Icons.people_alt_rounded),
                         onTap: () {
                           Navigator.pop(context);
-                          Navigator.pushNamed(context, '/about');
+                          Navigator.pushNamed(context, AboutScreen.route);
                         },
                       ),
                       ListTile(
@@ -203,7 +210,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         leading: const Icon(Icons.format_quote),
                         onTap: () {
                           Navigator.pop(context);
-                          Navigator.pushNamed(context, '/feedback');
+                          Navigator.pushNamed(context, FeedbackScreen.route);
                         },
                       ),
                       ListTile(
@@ -211,7 +218,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         leading: const Icon(Icons.copyright),
                         onTap: () {
                           Navigator.pop(context);
-                          Navigator.pushNamed(context, '/copyright');
+                          Navigator.pushNamed(context, CopyrightScreen.route);
                         },
                       ),
                       ListTile(
@@ -219,7 +226,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         leading: const Icon(Icons.back_hand),
                         onTap: () {
                           Navigator.pop(context);
-                          Navigator.pushNamed(context, '/privacy');
+                          Navigator.pushNamed(context, PrivacyScreen.route);
                         },
                       ),
                       ListTile(
@@ -227,7 +234,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         leading: const Icon(Icons.question_mark),
                         onTap: () {
                           Navigator.pop(context);
-                          Navigator.pushNamed(context, '/help');
+                          Navigator.pushNamed(context, HelpScreen.route);
                         },
                       ),
                       const Text("App version: X.X.X",
@@ -257,7 +264,7 @@ class _HomeScreenState extends State<HomeScreen> {
           data.map((x) => DailyReading.fromJson(x as Map<String, dynamic>)));
 
       List<DailyReading> todaysReadings =
-          readings.where((element) => element.date!.contains(today)).toList();
+      readings.where((element) => element.date!.contains(today)).toList();
       morningDescription = todaysReadings
           .where((element) => element.time!.contains('Morning'))
           .first

@@ -29,13 +29,13 @@ class MyApp extends StatelessWidget {
       routes: {
         HomeScreen.route: (context) => const HomeScreen(),
         BibleScreen.route: (context) => const BibleScreen(),
-        '/stats': (context) => const StatsScreen(),
-        '/goals': (context) => const GoalsScreen(),
-        '/about': (context) => const AboutScreen(),
-        '/feedback': (context) => const FeedbackScreen(),
-        '/copyright': (context) => const CopyrightScreen(),
-        '/privacy': (context) => const PrivacyScreen(),
-        '/help': (context) => const HelpScreen(),
+        StatsScreen.route: (context) => const StatsScreen(),
+        GoalsScreen.route: (context) => const GoalsScreen(),
+        AboutScreen.route: (context) => const AboutScreen(),
+        FeedbackScreen.route: (context) => const FeedbackScreen(),
+        CopyrightScreen.route: (context) => const CopyrightScreen(),
+        PrivacyScreen.route: (context) => const PrivacyScreen(),
+        HelpScreen.route: (context) => const HelpScreen(),
       },
       theme: theme.copyWith(
         colorScheme: theme.colorScheme.copyWith(
