@@ -1,8 +1,10 @@
 import 'dart:convert';
 import 'package:daily_readings/bible_screen.dart';
+import 'package:daily_readings/selected_date_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:provider/provider.dart';
 import 'about_screen.dart';
 import 'calendar.dart';
 import 'copyright_screen.dart';
@@ -280,6 +282,17 @@ class _HomeScreenState extends State<HomeScreen> {
     }
     return null;
   }
+
+
+  Future getDailyReadingFromDatabase({DateTime? selectedDate}) async {
+    if (selectedDate == null) {
+      final selectedDateProvider = Provider.of<SelectedDateProvider>(context, listen: false);
+      selectedDate = selectedDateProvider.selectedDate;
+    }
+    // handle the rest of the function here
+  }
+// ...
+
 
   String greeting() {
     var hour = DateTime.now().hour;
