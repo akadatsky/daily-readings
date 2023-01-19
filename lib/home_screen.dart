@@ -15,7 +15,6 @@ import 'help_screen.dart';
 import 'privacy_screen.dart';
 import 'stats_screen.dart';
 
-
 enum Author { spurgeon, ryle }
 
 class HomeScreen extends StatefulWidget {
@@ -99,7 +98,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           overflow: TextOverflow.visible,
                           text: TextSpan(
                             text:
-                            '${morningDescription.isNotEmpty ? morningDescription : 'Focus on the Journey, Not the Outcome'}',
+                                '${morningDescription.isNotEmpty ? morningDescription : 'Focus on the Journey, Not the Outcome'}',
                             style: const TextStyle(
                                 color: Colors.black, fontSize: 22),
                           ),
@@ -110,7 +109,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           overflow: TextOverflow.visible,
                           text: TextSpan(
                             text:
-                            '${eveningDescription.isNotEmpty ? eveningDescription : 'Focus on the Journey, Not the Outcome'}',
+                                '${eveningDescription.isNotEmpty ? eveningDescription : 'Focus on the Journey, Not the Outcome'}',
                             style: const TextStyle(
                                 color: Colors.black, fontSize: 22),
                           ),
@@ -248,8 +247,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             );
-          }
-          else {
+          } else {
             return const CircularProgressIndicator();
           }
         });
@@ -266,7 +264,7 @@ class _HomeScreenState extends State<HomeScreen> {
           data.map((x) => DailyReading.fromJson(x as Map<String, dynamic>)));
 
       List<DailyReading> todaysReadings =
-      readings.where((element) => element.date!.contains(today)).toList();
+          readings.where((element) => element.date!.contains(today)).toList();
       morningDescription = todaysReadings
           .where((element) => element.time!.contains('Morning'))
           .first
@@ -283,16 +281,26 @@ class _HomeScreenState extends State<HomeScreen> {
     return null;
   }
 
-
-  Future getDailyReadingFromDatabase({DateTime? selectedDate}) async {
+  Future getDailyReadingFromDatabase({DateTime? selectedDate, required BuildContext context}) async {
     if (selectedDate == null) {
-      final selectedDateProvider = Provider.of<SelectedDateProvider>(context, listen: false);
+      final selectedDateProvider =
+          Provider.of<SelectedDateProvider>(context, listen: false);
       selectedDate = selectedDateProvider.selectedDate;
     }
-    // handle the rest of the function here
+    final dateFormat = DateFormat('dd.MM');
+    final formatedDate = dateFormat.format(selectedDate);
+    final snapshot = await FirebaseDatabase.instance
+        .ref()
+        .child("Daily Readings")
+        .child(formatedDate)
+        .once();
+    if (snapshot.value == null) {
+      print("Data not found");
+      return null;
+    }
+    final Map<String, dynamic> data = snapshot.value;
+    return DailyReading.fromJson(data);
   }
-// ...
-
 
   String greeting() {
     var hour = DateTime.now().hour;
