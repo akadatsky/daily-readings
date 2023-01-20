@@ -35,7 +35,7 @@ class _CalendarState extends State<Calendar> {
         centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(0.0),
+        padding: const EdgeInsets.all(10.0),
         child: Column(
           children: [
             // Text("Selected Day = ${today.toString().split(" ")[0]}"),

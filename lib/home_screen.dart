@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:daily_readings/bible_screen.dart';
 import 'package:daily_readings/selected_date_provider.dart';
+import 'package:daily_readings/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:firebase_database/firebase_database.dart';
@@ -39,6 +40,9 @@ class _HomeScreenState extends State<HomeScreen> {
         future: _getDailyReadingFromDatabase(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.done) {
+            if (snapshot.hasData) {
+              final dailyReading = snapshot.data;
+            } else if (snapshot.hasError) {}
             return DefaultTabController(
               length: 2,
               child: Scaffold(
@@ -72,10 +76,24 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   actions: [
                     IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const GoalsScreen(),
+                            ),
+                          );
+                        },
                         icon: const Icon(Icons.check_circle_outline)),
                     IconButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => const SettingsScreen(),
+                            ),
+                          );
+                        },
                         icon: const Icon(Icons.settings_rounded)),
                     IconButton(
                         onPressed: () {
@@ -248,7 +266,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             );
           } else {
-            return const CircularProgressIndicator();
+            return const Center(child: CircularProgressIndicator());
           }
         });
   }
@@ -281,26 +299,26 @@ class _HomeScreenState extends State<HomeScreen> {
     return null;
   }
 
-  Future getDailyReadingFromDatabase({DateTime? selectedDate, required BuildContext context}) async {
-    if (selectedDate == null) {
-      final selectedDateProvider =
-          Provider.of<SelectedDateProvider>(context, listen: false);
-      selectedDate = selectedDateProvider.selectedDate;
-    }
-    final dateFormat = DateFormat('dd.MM');
-    final formatedDate = dateFormat.format(selectedDate);
-    final snapshot = await FirebaseDatabase.instance
-        .ref()
-        .child("Daily Readings")
-        .child(formatedDate)
-        .once();
-    if (snapshot.value == null) {
-      print("Data not found");
-      return null;
-    }
-    final Map<String, dynamic> data = snapshot.value;
-    return DailyReading.fromJson(data);
-  }
+  // Future getDailyReadingFromDatabase({DateTime? selectedDate, required BuildContext context}) async {
+  //   if (selectedDate == null) {
+  //     final selectedDateProvider =
+  //         Provider.of<SelectedDateProvider>(context, listen: false);
+  //     selectedDate = selectedDateProvider.selectedDate;
+  //   }
+  //   final dateFormat = DateFormat('dd.MM');
+  //   final formatedDate = dateFormat.format(selectedDate);
+  //   final snapshot = await FirebaseDatabase.instance
+  //       .ref()
+  //       .child("Daily Readings")
+  //       .child(formatedDate)
+  //       .once();
+  //   if (snapshot.data == null) {
+  //     print("Data not found");
+  //     return null;
+  //   }
+  //   final Map<String, dynamic> data = snapshot.data;
+  //   return DailyReading.fromJson(data);
+  // }
 
   String greeting() {
     var hour = DateTime.now().hour;
