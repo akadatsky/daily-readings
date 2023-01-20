@@ -44,6 +44,8 @@ dependencies:
   firebase_database: ^10.0.9
   firebase_core: ^2.4.1
   http: ^0.13.5
+  babstrap_settings_screen: ^0.1.3
+
 
 dev_dependencies:
   cloud_firestore:
@@ -72,6 +74,7 @@ flutter:
   assets:
     - assets/bookcover.jpg
     - assets/letter.jpg
+    - assets/profilepic.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

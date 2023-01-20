@@ -1,4 +1,8 @@
+import 'package:babstrap_settings_screen/babstrap_settings_screen.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -8,13 +12,6 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  double _fontSize = 14.0;
-
-  void _changeFontSize(double newValue) {
-    setState(() {
-      _fontSize = newValue;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -24,23 +21,82 @@ class _SettingsScreenState extends State<SettingsScreen> {
         centerTitle: true,
       ),
       body: Padding(
-        padding: const EdgeInsets.all(0.0),
-        child: Column(
+        padding: const EdgeInsets.all(10.0),
+        child: ListView(
           children: [
-            SwitchListTile(
-              title: const Text("Dark Mode"),
-              value: false,
-              onChanged: (bool value) {},
+            SimpleUserCard(
+              userName: "Sam Davies",
+              userProfilePic: const AssetImage("assets/profilepic.jpg"),
             ),
-            Text("Font size: $_fontSize",
-                style: TextStyle(fontSize: _fontSize)),
-            Slider(
-              value: _fontSize,
-              min: 10,
-              max: 30,
-              divisions: 20,
-              onChanged: _changeFontSize,
+            SettingsGroup(
+              items: [
+                SettingsItem(
+                  onTap: () {},
+                  icons: Icons.fingerprint,
+                  iconStyle: IconStyle(
+                    iconsColor: Colors.white,
+                    withBackground: true,
+                    backgroundColor: Colors.red,
+                  ),
+                  title: 'Privacy',
+                  subtitle: "Protect your account",
+                ),
+                SettingsItem(
+                  onTap: () {},
+                  icons: Icons.dark_mode_rounded,
+                  iconStyle: IconStyle(
+                    iconsColor: Colors.white,
+                    withBackground: true,
+                    backgroundColor: Colors.red,
+                  ),
+                  title: 'Dark mode',
+                  subtitle: "Theme",
+                  trailing: Switch.adaptive(
+                    value: false,
+                    onChanged: (value) {},
+                  ),
+                ),
+              ],
             ),
+            SettingsGroup(
+              items: [
+                SettingsItem(
+                  onTap: () {},
+                  icons: Icons.info_rounded,
+                  iconStyle: IconStyle(
+                    backgroundColor: Colors.purple,
+                  ),
+                  title: 'About',
+                  subtitle: "Details",
+                ),
+              ],
+            ),
+            // You can add a settings title
+            SettingsGroup(
+              settingsGroupTitle: "Account",
+              items: [
+                SettingsItem(
+                  onTap: () {},
+                  icons: Icons.exit_to_app_rounded,
+                  title: "Sign Out",
+                ),
+                SettingsItem(
+                  onTap: () {},
+                  icons: CupertinoIcons.repeat,
+                  title: "Change email",
+                ),
+                SettingsItem(
+                  onTap: () {},
+                  icons: CupertinoIcons.delete_solid,
+                  title: "Delete account",
+                  titleStyle: const TextStyle(
+                    color: Colors.red,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ],
+            ),
+
           ],
         ),
       ),
