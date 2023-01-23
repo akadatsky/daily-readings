@@ -2,8 +2,6 @@ import 'package:babstrap_settings_screen/babstrap_settings_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-
-
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
 
@@ -12,7 +10,6 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,22 +29,11 @@ class _SettingsScreenState extends State<SettingsScreen> {
               items: [
                 SettingsItem(
                   onTap: () {},
-                  icons: Icons.fingerprint,
-                  iconStyle: IconStyle(
-                    iconsColor: Colors.white,
-                    withBackground: true,
-                    backgroundColor: Colors.red,
-                  ),
-                  title: 'Privacy',
-                  subtitle: "Protect your account",
-                ),
-                SettingsItem(
-                  onTap: () {},
                   icons: Icons.dark_mode_rounded,
                   iconStyle: IconStyle(
                     iconsColor: Colors.white,
                     withBackground: true,
-                    backgroundColor: Colors.red,
+                    backgroundColor: Colors.indigoAccent,
                   ),
                   title: 'Dark mode',
                   subtitle: "Theme",
@@ -59,44 +45,68 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ],
             ),
             SettingsGroup(
+              settingsGroupTitle: "General",
               items: [
                 SettingsItem(
                   onTap: () {},
-                  icons: Icons.info_rounded,
+                  icons: Icons.account_circle,
                   iconStyle: IconStyle(
-                    backgroundColor: Colors.purple,
+                    iconsColor: Colors.white,
+                    withBackground: true,
+                    backgroundColor: Colors.green,
                   ),
-                  title: 'About',
-                  subtitle: "Details",
+                  title: 'Account Settings',
+                  subtitle: "Privacy, Security, Language",
+                ),
+                SettingsItem(
+                  onTap: () {},
+                  icons: Icons.notifications,
+                  iconStyle: IconStyle(
+                    iconsColor: Colors.white,
+                    withBackground: true,
+                    backgroundColor: Colors.deepOrangeAccent,
+                  ),
+                  title: 'Notifications',
+                  subtitle: "Newsletter, App updates",
+                ),
+                SettingsItem(
+                  onTap: () {},
+                  icons: Icons.logout,
+                  iconStyle: IconStyle(
+                    iconsColor: Colors.white,
+                    withBackground: true,
+                    backgroundColor: Colors.blue,
+                  ),
+                  title: 'Logout',
+                  subtitle: "Newsletter, App updates",
                 ),
               ],
             ),
-            // You can add a settings title
             SettingsGroup(
-              settingsGroupTitle: "Account",
+              settingsGroupTitle: "Feedback",
               items: [
                 SettingsItem(
                   onTap: () {},
-                  icons: Icons.exit_to_app_rounded,
-                  title: "Sign Out",
-                ),
-                SettingsItem(
-                  onTap: () {},
-                  icons: CupertinoIcons.repeat,
-                  title: "Change email",
-                ),
-                SettingsItem(
-                  onTap: () {},
-                  icons: CupertinoIcons.delete_solid,
-                  title: "Delete account",
-                  titleStyle: const TextStyle(
-                    color: Colors.red,
-                    fontWeight: FontWeight.bold,
+                  icons: Icons.bug_report,
+                  iconStyle: IconStyle(
+                    iconsColor: Colors.white,
+                    withBackground: true,
+                    backgroundColor: Colors.teal,
                   ),
+                  title: "Report A Bug",
+                ),
+                SettingsItem(
+                  onTap: () {},
+                  icons: CupertinoIcons.hand_thumbsup_fill,
+                  iconStyle: IconStyle(
+                    iconsColor: Colors.white,
+                    withBackground: true,
+                    backgroundColor: Colors.deepPurple,
+                  ),
+                  title: "Send Feedback",
                 ),
               ],
             ),
-
           ],
         ),
       ),
