@@ -15,8 +15,13 @@ import 'stats_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(name: "Daily Readings", options: dailyReadindDatabaseOption);
-  runApp(const MyApp());
+  await Firebase.initializeApp(options: dailyReadindDatabaseOption);
+  runApp(
+    MultiProvider(providers: [
+      ChangeNotifierProvider<SelectedDateProvider>(
+          create: (context) => SelectedDateProvider()),
+    ], child: const MyApp()),
+  );
 }
 
 final ThemeData theme = ThemeData();
@@ -25,10 +30,7 @@ class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => SelectedDateProvider(),
-      child: MaterialApp(
+  Widget build(BuildContext context) => MaterialApp(
         title: 'Daily Readings',
         routes: {
           HomeScreen.route: (context) => const HomeScreen(),
@@ -48,7 +50,5 @@ class MyApp extends StatelessWidget {
         ),
         initialRoute: HomeScreen.route,
         debugShowCheckedModeBanner: false,
-      ),
-    );
-  }
+      );
 }

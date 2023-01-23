@@ -1,7 +1,7 @@
 import 'package:daily_readings/selected_date_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:table_calendar/table_calendar.dart';
-
 
 class Calendar extends StatefulWidget {
   const Calendar({Key? key}) : super(key: key);
@@ -11,14 +11,16 @@ class Calendar extends StatefulWidget {
 }
 
 class _CalendarState extends State<Calendar> {
-
-  final _selectedDateProvider = SelectedDateProvider();
+  late SelectedDateProvider _selectedDateProvider;
   DateTime today = DateTime.now();
 
-
+  @override
+  void initState() {
+    _selectedDateProvider = context.read<SelectedDateProvider>();
+    super.initState();
+  }
 
   void _onDaySelected(DateTime day, DateTime focusedDay) {
-
     _selectedDateProvider.selectedDate = day;
     Navigator.of(context).push(
       MaterialPageRoute(
