@@ -1,3 +1,4 @@
+import 'dart:collection';
 import 'dart:convert';
 import 'package:daily_readings/bible_screen.dart';
 import 'package:daily_readings/selected_date_provider.dart';
@@ -30,9 +31,22 @@ class HomeScreen extends StatefulWidget {
 
 //-----------------------------------------------------------------
 class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
-  Author? _author = Author.spurgeon;
+  late Author? _author;
+  late HashMap authorHashMap = HashMap<Author, String>();
 
   final DatabaseReference databaseReference = FirebaseDatabase.instance.ref();
+
+  @override
+  void initState() {
+    _author = Author.spurgeon;
+    final data = <Author, String>{
+      Author.spurgeon: 'Spurgeon',
+      Author.ryle: 'Ryle'
+    };
+    authorHashMap.addEntries(data.entries);
+
+    super.initState();
+  }
 
 //-----------------------------------------------------------------
   @override
@@ -63,8 +77,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   child: Scaffold(
                     appBar: AppBar(
                       centerTitle: false,
-                      title: Text(
-                          '${DateFormat.yMMMMd().format(DateTime.now())} ${selectedDate.day != DateTime.now().day ? '(${DateFormat.yMMMMd().format(selectedDate)})' : ''}'),
+                      title: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Text(
+                            '${DateFormat.yMMMMd().format(DateTime.now())} ${selectedDate.day != DateTime.now().day ? '(${DateFormat.yMMMMd().format(selectedDate)})' : ''}'),
+                      ),
                       backgroundColor: const Color.fromARGB(255, 71, 123, 171),
                       bottom: TabBar(
                         tabs: [
@@ -159,7 +176,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                 groupValue: _author,
                                 onChanged: (Author? value) {
                                   setState(() {
-                                    _author = value;
+                                    _author = value!;
                                   });
                                 },
                                 controlAffinity:
@@ -172,7 +189,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                 groupValue: _author,
                                 onChanged: (Author? value) {
                                   setState(() {
-                                    _author = value;
+                                    _author = value!;
                                   });
                                 },
                                 controlAffinity:
@@ -296,7 +313,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       DateTime? selectedDate) async {
     selectedDate ??= DateTime.now();
 
-    String formatedDate = DateFormat('dd.MM').format(selectedDate);
+    String formattedDate = DateFormat('dd.MM').format(selectedDate);
 
     DataSnapshot snapshot = await databaseReference.get();
     if (snapshot.exists) {
@@ -305,7 +322,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           data.map((x) => DailyReading.fromJson(x as Map<String, dynamic>)));
 
       List<DailyReading> todaysReadings = readings
-          .where((element) => element.date!.contains(formatedDate))
+          .where((element) => element.date!.contains(formattedDate))
+          .where((element) => _author != null
+              ? element.author!.contains(authorHashMap[_author])
+              : true)
           .toList();
 
       return todaysReadings;

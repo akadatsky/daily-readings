@@ -1,5 +1,4 @@
 import 'package:babstrap_settings_screen/babstrap_settings_screen.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -97,7 +96,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 ),
                 SettingsItem(
                   onTap: () {},
-                  icons: CupertinoIcons.hand_thumbsup_fill,
+                  icons: Icons.thumb_up,
                   iconStyle: IconStyle(
                     iconsColor: Colors.white,
                     withBackground: true,

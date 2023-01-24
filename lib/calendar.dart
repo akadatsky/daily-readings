@@ -21,10 +21,12 @@ class _CalendarState extends State<Calendar> {
   }
 
   void _onDaySelected(DateTime day, DateTime focusedDay) {
-    _selectedDateProvider.selectedDate = day;
+    setState(() {
+      _selectedDateProvider.selectedDate = day;
+    });
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (context) => SelectedDayScreen(day: today),
+        builder: (context) => SelectedDayScreen(day: day),
       ),
     );
   }
@@ -40,15 +42,15 @@ class _CalendarState extends State<Calendar> {
         padding: const EdgeInsets.all(10.0),
         child: Column(
           children: [
-            // Text("Selected Day = ${today.toString().split(" ")[0]}"),
             TableCalendar(
               locale: "en_US",
               rowHeight: 43,
               headerStyle: const HeaderStyle(
                   formatButtonVisible: false, titleCentered: true),
               availableGestures: AvailableGestures.all,
-              selectedDayPredicate: (day) => isSameDay(day, today),
-              focusedDay: today,
+              selectedDayPredicate: (day) =>
+                  isSameDay(day, _selectedDateProvider.selectedDate),
+              focusedDay: _selectedDateProvider.selectedDate,
               firstDay: DateTime.utc(2010, 10, 11),
               lastDay: DateTime.utc(2100, 3, 14),
               onDaySelected: _onDaySelected,

@@ -13,6 +13,7 @@ import 'home_screen.dart';
 import 'privacy_screen.dart';
 import 'stats_screen.dart';
 
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(name: "Daily Readings", options: dailyReadindDatabaseOption);
