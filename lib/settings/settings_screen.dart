@@ -1,6 +1,8 @@
 import 'package:babstrap_settings_screen/babstrap_settings_screen.dart';
 import 'package:flutter/material.dart';
 
+import 'account_settings_screen.dart';
+
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
 
@@ -47,7 +49,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
               settingsGroupTitle: "General",
               items: [
                 SettingsItem(
-                  onTap: () {},
+                  onTap: () async {
+                    await Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => const AccountSettingsScreen(),
+                      ),
+                    );
+                  },
                   icons: Icons.account_circle,
                   iconStyle: IconStyle(
                     iconsColor: Colors.white,

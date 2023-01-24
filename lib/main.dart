@@ -2,16 +2,18 @@ import 'package:daily_readings/selected_date_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'about_screen.dart';
-import 'bible_screen.dart';
-import 'copyright_screen.dart';
-import 'feedback_screen.dart';
+import 'drawer/about_screen.dart';
+import 'drawer/bible_screen.dart';
+import 'drawer/copyright_screen.dart';
+import 'drawer/feedback_screen.dart';
+import 'drawer/goals_screen.dart';
+import 'drawer/stats_screen.dart';
 import 'firebase_options.dart';
-import 'goals_screen.dart';
-import 'help_screen.dart';
+import 'drawer/help_screen.dart';
 import 'home_screen.dart';
-import 'privacy_screen.dart';
-import 'stats_screen.dart';
+import 'drawer/privacy_screen.dart';
+
+
 
 
 void main() async {

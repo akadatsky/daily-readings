@@ -1,22 +1,23 @@
 import 'dart:collection';
 import 'dart:convert';
-import 'package:daily_readings/bible_screen.dart';
+import 'package:daily_readings/drawer/bible_screen.dart';
 import 'package:daily_readings/selected_date_provider.dart';
-import 'package:daily_readings/settings_screen.dart';
+import 'package:daily_readings/settings/settings_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:provider/provider.dart';
-import 'about_screen.dart';
+import 'drawer/about_screen.dart';
 import 'calendar.dart';
-import 'copyright_screen.dart';
+import 'drawer/copyright_screen.dart';
 import 'daily_reading.model.dart';
-import 'feedback_screen.dart';
-import 'goals_screen.dart';
-import 'help_screen.dart';
-import 'privacy_screen.dart';
+import 'drawer/feedback_screen.dart';
+import 'drawer/goals_screen.dart';
+import 'drawer/stats_screen.dart';
+import 'drawer/help_screen.dart';
+import 'drawer/privacy_screen.dart';
 import 'reading_description_screen.dart';
-import 'stats_screen.dart';
+
 
 enum Author { spurgeon, ryle }
 
