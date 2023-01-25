@@ -24,11 +24,7 @@ class _CalendarState extends State<Calendar> {
     setState(() {
       _selectedDateProvider.selectedDate = day;
     });
-    Navigator.of(context).push(
-      MaterialPageRoute(
-        builder: (context) => SelectedDayScreen(day: day),
-      ),
-    );
+    Navigator.pop(context);
   }
 
   @override
@@ -57,24 +53,6 @@ class _CalendarState extends State<Calendar> {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
-
-class SelectedDayScreen extends StatelessWidget {
-  final DateTime day;
-  const SelectedDayScreen({super.key, required this.day});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("Selected Day"),
-        centerTitle: true,
-      ),
-      body: Center(
-        child: Text("Selected Day: ${day.toString().split(" ")[0]}"),
       ),
     );
   }

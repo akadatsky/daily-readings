@@ -1,0 +1,1 @@
+enum Author { spurgeon, ryle }
