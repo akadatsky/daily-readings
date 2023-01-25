@@ -115,7 +115,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       appBar: AppBar(
                         elevation: 0,
                         backgroundColor:
-                            const Color.fromARGB(255, 71, 123, 171),
+                        const Color.fromARGB(255, 71, 123, 171),
                         flexibleSpace: TabBar(
                           labelColor: Colors.white,
                           tabs: [
@@ -184,8 +184,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       List<DailyReading> todaysReadings = readings
           .where((element) => element.date!.contains(formattedDate))
           .where((element) => _author != null
-              ? element.author!.contains(authorHashMap[_author])
-              : true)
+          ? element.author!.contains(authorHashMap[_author])
+          : true)
           .toList();
 
       return todaysReadings;
