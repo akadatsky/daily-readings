@@ -29,14 +29,29 @@ void main() async {
 
 final ThemeData theme = ThemeData();
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
   const MyApp({super.key});
 
   @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  Locale? _locale;
+
+  void setLocale(Locale locale){
+    setState(() {
+      _locale = locale;
+    });
+  }
+
+
+  @override
   Widget build(BuildContext context) => MaterialApp(
+        locale: _locale,
         title: 'Daily Readings',
         routes: {
-          HomeScreen.route: (context) => const HomeScreen(),
+          HomeScreen.route: (context) => HomeScreen(setLocale),
           BibleScreen.route: (context) => const BibleScreen(),
           StatsScreen.route: (context) => const StatsScreen(),
           GoalsScreen.route: (context) => const GoalsScreen(),
@@ -59,7 +74,5 @@ class MyApp extends StatelessWidget {
         localizationsDelegates: AppLocalizations.localizationsDelegates,
 
         supportedLocales: AppLocalizations.supportedLocales,
-
       );
 }
-

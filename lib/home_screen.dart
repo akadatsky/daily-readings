@@ -11,7 +11,9 @@ import 'index.dart';
 class HomeScreen extends StatefulWidget {
   static String route = '/home';
 
-  const HomeScreen({Key? key}) : super(key: key);
+  const HomeScreen(this.setLocale, {Key? key}) : super(key: key);
+
+  final void Function(Locale locale) setLocale;
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();

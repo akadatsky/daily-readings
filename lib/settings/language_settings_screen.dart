@@ -1,6 +1,4 @@
-import 'package:babstrap_settings_screen/babstrap_settings_screen.dart';
 import 'package:flutter/material.dart';
-
 
 class LanguageSettingsScreen extends StatefulWidget {
   const LanguageSettingsScreen({Key? key}) : super(key: key);
@@ -10,6 +8,9 @@ class LanguageSettingsScreen extends StatefulWidget {
 }
 
 class _LanguageSettingsScreenState extends State<LanguageSettingsScreen> {
+  String _selectedLanguage = 'English';
+  final List<String> _languages = ['English', 'Spanish', 'Russian'];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,21 +20,29 @@ class _LanguageSettingsScreenState extends State<LanguageSettingsScreen> {
       ),
       body: Padding(
         padding: const EdgeInsets.all(10.0),
-        child: ListView(
+        child: Column(
           children: [
-            SettingsGroup(
-              items: [
-                SettingsItem(
-                  onTap: () {},
-                  icons: Icons.lock,
-                  iconStyle: IconStyle(
-                    iconsColor: Colors.white,
-                    withBackground: true,
-                    backgroundColor: Colors.blue,
-                  ),
-                  title: 'English',
-                ),
-              ],
+            Container(
+              padding: const EdgeInsets.symmetric(vertical: 20),
+              child: DropdownButton<String>(
+                value: _selectedLanguage,
+                items: _languages.map(
+                  (String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                onChanged: (newValue) {
+                  setState(() {
+                    _selectedLanguage = newValue!;
+                  });
+                },
+              ),
+            ),
+            Container(
+              padding: const EdgeInsets.symmetric(vertical: 20),
+              child: Text('Selected Language: $_selectedLanguage'),
             ),
           ],
         ),
