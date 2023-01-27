@@ -1,7 +1,8 @@
+import 'package:daily_readings/l10n/all_locales.dart';
 import 'package:daily_readings/selected_date_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:provider/provider.dart';
 import 'drawer/about_screen.dart';
 import 'drawer/bible_screen.dart';
@@ -13,9 +14,6 @@ import 'firebase_options.dart';
 import 'drawer/help_screen.dart';
 import 'home_screen.dart';
 import 'drawer/privacy_screen.dart';
-import 'l10n/all_locales.dart';
-import 'l10n/locale_provider.dart';
-
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -56,19 +54,12 @@ class MyApp extends StatelessWidget {
         initialRoute: HomeScreen.route,
         debugShowCheckedModeBanner: false,
 
-    //     supportedLocales: AllLocale.all,
-    // locale: Provider.of<LocaleProvider>(context).locale,
+        // locale: Provider.of<LocaleProvider>(context).locale,
 
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
 
-        localizationsDelegates: const [
-          // AppLocalizations.delegate,
-          GlobalMaterialLocalizations.delegate,
-          GlobalCupertinoLocalizations.delegate,
-          GlobalWidgetsLocalizations.delegate,
-        ],
-    // initialRoute: "/",
-    // onGenerateRoute: Routes.generateRoutes,
+        supportedLocales: AppLocalizations.supportedLocales,
 
       );
-
 }
+
