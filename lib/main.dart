@@ -1,4 +1,3 @@
-import 'package:daily_readings/l10n/all_locales.dart';
 import 'package:daily_readings/selected_date_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +13,7 @@ import 'firebase_options.dart';
 import 'drawer/help_screen.dart';
 import 'home_screen.dart';
 import 'drawer/privacy_screen.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
