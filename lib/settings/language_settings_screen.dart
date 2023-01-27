@@ -8,8 +8,7 @@ class LanguageSettingsScreen extends StatefulWidget {
 }
 
 class _LanguageSettingsScreenState extends State<LanguageSettingsScreen> {
-  String _selectedLanguage = 'English';
-  final List<String> _languages = ['English', 'Spanish', 'Russian'];
+  int selectedLanguage = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -18,35 +17,45 @@ class _LanguageSettingsScreenState extends State<LanguageSettingsScreen> {
         title: const Text('Language'),
         centerTitle: true,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Column(
-          children: [
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 20),
-              child: DropdownButton<String>(
-                value: _selectedLanguage,
-                items: _languages.map(
-                  (String value) {
-                    return DropdownMenuItem<String>(
-                      value: value,
-                      child: Text(value),
-                    );
-                  }).toList(),
-                onChanged: (newValue) {
-                  setState(() {
-                    _selectedLanguage = newValue!;
-                  });
-                },
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.symmetric(vertical: 20),
-              child: Text('Selected Language: $_selectedLanguage'),
-            ),
-          ],
-        ),
+      body: ListView(
+        padding: const EdgeInsets.symmetric(vertical: 16),
+        children: [
+          RadioListTile<int>(
+            title: const Text('English'),
+            subtitle: const Text('English'),
+            value: 0,
+            groupValue: selectedLanguage,
+            onChanged: (value) {
+              setState(() {
+                selectedLanguage = 0;
+              });
+            },
+          ),
+          RadioListTile<int>(
+            title: const Text('Русский'),
+            subtitle: const Text('Russian'),
+            value: 1,
+            groupValue: selectedLanguage,
+            onChanged: (value) {
+              setState(() {
+                selectedLanguage = 1;
+              });
+            },
+          ),
+          RadioListTile<int>(
+            title: const Text('Español'),
+            subtitle: const Text('Spanish'),
+            value: 2,
+            groupValue: selectedLanguage,
+            onChanged: (value) {
+              setState(() {
+                selectedLanguage = 2;
+              });
+            },
+          ),
+        ],
       ),
     );
   }
 }
+
