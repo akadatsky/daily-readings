@@ -7,5 +7,6 @@ class AllLocale {
     const Locale('en'),
     const Locale('es'),
     const Locale('ru'),
+    const Locale('ua'),
   ];
 }

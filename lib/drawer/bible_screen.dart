@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../calendar.dart';
+import '../settings/settings_screen.dart';
+import 'goals_screen.dart';
+
 class BibleScreen extends StatelessWidget {
   static String route = '/bible';
   const BibleScreen({Key? key}) : super(key: key);
@@ -10,11 +14,35 @@ class BibleScreen extends StatelessWidget {
       appBar: AppBar(
         actions: [
           IconButton(
-              onPressed: () {}, icon: const Icon(Icons.check_circle_outline)),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const GoalsScreen(),
+                  ),
+                );
+              },
+              icon: const Icon(Icons.check_circle_outline)),
           IconButton(
-              onPressed: () {}, icon: const Icon(Icons.settings_rounded)),
+              onPressed: () async {
+                await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SettingsScreen(),
+                  ),
+                );
+              },
+              icon: const Icon(Icons.settings_rounded)),
           IconButton(
-              onPressed: () {}, icon: const Icon(Icons.calendar_month_sharp)),
+              onPressed: () async {
+                await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Calendar(),
+                  ),
+                );
+              },
+              icon: const Icon(Icons.calendar_month_sharp)),
         ],
         title: const Padding(
           padding: EdgeInsets.only(left: 40.0),
@@ -22,7 +50,7 @@ class BibleScreen extends StatelessWidget {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(15.0),
+        padding: const EdgeInsets.all(18.0),
         child: SingleChildScrollView(
           child: Center(
             child: Column(

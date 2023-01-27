@@ -1,6 +1,19 @@
 {
-    "language": "English",
-    "@language":{
-    "description": "The current Language"
-    }
+  "language": "English",
+  "morning": "Morning",
+  "evening": "Evening",
+  "daily_readings_selection": "Daily Readings Selection",
+  "home": "Home",
+  "bible": "Bible",
+  "stats": "Stats",
+  "daily_goals": "Daily Goals",
+  "about": "About",
+  "feedback": "Feedback",
+  "copyright": "Copyright",
+  "privacy": "Privacy",
+  "help": "Help",
+  "app_version": "App version",
+  "content_version": "Content version",
+  "settings": "Settings",
+  "calendar": "Calendar"
 }

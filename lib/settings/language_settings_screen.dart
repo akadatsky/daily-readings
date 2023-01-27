@@ -43,13 +43,24 @@ class _LanguageSettingsScreenState extends State<LanguageSettingsScreen> {
             },
           ),
           RadioListTile<int>(
-            title: const Text('Español'),
-            subtitle: const Text('Spanish'),
+            title: const Text('Українська'),
+            subtitle: const Text('Ukrainian'),
             value: 2,
             groupValue: selectedLanguage,
             onChanged: (value) {
               setState(() {
                 selectedLanguage = 2;
+              });
+            },
+          ),
+          RadioListTile<int>(
+            title: const Text('Español'),
+            subtitle: const Text('Spanish'),
+            value: 3,
+            groupValue: selectedLanguage,
+            onChanged: (value) {
+              setState(() {
+                selectedLanguage = 3;
               });
             },
           ),

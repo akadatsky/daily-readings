@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../calendar.dart';
+import '../settings/settings_screen.dart';
+
 class GoalsScreen extends StatelessWidget {
   static String route = '/goals';
 
@@ -11,11 +14,35 @@ class GoalsScreen extends StatelessWidget {
       appBar: AppBar(
         actions: [
           IconButton(
-              onPressed: () {}, icon: const Icon(Icons.check_circle_outline)),
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const GoalsScreen(),
+                  ),
+                );
+              },
+              icon: const Icon(Icons.check_circle_outline)),
           IconButton(
-              onPressed: () {}, icon: const Icon(Icons.settings_rounded)),
+              onPressed: () async {
+                await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SettingsScreen(),
+                  ),
+                );
+              },
+              icon: const Icon(Icons.settings_rounded)),
           IconButton(
-              onPressed: () {}, icon: const Icon(Icons.calendar_month_sharp)),
+              onPressed: () async {
+                await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Calendar(),
+                  ),
+                );
+              },
+              icon: const Icon(Icons.calendar_month_sharp)),
         ],
         title: const Padding(
           padding: EdgeInsets.only(left: 50.0),

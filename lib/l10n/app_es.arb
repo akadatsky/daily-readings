@@ -1,4 +1,20 @@
 {
-    "language": "Español"
+    "language": "Español",
+    "morning": "Mañana",
+    "evening": "Noche",
+    "daily_readings_selection": "Selección de Lecturas Diarias",
+    "home": "Página de Inicio",
+    "bible": "Biblia",
+    "stats": "Estadísticas",
+    "daily_goals": "Objetivos Diarios",
+    "about": "Acerca de la Aplicación",
+    "feedback": "Realimentación",
+    "copyright": "Derechos de Autor",
+    "privacy": "Política de Privacidad",
+    "help": "Ayudar",
+    "app_version": "Versión de la Aplicación",
+    "content_version": "Versión de Contenido",
+    "settings": "Ajustes",
+    "calendar": "Calendario"
 
 }
