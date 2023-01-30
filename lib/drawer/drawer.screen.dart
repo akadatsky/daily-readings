@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../index.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class DrawerScreen extends StatefulWidget {
   final Author? author;
@@ -31,8 +32,8 @@ class _DrawerScreenState extends State<DrawerScreen> {
             ),
             child: Text(''),
           ),
-          const ListTile(
-            title: Text('Daily Readings Selection'),
+          ListTile(
+            title: Text(AppLocalizations.of(context)!.daily_readings_selection),
           ),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -66,7 +67,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
             ],
           ),
           ListTile(
-            title: const Text('Home'),
+            title: Text(AppLocalizations.of(context)!.home),
             leading: const Icon(Icons.home),
             onTap: () async {
               Navigator.pop(context); // Close the drawer
@@ -78,7 +79,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
             },
           ),
           ListTile(
-            title: const Text('Bible'),
+            title: Text(AppLocalizations.of(context)!.bible),
             leading: const Icon(Icons.book),
             onTap: () async {
               Navigator.pop(context); // Close the drawer
@@ -87,7 +88,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
             },
           ),
           ListTile(
-            title: const Text('Stats'),
+            title: Text(AppLocalizations.of(context)!.stats),
             leading: const Icon(Icons.stacked_bar_chart),
             onTap: () async {
               Navigator.pop(context);
@@ -95,7 +96,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
             },
           ),
           ListTile(
-            title: const Text('Daily Goals'),
+            title: Text(AppLocalizations.of(context)!.daily_goals),
             leading: const Icon(Icons.looks_one_sharp),
             onTap: () async {
               Navigator.pop(context);
@@ -103,7 +104,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
             },
           ),
           ListTile(
-            title: const Text('About'),
+            title: Text(AppLocalizations.of(context)!.about),
             leading: const Icon(Icons.people_alt_rounded),
             onTap: () async {
               Navigator.pop(context);
@@ -111,7 +112,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
             },
           ),
           ListTile(
-            title: const Text('Feedback'),
+            title: Text(AppLocalizations.of(context)!.feedback),
             leading: const Icon(Icons.format_quote),
             onTap: () async {
               Navigator.pop(context);
@@ -119,7 +120,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
             },
           ),
           ListTile(
-            title: const Text('Copyright'),
+            title: Text(AppLocalizations.of(context)!.copyright),
             leading: const Icon(Icons.copyright),
             onTap: () async {
               Navigator.pop(context);
@@ -127,7 +128,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
             },
           ),
           ListTile(
-            title: const Text('Privacy'),
+            title: Text(AppLocalizations.of(context)!.privacy),
             leading: const Icon(Icons.back_hand),
             onTap: () async {
               Navigator.pop(context);
@@ -135,15 +136,15 @@ class _DrawerScreenState extends State<DrawerScreen> {
             },
           ),
           ListTile(
-            title: const Text('Help'),
+            title: Text(AppLocalizations.of(context)!.help),
             leading: const Icon(Icons.question_mark),
             onTap: () async {
               Navigator.pop(context);
               await Navigator.pushNamed(context, HelpScreen.route);
             },
           ),
-          const Text("App version: X.X.X", textAlign: TextAlign.center),
-          const Text("Content version: XXX", textAlign: TextAlign.center),
+          Text("${AppLocalizations.of(context)!.app_version}: X.X.X", textAlign: TextAlign.center),
+          Text("${AppLocalizations.of(context)!.content_version}: XXX", textAlign: TextAlign.center),
         ],
       ),
     );

@@ -1,12 +1,12 @@
 import 'dart:collection';
 import 'dart:convert';
-
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
-
 import 'index.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class HomeScreen extends StatefulWidget {
   static String route = '/home';
@@ -111,6 +111,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       .first
                       ?.description;
 
+
                   return DefaultTabController(
                     length: 2,
                     child: Scaffold(
@@ -124,20 +125,20 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                             Tab(
                               child: Row(
                                 mainAxisSize: MainAxisSize.min,
-                                children: const [
-                                  Icon(Icons.wb_sunny),
-                                  SizedBox(width: 8),
-                                  Text('Morning'),
+                                children: [
+                                  const Icon(Icons.wb_sunny),
+                                  const SizedBox(width: 8),
+                                  Text(AppLocalizations.of(context)!.morning),
                                 ],
                               ),
                             ),
                             Tab(
                               child: Row(
                                 mainAxisSize: MainAxisSize.min,
-                                children: const [
-                                  Icon(Icons.wb_twighlight),
-                                  SizedBox(width: 8),
-                                  Text('Evening'),
+                                children: [
+                                  const Icon(Icons.wb_twighlight),
+                                  const SizedBox(width: 8),
+                                  Text(AppLocalizations.of(context)!.evening),
                                 ],
                               ),
                             ),
