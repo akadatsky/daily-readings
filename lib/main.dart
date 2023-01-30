@@ -13,7 +13,7 @@ import 'firebase_options.dart';
 import 'drawer/help_screen.dart';
 import 'home_screen.dart';
 import 'drawer/privacy_screen.dart';
-
+import 'l10n/all_locales.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,12 +39,11 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   Locale? _locale;
 
-  void setLocale(Locale locale){
+  void setLocale(Locale locale) {
     setState(() {
       _locale = locale;
     });
   }
-
 
   @override
   Widget build(BuildContext context) => MaterialApp(
@@ -74,5 +73,6 @@ class _MyAppState extends State<MyApp> {
         localizationsDelegates: AppLocalizations.localizationsDelegates,
 
         supportedLocales: AppLocalizations.supportedLocales,
+
       );
 }

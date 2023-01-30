@@ -6,4 +6,52 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get language => 'English';
+
+  @override
+  String get morning => 'Morning';
+
+  @override
+  String get evening => 'Evening';
+
+  @override
+  String get daily_readings_selection => 'Daily Readings Selection';
+
+  @override
+  String get home => 'Home';
+
+  @override
+  String get bible => 'Bible';
+
+  @override
+  String get stats => 'Stats';
+
+  @override
+  String get daily_goals => 'Daily Goals';
+
+  @override
+  String get about => 'About';
+
+  @override
+  String get feedback => 'Feedback';
+
+  @override
+  String get copyright => 'Copyright';
+
+  @override
+  String get privacy => 'Privacy';
+
+  @override
+  String get help => 'Help';
+
+  @override
+  String get app_version => 'App version';
+
+  @override
+  String get content_version => 'Content version';
+
+  @override
+  String get settings => 'Settings';
+
+  @override
+  String get calendar => 'Calendar';
 }
