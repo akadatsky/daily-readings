@@ -13,12 +13,14 @@ import 'firebase_options.dart';
 import 'drawer/help_screen.dart';
 import 'home_screen.dart';
 import 'drawer/privacy_screen.dart';
-import 'l10n/all_locales.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-void main() async {
+
+Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
       name: "Daily Readings", options: dailyReadindDatabaseOption);
+  await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
   runApp(
     MultiProvider(providers: [
       ChangeNotifierProvider<SelectedDateProvider>(
@@ -67,8 +69,6 @@ class _MyAppState extends State<MyApp> {
         ),
         initialRoute: HomeScreen.route,
         debugShowCheckedModeBanner: false,
-
-        // locale: Provider.of<LocaleProvider>(context).locale,
 
         localizationsDelegates: AppLocalizations.localizationsDelegates,
 
