@@ -15,5 +15,17 @@
     "app_version": "Версия Приложения",
     "content_version": "Версия Контента",
     "settings": "Настройки",
-    "calendar": "Календарь"
+    "calendar": "Календарь",
+    "january": "Январь",
+    "february": "Февраль",
+    "march": "Март",
+    "april": "Апрель",
+    "may": "Май",
+    "june": "Июнь",
+    "july": "Июль",
+    "august": "Август",
+    "september": "Сентябрь",
+    "october": "Октябрь",
+    "november": "Ноябрь",
+    "december": "Декабрь"
 }

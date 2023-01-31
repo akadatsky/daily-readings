@@ -54,4 +54,40 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get calendar => 'Календар';
+
+  @override
+  String get january => 'Січень';
+
+  @override
+  String get february => 'Лютий';
+
+  @override
+  String get march => 'Березень';
+
+  @override
+  String get april => 'Квітень';
+
+  @override
+  String get may => 'Травень';
+
+  @override
+  String get june => 'Червень';
+
+  @override
+  String get july => 'Липень';
+
+  @override
+  String get august => 'Серпень';
+
+  @override
+  String get september => 'Вересень';
+
+  @override
+  String get october => 'Жовтень';
+
+  @override
+  String get november => 'Листопад';
+
+  @override
+  String get december => 'Грудень';
 }

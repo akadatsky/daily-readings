@@ -15,5 +15,17 @@
     "app_version": "Версія Додатку",
     "content_version": "Версія Контенту",
     "settings": "Налаштування",
-    "calendar": "Календар"
+    "calendar": "Календар",
+    "january": "Січень",
+    "february": "Лютий",
+    "march": "Березень",
+    "april": "Квітень",
+    "may": "Травень",
+    "june": "Червень",
+    "july": "Липень",
+    "august": "Серпень",
+    "september": "Вересень",
+    "october": "Жовтень",
+    "november": "Листопад",
+    "december": "Грудень"
 }

@@ -15,7 +15,18 @@
     "app_version": "Versión de la Aplicación",
     "content_version": "Versión de Contenido",
     "settings": "Ajustes",
-    "calendar": "Calendario"
-
+    "calendar": "Calendario",
+    "january": "Enero",
+    "february": "Febrero",
+    "march": "Marcha",
+    "april": "Abril",
+    "may": "Puede",
+    "june": "Junio",
+    "july": "Julio",
+    "august": "Agosto",
+    "september": "Septiembre",
+    "october": "Octubre",
+    "november": "Noviembre",
+    "december": "Diciembre"
 }
 
