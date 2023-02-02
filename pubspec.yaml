@@ -72,9 +72,6 @@ dependencies:
   mockito: ^5.3.2
 
 
-#  box_ui:
-#    path: ../box_ui/
-
 
 dev_dependencies:
   flutter_test:

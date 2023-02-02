@@ -14,6 +14,7 @@ import 'drawer/help_screen.dart';
 import 'home_screen.dart';
 import 'drawer/privacy_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'login/register.dart';
 
 
 Future<void> main() async {
@@ -67,12 +68,10 @@ class _MyAppState extends State<MyApp> {
             primary: const Color(0xff477bab),
           ),
         ),
+        home: const Register(),
         initialRoute: HomeScreen.route,
         debugShowCheckedModeBanner: false,
-
         localizationsDelegates: AppLocalizations.localizationsDelegates,
-
         supportedLocales: AppLocalizations.supportedLocales,
-
       );
 }
