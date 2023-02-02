@@ -202,7 +202,7 @@ class _RegisterState extends State<Register> {
                           onChanged: (value) {},
                         ),
                         const SizedBox(
-                          height: 20,
+                          height: 70,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -245,7 +245,7 @@ class _RegisterState extends State<Register> {
                           ],
                         ),
                         const SizedBox(
-                          height: 20,
+                          height: 70,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -298,7 +298,7 @@ class _RegisterState extends State<Register> {
                           ],
                         ),
                         const SizedBox(
-                          height: 20,
+                          height: 50,
                         ),
                         Text(
                           "Daily Readings",
