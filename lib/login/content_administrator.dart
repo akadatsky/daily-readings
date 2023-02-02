@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'login.dart';
 
+import 'login.dart';
 
 class Teacher extends StatefulWidget {
   const Teacher({super.key});
@@ -15,7 +15,7 @@ class _TeacherState extends State<Teacher> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Teacher"),
+        title: const Text("Content Administrator"),
         actions: [
           IconButton(
             onPressed: () {

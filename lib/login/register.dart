@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'login.dart';
 // import 'model.dart';
 
+
 class Register extends StatefulWidget {
   const Register({super.key});
 
@@ -21,46 +22,46 @@ class _RegisterState extends State<Register> {
   final _formkey = GlobalKey<FormState>();
   final _auth = FirebaseAuth.instance;
 
-  final TextEditingController passwordController = new TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmpassController =
-  new TextEditingController();
-  final TextEditingController name = new TextEditingController();
-  final TextEditingController emailController = new TextEditingController();
-  final TextEditingController mobile = new TextEditingController();
+  TextEditingController();
+  final TextEditingController name = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController mobile = TextEditingController();
   bool _isObscure = true;
   bool _isObscure2 = true;
   File? file;
   var options = [
-    'Student',
-    'Teacher',
+    'User Administrator', //Student
+    'Content Administrator', //Teacher
   ];
-  var _currentItemSelected = "Student";
-  var rool = "Student";
+  var _currentItemSelected = "User Administrator";
+  var rool = "User Administrator";
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.orange[900],
+      backgroundColor: Colors.blueGrey,
       body: SingleChildScrollView(
         child: Column(
           children: <Widget>[
             Container(
-              color: Colors.orangeAccent[700],
+              color: Colors.blueGrey,
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height,
               child: SingleChildScrollView(
                 child: Container(
-                  margin: EdgeInsets.all(12),
+                  margin: const EdgeInsets.all(12),
                   child: Form(
                     key: _formkey,
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
-                        SizedBox(
+                        const SizedBox(
                           height: 80,
                         ),
-                        Text(
+                        const Text(
                           "Register Now",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
@@ -68,10 +69,10 @@ class _RegisterState extends State<Register> {
                             fontSize: 40,
                           ),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 10,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 50,
                         ),
                         TextFormField(
@@ -84,16 +85,16 @@ class _RegisterState extends State<Register> {
                             contentPadding: const EdgeInsets.only(
                                 left: 14.0, bottom: 8.0, top: 8.0),
                             focusedBorder: OutlineInputBorder(
-                              borderSide: new BorderSide(color: Colors.white),
-                              borderRadius: new BorderRadius.circular(20),
+                              borderSide: const BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(20),
                             ),
                             enabledBorder: UnderlineInputBorder(
-                              borderSide: new BorderSide(color: Colors.white),
-                              borderRadius: new BorderRadius.circular(20),
+                              borderSide: const BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(20),
                             ),
                           ),
                           validator: (value) {
-                            if (value!.length == 0) {
+                            if (value!.isEmpty) {
                               return "Email cannot be empty";
                             }
                             if (!RegExp(
@@ -107,7 +108,7 @@ class _RegisterState extends State<Register> {
                           onChanged: (value) {},
                           keyboardType: TextInputType.emailAddress,
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         TextFormField(
@@ -130,16 +131,16 @@ class _RegisterState extends State<Register> {
                             contentPadding: const EdgeInsets.only(
                                 left: 14.0, bottom: 8.0, top: 15.0),
                             focusedBorder: OutlineInputBorder(
-                              borderSide: new BorderSide(color: Colors.white),
-                              borderRadius: new BorderRadius.circular(20),
+                              borderSide: const BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(20),
                             ),
                             enabledBorder: UnderlineInputBorder(
-                              borderSide: new BorderSide(color: Colors.white),
-                              borderRadius: new BorderRadius.circular(20),
+                              borderSide: const BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(20),
                             ),
                           ),
                           validator: (value) {
-                            RegExp regex = new RegExp(r'^.{6,}$');
+                            RegExp regex = RegExp(r'^.{6,}$');
                             if (value!.isEmpty) {
                               return "Password cannot be empty";
                             }
@@ -151,7 +152,7 @@ class _RegisterState extends State<Register> {
                           },
                           onChanged: (value) {},
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         TextFormField(
@@ -174,12 +175,12 @@ class _RegisterState extends State<Register> {
                             contentPadding: const EdgeInsets.only(
                                 left: 14.0, bottom: 8.0, top: 15.0),
                             focusedBorder: OutlineInputBorder(
-                              borderSide: new BorderSide(color: Colors.white),
-                              borderRadius: new BorderRadius.circular(20),
+                              borderSide: const BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(20),
                             ),
                             enabledBorder: UnderlineInputBorder(
-                              borderSide: new BorderSide(color: Colors.white),
-                              borderRadius: new BorderRadius.circular(20),
+                              borderSide: const BorderSide(color: Colors.white),
+                              borderRadius: BorderRadius.circular(20),
                             ),
                           ),
                           validator: (value) {
@@ -192,13 +193,13 @@ class _RegisterState extends State<Register> {
                           },
                           onChanged: (value) {},
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
+                            const Text(
                               "Rool : ",
                               style: TextStyle(
                                 fontSize: 20,
@@ -207,7 +208,7 @@ class _RegisterState extends State<Register> {
                               ),
                             ),
                             DropdownButton<String>(
-                              dropdownColor: Colors.blue[900],
+                              dropdownColor: Colors.blueGrey[900],
                               isDense: true,
                               isExpanded: false,
                               iconEnabledColor: Colors.white,
@@ -217,7 +218,7 @@ class _RegisterState extends State<Register> {
                                   value: dropDownStringItem,
                                   child: Text(
                                     dropDownStringItem,
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       color: Colors.white,
                                       fontWeight: FontWeight.bold,
                                       fontSize: 20,
@@ -235,7 +236,7 @@ class _RegisterState extends State<Register> {
                             ),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         Row(
@@ -243,13 +244,13 @@ class _RegisterState extends State<Register> {
                           crossAxisAlignment: CrossAxisAlignment.end,
                           children: [
                             MaterialButton(
-                              shape: RoundedRectangleBorder(
+                              shape: const RoundedRectangleBorder(
                                   borderRadius:
                                   BorderRadius.all(Radius.circular(20.0))),
                               elevation: 5.0,
                               height: 40,
                               onPressed: () {
-                                CircularProgressIndicator();
+                                const CircularProgressIndicator();
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
@@ -257,16 +258,16 @@ class _RegisterState extends State<Register> {
                                   ),
                                 );
                               },
-                              child: Text(
+                              color: Colors.white,
+                              child: const Text(
                                 "Login",
                                 style: TextStyle(
                                   fontSize: 20,
                                 ),
                               ),
-                              color: Colors.white,
                             ),
                             MaterialButton(
-                              shape: RoundedRectangleBorder(
+                              shape: const RoundedRectangleBorder(
                                   borderRadius:
                                   BorderRadius.all(Radius.circular(20.0))),
                               elevation: 5.0,
@@ -278,21 +279,21 @@ class _RegisterState extends State<Register> {
                                 signUp(emailController.text,
                                     passwordController.text, rool);
                               },
-                              child: Text(
+                              color: Colors.white,
+                              child: const Text(
                                 "Register",
                                 style: TextStyle(
                                   fontSize: 20,
                                 ),
                               ),
-                              color: Colors.white,
                             ),
                           ],
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 20,
                         ),
                         Text(
-                          "WEBFUN",
+                          "Daily Readings",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 30,
@@ -312,7 +313,7 @@ class _RegisterState extends State<Register> {
   }
 
   void signUp(String email, String password, String rool) async {
-    CircularProgressIndicator();
+    const CircularProgressIndicator();
     if (_formkey.currentState!.validate()) {
       await _auth
           .createUserWithEmailAndPassword(email: email, password: password)
