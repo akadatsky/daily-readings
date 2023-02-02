@@ -3,25 +3,25 @@ import 'package:flutter/material.dart';
 
 import 'login.dart';
 
-class Student extends StatefulWidget {
-  const Student({super.key});
+class UserAdministrator extends StatefulWidget {
+  const UserAdministrator({super.key});
 
   @override
-  State<Student> createState() => _StudentState();
+  State<UserAdministrator> createState() => _UserAdministratorState();
 }
 
-class _StudentState extends State<Student> {
+class _UserAdministratorState extends State<UserAdministrator> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Student"),
+        title: const Text("User Administrator"),
         actions: [
           IconButton(
             onPressed: () {
               logout(context);
             },
-            icon: Icon(
+            icon: const Icon(
               Icons.logout,
             ),
           )
@@ -31,7 +31,7 @@ class _StudentState extends State<Student> {
   }
 
   Future<void> logout(BuildContext context) async {
-    CircularProgressIndicator();
+    const CircularProgressIndicator();
     await FirebaseAuth.instance.signOut();
     Navigator.pushReplacement(
       context,

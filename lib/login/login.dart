@@ -6,6 +6,8 @@ import 'content_administrator.dart';
 import 'register.dart';
 
 class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
   @override
   _LoginPageState createState() => _LoginPageState();
 }
@@ -268,14 +270,14 @@ class _LoginPageState extends State<LoginPage> {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => Teacher(),
+              builder: (context) => const ContentAdministrator(),
             ),
           );
         } else {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
-              builder: (context) => const Student(),
+              builder: (context) => const UserAdministrator(),
             ),
           );
         }

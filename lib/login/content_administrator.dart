@@ -3,14 +3,14 @@ import 'package:flutter/material.dart';
 
 import 'login.dart';
 
-class Teacher extends StatefulWidget {
-  const Teacher({super.key});
+class ContentAdministrator extends StatefulWidget {
+  const ContentAdministrator({super.key});
 
   @override
-  State<Teacher> createState() => _TeacherState();
+  State<ContentAdministrator> createState() => _ContentAdministratorState();
 }
 
-class _TeacherState extends State<Teacher> {
+class _ContentAdministratorState extends State<ContentAdministrator> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

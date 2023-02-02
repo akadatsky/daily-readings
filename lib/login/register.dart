@@ -32,9 +32,11 @@ class _RegisterState extends State<Register> {
   bool _isObscure2 = true;
   File? file;
   var options = [
-    'User Administrator', //Student
-    'Content Administrator', //Teacher
+  'User',
+  'User Administrator', //Student
+  'Content Administrator', //Teacher
   ];
+
   var _currentItemSelected = "User Administrator";
   var rool = "User Administrator";
 
@@ -47,8 +49,14 @@ class _RegisterState extends State<Register> {
           children: <Widget>[
             Container(
               color: Colors.blueGrey,
-              width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
+              width: MediaQuery
+                  .of(context)
+                  .size
+                  .width,
+              height: MediaQuery
+                  .of(context)
+                  .size
+                  .height,
               child: SingleChildScrollView(
                 child: Container(
                   margin: const EdgeInsets.all(12),
