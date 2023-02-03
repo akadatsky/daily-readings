@@ -40,17 +40,6 @@ class _CalendarState extends State<Calendar> {
         child: Column(
           children: [
             TableCalendar(
-              // localResolutionCallback: (locale, supportedLocales) {
-              //   if (locale == null) {
-              //     return supportedLocales.first;
-              //   }
-              //   for (final supportedLocale in supportedLocales) {
-              //     if (supportedLocale.languageCode == locale.languageCode) {
-              //       return supportedLocale;
-              //     }
-              //   }
-              //   return supportedLocales.first;
-              // }
               locale: Localizations.localeOf(context).toString(),
               rowHeight: 43,
               headerStyle: const HeaderStyle(

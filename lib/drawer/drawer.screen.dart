@@ -40,7 +40,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               RadioListTile<Author>(
-                title: const Text('Spurgeon'),
+                title: Text(AppLocalizations.of(context)!.spurgeon),
                 value: Author.spurgeon,
                 groupValue: widget.author,
                 onChanged: (Author? value) {
@@ -53,7 +53,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
               ),
               const Divider(height: 0, color: Colors.grey),
               RadioListTile<Author>(
-                title: const Text('J.C. Ryle'),
+                title: Text(AppLocalizations.of(context)!.ryle),
                 value: Author.ryle,
                 groupValue: widget.author,
                 onChanged: (Author? value) {

@@ -6,7 +6,7 @@
   "home": "Home",
   "bible": "Bible",
   "stats": "Stats",
-  "daily_goals": "Daily Goals",
+  "daily_goals": "Daily goals",
   "about": "About",
   "feedback": "Feedback",
   "copyright": "Copyright",
@@ -15,5 +15,7 @@
   "app_version": "App version",
   "content_version": "Content version",
   "settings": "Settings",
-  "calendar": "Calendar"
+  "calendar": "Calendar",
+  "spurgeon": "Spurgeon",
+  "ryle": "Ryle"
 }

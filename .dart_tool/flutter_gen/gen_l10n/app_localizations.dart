@@ -142,7 +142,7 @@ abstract class AppLocalizations {
   /// No description provided for @daily_goals.
   ///
   /// In en, this message translates to:
-  /// **'Daily Goals'**
+  /// **'Daily goals'**
   String get daily_goals;
 
   /// No description provided for @about.
@@ -198,6 +198,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Calendar'**
   String get calendar;
+
+  /// No description provided for @spurgeon.
+  ///
+  /// In en, this message translates to:
+  /// **'Spurgeon'**
+  String get spurgeon;
+
+  /// No description provided for @ryle.
+  ///
+  /// In en, this message translates to:
+  /// **'Ryle'**
+  String get ryle;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

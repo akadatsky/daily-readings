@@ -26,7 +26,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get stats => 'Stats';
 
   @override
-  String get daily_goals => 'Daily Goals';
+  String get daily_goals => 'Daily goals';
 
   @override
   String get about => 'About';
@@ -54,4 +54,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get calendar => 'Calendar';
+
+  @override
+  String get spurgeon => 'Spurgeon';
+
+  @override
+  String get ryle => 'Ryle';
 }

@@ -17,7 +17,7 @@ class AppLocalizationsUk extends AppLocalizations {
   String get daily_readings_selection => 'Підбірка Щоденних Читань';
 
   @override
-  String get home => 'Стартова Сторінка';
+  String get home => 'Стартова сторінка';
 
   @override
   String get bible => 'Біблія';
@@ -26,32 +26,38 @@ class AppLocalizationsUk extends AppLocalizations {
   String get stats => 'Статистика';
 
   @override
-  String get daily_goals => 'Щоденні Цілі';
+  String get daily_goals => 'Щоденні цілі';
 
   @override
-  String get about => 'Про Додаток';
+  String get about => 'Про додаток';
 
   @override
   String get feedback => 'Відгук';
 
   @override
-  String get copyright => 'Авторське Право';
+  String get copyright => 'Авторські права';
 
   @override
-  String get privacy => 'Політика Конфіденційності';
+  String get privacy => 'Політика конфіденційності';
 
   @override
   String get help => 'Допомога';
 
   @override
-  String get app_version => 'Версія Додатку';
+  String get app_version => 'Версія додатку';
 
   @override
-  String get content_version => 'Версія Контенту';
+  String get content_version => 'Версія контенту';
 
   @override
   String get settings => 'Налаштування';
 
   @override
   String get calendar => 'Календар';
+
+  @override
+  String get spurgeon => 'Сперджен';
+
+  @override
+  String get ryle => 'Райл';
 }

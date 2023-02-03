@@ -54,4 +54,10 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get calendar => 'Calendario';
+
+  @override
+  String get spurgeon => 'Spurgeon';
+
+  @override
+  String get ryle => 'Ryle';
 }
