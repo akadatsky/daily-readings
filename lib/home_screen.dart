@@ -50,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             centerTitle: false,
             title: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
-              child: Text(DateFormat.yMMMMd().format(selectedDate)),
+              child: Text(DateFormat.yMMMMd(Localizations.localeOf(context).languageCode).format(selectedDate)),
             ),
             backgroundColor: const Color.fromARGB(255, 71, 123, 171),
             actions: [

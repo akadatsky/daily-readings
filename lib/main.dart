@@ -22,7 +22,6 @@ Future<void> main() async {
   await Firebase.initializeApp(
       name: "Daily Readings", options: dailyReadindDatabaseOption);
   await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
-
   runApp(
     MultiProvider(providers: [
       ChangeNotifierProvider<SelectedDateProvider>(
@@ -76,3 +75,4 @@ class _MyAppState extends State<MyApp> {
         supportedLocales: AppLocalizations.supportedLocales,
       );
 }
+

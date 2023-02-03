@@ -137,7 +137,7 @@ class _LoginPageState extends State<LoginPage> {
                           keyboardType: TextInputType.emailAddress,
                         ),
                         const SizedBox(
-                          height: 20,
+                          height: 70,
                         ),
                         MaterialButton(
                           shape: const RoundedRectangleBorder(
