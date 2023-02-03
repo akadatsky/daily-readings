@@ -14,7 +14,6 @@ class Calendar extends StatefulWidget {
 class _CalendarState extends State<Calendar> {
   late SelectedDateProvider _selectedDateProvider;
   DateTime today = DateTime.now();
-  String locale = "en_US";
 
   @override
   void initState() {
@@ -32,7 +31,7 @@ class _CalendarState extends State<Calendar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
+      appBar: AppBar(
         title: Text(AppLocalizations.of(context)!.calendar),
         centerTitle: true,
       ),
@@ -41,18 +40,18 @@ class _CalendarState extends State<Calendar> {
         child: Column(
           children: [
             TableCalendar(
-              localResolutionCallback: (locale, supportedLocales) {
-                if (locale == null) {
-                  return supportedLocales.first;
-                }
-                for (final supportedLocale in supportedLocales) {
-                  if (supportedLocale.languageCode == locale.languageCode) {
-                    return supportedLocale;
-                  }
-                }
-                return supportedLocales.first;
-              }
-              // locale: "en_US",
+              // localResolutionCallback: (locale, supportedLocales) {
+              //   if (locale == null) {
+              //     return supportedLocales.first;
+              //   }
+              //   for (final supportedLocale in supportedLocales) {
+              //     if (supportedLocale.languageCode == locale.languageCode) {
+              //       return supportedLocale;
+              //     }
+              //   }
+              //   return supportedLocales.first;
+              // }
+              locale: Localizations.localeOf(context).toString(),
               rowHeight: 43,
               headerStyle: const HeaderStyle(
                   formatButtonVisible: false, titleCentered: true),
