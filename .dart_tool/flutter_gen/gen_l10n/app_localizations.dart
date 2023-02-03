@@ -210,6 +210,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Ryle'**
   String get ryle;
+
+  /// No description provided for @register.
+  ///
+  /// In en, this message translates to:
+  /// **'Register'**
+  String get register;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

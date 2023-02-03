@@ -60,4 +60,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get ryle => 'Райл';
+
+  @override
+  String get register => 'Регистрация';
 }

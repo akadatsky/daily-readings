@@ -60,4 +60,7 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get ryle => 'Ryle';
+
+  @override
+  String get register => 'Registro';
 }

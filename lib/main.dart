@@ -1,3 +1,4 @@
+import 'package:daily_readings/login/login_screen.dart';
 import 'package:daily_readings/selected_date_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -14,7 +15,7 @@ import 'drawer/help_screen.dart';
 import 'home_screen.dart';
 import 'drawer/privacy_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'login/register.dart';
+import 'login/register_screen.dart';
 
 
 Future<void> main() async {
@@ -54,6 +55,7 @@ class _MyAppState extends State<MyApp> {
         title: 'Daily Readings',
         routes: {
           HomeScreen.route: (context) => HomeScreen(setLocale),
+          RegisterScreen.route: (context) => const RegisterScreen(),
           BibleScreen.route: (context) => const BibleScreen(),
           StatsScreen.route: (context) => const StatsScreen(),
           GoalsScreen.route: (context) => const GoalsScreen(),
@@ -68,7 +70,7 @@ class _MyAppState extends State<MyApp> {
             primary: const Color(0xff477bab),
           ),
         ),
-        home: const Register(),
+        // home: const RegisterScreen(),
         initialRoute: HomeScreen.route,
         debugShowCheckedModeBanner: false,
         localizationsDelegates: AppLocalizations.localizationsDelegates,

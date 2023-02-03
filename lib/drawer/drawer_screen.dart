@@ -1,7 +1,8 @@
+import 'package:daily_readings/login/register_screen.dart';
 import 'package:flutter/material.dart';
-
 import '../index.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class DrawerScreen extends StatefulWidget {
   final Author? author;
@@ -76,6 +77,15 @@ class _DrawerScreenState extends State<DrawerScreen> {
                 HomeScreen.route,
                 ModalRoute.withName('/'),
               ).then((value) => {setState(() {})});
+            },
+          ),
+          ListTile(
+            title: Text(AppLocalizations.of(context)!.register),
+            leading: const Icon(Icons.account_circle),
+            onTap: () async {
+              Navigator.pop(context); // Close the drawer
+              await Navigator.pushNamed(
+                  context, RegisterScreen.route);
             },
           ),
           ListTile(

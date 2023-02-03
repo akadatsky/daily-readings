@@ -1,7 +1,7 @@
 export 'about_screen.dart';
 export 'bible_screen.dart';
 export 'copyright_screen.dart';
-export 'drawer.screen.dart';
+export 'drawer_screen.dart';
 export 'feedback_screen.dart';
 export 'goals_screen.dart';
 export 'help_screen.dart';

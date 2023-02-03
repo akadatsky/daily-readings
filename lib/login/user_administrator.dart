@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import 'login.dart';
+import 'login_screen.dart';
 
 class UserAdministrator extends StatefulWidget {
   const UserAdministrator({super.key});
@@ -36,7 +36,7 @@ class _UserAdministratorState extends State<UserAdministrator> {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => LoginPage(),
+        builder: (context) => LoginScreen(),
       ),
     );
   }

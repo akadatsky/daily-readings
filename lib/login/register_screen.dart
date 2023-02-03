@@ -2,19 +2,21 @@ import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'login.dart';
+import 'login_screen.dart';
 // import 'model.dart';
 
 
-class Register extends StatefulWidget {
-  const Register({super.key});
+class RegisterScreen extends StatefulWidget {
+  static String route = '/register';
+
+  const RegisterScreen({super.key});
 
   @override
-  _RegisterState createState() => _RegisterState();
+  _RegisterScreenState createState() => _RegisterScreenState();
 }
 
-class _RegisterState extends State<Register> {
-  _RegisterState();
+class _RegisterScreenState extends State<RegisterScreen> {
+  _RegisterScreenState();
 
   bool showProgress = false;
   bool visible = false;
@@ -262,7 +264,7 @@ class _RegisterState extends State<Register> {
                                 Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                    builder: (context) => LoginPage(),
+                                    builder: (context) => LoginScreen(),
                                   ),
                                 );
                               },
@@ -336,6 +338,6 @@ class _RegisterState extends State<Register> {
     CollectionReference ref = FirebaseFirestore.instance.collection('users');
     ref.doc(user!.uid).set({'email': emailController.text, 'rool': rool});
     Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => LoginPage()));
+        context, MaterialPageRoute(builder: (context) => LoginScreen()));
   }
 }

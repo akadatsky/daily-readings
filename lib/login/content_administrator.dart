@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-import 'login.dart';
+import 'login_screen.dart';
 
 class ContentAdministrator extends StatefulWidget {
   const ContentAdministrator({super.key});
@@ -36,7 +36,7 @@ class _ContentAdministratorState extends State<ContentAdministrator> {
     Navigator.pushReplacement(
       context,
       MaterialPageRoute(
-        builder: (context) => LoginPage(),
+        builder: (context) => LoginScreen(),
       ),
     );
   }
