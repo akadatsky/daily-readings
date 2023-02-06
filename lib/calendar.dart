@@ -1,5 +1,6 @@
 import 'package:daily_readings/selected_date_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:table_calendar/table_calendar.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -14,6 +15,7 @@ class Calendar extends StatefulWidget {
 class _CalendarState extends State<Calendar> {
   late SelectedDateProvider _selectedDateProvider;
   DateTime today = DateTime.now();
+  // String formattedDate = DateFormat.yMMMMd().format(DateTime.now());
 
   @override
   void initState() {
@@ -24,6 +26,7 @@ class _CalendarState extends State<Calendar> {
   void _onDaySelected(DateTime day, DateTime focusedDay) {
     setState(() {
       _selectedDateProvider.selectedDate = day;
+      // formattedDate = DateFormat.yMMMd().format(day);
     });
     Navigator.pop(context);
   }

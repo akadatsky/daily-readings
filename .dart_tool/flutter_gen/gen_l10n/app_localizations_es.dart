@@ -17,7 +17,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get daily_readings_selection => 'Selección de Lecturas Diarias';
 
   @override
-  String get home => 'Página de Inicio';
+  String get home => 'Página de inicio';
 
   @override
   String get bible => 'Biblia';
@@ -26,28 +26,28 @@ class AppLocalizationsEs extends AppLocalizations {
   String get stats => 'Estadísticas';
 
   @override
-  String get daily_goals => 'Objetivos Diarios';
+  String get daily_goals => 'Objetivos diarios';
 
   @override
-  String get about => 'Acerca de la Aplicación';
+  String get about => 'Acerca de la aplicación';
 
   @override
   String get feedback => 'Realimentación';
 
   @override
-  String get copyright => 'Derechos de Autor';
+  String get copyright => 'Derechos de autor';
 
   @override
-  String get privacy => 'Política de Privacidad';
+  String get privacy => 'Política de privacidad';
 
   @override
   String get help => 'Ayudar';
 
   @override
-  String get app_version => 'Versión de la Aplicación';
+  String get app_version => 'Versión de la aplicación';
 
   @override
-  String get content_version => 'Versión de Contenido';
+  String get content_version => 'Versión de contenido';
 
   @override
   String get settings => 'Ajustes';

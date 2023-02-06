@@ -10,3 +10,4 @@ class AllLocale {
     const Locale('uk'),
   ];
 }
+
