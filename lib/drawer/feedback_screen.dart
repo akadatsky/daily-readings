@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class FeedbackScreen extends StatelessWidget {
   static String route = '/feedback';
@@ -9,7 +10,7 @@ class FeedbackScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Feedback'),
+        title: Text(AppLocalizations.of(context)!.feedback),
         centerTitle: true,
       ),
       body: Padding(

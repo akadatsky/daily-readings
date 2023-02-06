@@ -1,4 +1,3 @@
-import 'package:daily_readings/login/login_screen.dart';
 import 'package:daily_readings/selected_date_provider.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';

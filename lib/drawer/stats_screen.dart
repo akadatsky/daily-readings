@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-
 import '../calendar.dart';
 import '../settings/settings_screen.dart';
 import 'goals_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class StatsScreen extends StatelessWidget {
   static String route = '/stats';
@@ -13,6 +13,8 @@ class StatsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text(AppLocalizations.of(context)!.stats),
+        centerTitle: false,
         actions: [
           IconButton(
               onPressed: () {
@@ -45,10 +47,6 @@ class StatsScreen extends StatelessWidget {
               },
               icon: const Icon(Icons.calendar_month_sharp)),
         ],
-        title: const Padding(
-          padding: EdgeInsets.only(left: 90.0),
-          child: Text('Stats'),
-        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(14.0),

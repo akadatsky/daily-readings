@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'login_screen.dart';
-// import 'model.dart';
+
 
 
 class RegisterScreen extends StatefulWidget {
@@ -34,7 +34,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
   bool _isObscure2 = true;
   File? file;
   var options = [
-  'User',
   'User Administrator', //Student
   'Content Administrator', //Teacher
   ];
@@ -338,6 +337,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
     CollectionReference ref = FirebaseFirestore.instance.collection('users');
     ref.doc(user!.uid).set({'email': emailController.text, 'rool': rool});
     Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => LoginScreen()));
+        context, MaterialPageRoute(builder: (context) => const LoginScreen()));
   }
 }

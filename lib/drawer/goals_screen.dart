@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-
 import '../calendar.dart';
 import '../settings/settings_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class GoalsScreen extends StatelessWidget {
   static String route = '/goals';
@@ -12,6 +13,8 @@ class GoalsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text(AppLocalizations.of(context)!.daily_goals),
+        centerTitle: false,
         actions: [
           IconButton(
               onPressed: () {
@@ -44,11 +47,6 @@ class GoalsScreen extends StatelessWidget {
               },
               icon: const Icon(Icons.calendar_month_sharp)),
         ],
-        title: const Padding(
-          padding: EdgeInsets.only(left: 50.0),
-          child: Text('Daily Goals'),
-        ),
-
       ),
       body: Padding(
         padding: const EdgeInsets.all(14.0),

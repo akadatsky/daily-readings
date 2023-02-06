@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-
 import '../calendar.dart';
 import '../settings/settings_screen.dart';
 import 'goals_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BibleScreen extends StatelessWidget {
   static String route = '/bible';
@@ -12,6 +12,8 @@ class BibleScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text(AppLocalizations.of(context)!.bible),
+        centerTitle: false,
         actions: [
           IconButton(
               onPressed: () {
@@ -44,10 +46,6 @@ class BibleScreen extends StatelessWidget {
               },
               icon: const Icon(Icons.calendar_month_sharp)),
         ],
-        title: const Padding(
-          padding: EdgeInsets.only(left: 40.0),
-          child: Text('Holy Bible'),
-        ),
       ),
       body: Padding(
         padding: const EdgeInsets.all(18.0),
