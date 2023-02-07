@@ -1,7 +1,9 @@
 import 'package:babstrap_settings_screen/babstrap_settings_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'account_settings_screen.dart';
+import '../index.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
@@ -37,8 +39,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     withBackground: true,
                     backgroundColor: Colors.indigoAccent,
                   ),
-                  title: 'Dark mode',
-                  subtitle: "Theme",
+                  title: AppLocalizations.of(context)!.dark_mode,
+                  subtitle: AppLocalizations.of(context)!.theme,
                   trailing: Switch.adaptive(
                     value: false,
                     onChanged: (value) {},
@@ -47,7 +49,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ],
             ),
             SettingsGroup(
-              settingsGroupTitle: "General",
+              settingsGroupTitle: AppLocalizations.of(context)!.general,
               items: [
                 SettingsItem(
                   onTap: () async {
@@ -64,8 +66,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     withBackground: true,
                     backgroundColor: Colors.green,
                   ),
-                  title: 'Account Settings',
-                  subtitle: "Privacy, Security, Language",
+                  title: AppLocalizations.of(context)!.account_settings,
+                  subtitle: AppLocalizations.of(context)!.privacy_security_language,
                 ),
                 SettingsItem(
                   onTap: () {},
@@ -75,8 +77,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     withBackground: true,
                     backgroundColor: Colors.deepOrangeAccent,
                   ),
-                  title: 'Notifications',
-                  subtitle: "Newsletter, App updates",
+                  title: AppLocalizations.of(context)!.notifications,
+                  subtitle: AppLocalizations.of(context)!.newsletter_app_updates,
                 ),
                 SettingsItem(
                   onTap: () {},
@@ -86,13 +88,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     withBackground: true,
                     backgroundColor: Colors.blue,
                   ),
-                  title: 'Logout',
-                  subtitle: "Sign out of the account",
+                  title: AppLocalizations.of(context)!.logout,
+                  subtitle: AppLocalizations.of(context)!.sign_out,
                 ),
               ],
             ),
             SettingsGroup(
-              settingsGroupTitle: "Feedback",
+              settingsGroupTitle: AppLocalizations.of(context)!.feedback,
               items: [
                 SettingsItem(
                   onTap: () {},
@@ -102,7 +104,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     withBackground: true,
                     backgroundColor: Colors.teal,
                   ),
-                  title: "Report A Bug",
+                  title: AppLocalizations.of(context)!.report_a_bug,
                 ),
                 SettingsItem(
                   onTap: () {},
@@ -112,7 +114,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     withBackground: true,
                     backgroundColor: Colors.deepPurple,
                   ),
-                  title: "Send Feedback",
+                  title: AppLocalizations.of(context)!.send_feedback,
                 ),
               ],
             ),

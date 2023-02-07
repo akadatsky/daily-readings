@@ -62,10 +62,10 @@ class AppLocalizationsRu extends AppLocalizations {
   String get register => 'Регистрация';
 
   @override
-  String get dark_mode => 'Темная тема';
+  String get dark_mode => 'Темный режим';
 
   @override
-  String get light_mode => 'Светлая тема';
+  String get light_mode => 'Светлый режим';
 
   @override
   String get account_settings => 'Настройки аккаунта';
@@ -95,7 +95,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get delete_account => 'Удалить аккаунт';
 
   @override
-  String get general => 'Общий';
+  String get general => 'Общие';
 
   @override
   String get theme => 'Тема';

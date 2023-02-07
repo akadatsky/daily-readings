@@ -1,7 +1,8 @@
 import 'package:babstrap_settings_screen/babstrap_settings_screen.dart';
 import 'package:flutter/material.dart';
-
 import 'language_settings_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+
 
 class AccountSettingsScreen extends StatefulWidget {
   const AccountSettingsScreen({Key? key}) : super(key: key);
@@ -15,7 +16,7 @@ class _AccountSettingsScreenState extends State<AccountSettingsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Account Settings'),
+        title: Text(AppLocalizations.of(context)!.account_settings),
         centerTitle: true,
       ),
       body: Padding(
@@ -32,7 +33,7 @@ class _AccountSettingsScreenState extends State<AccountSettingsScreen> {
                     withBackground: true,
                     backgroundColor: Colors.blue,
                   ),
-                  title: 'Privacy',
+                  title: AppLocalizations.of(context)!.privacy,
                 ),
                 SettingsItem(
                   onTap: () {},
@@ -42,7 +43,7 @@ class _AccountSettingsScreenState extends State<AccountSettingsScreen> {
                     withBackground: true,
                     backgroundColor: Colors.deepOrangeAccent,
                   ),
-                  title: 'Security',
+                  title: AppLocalizations.of(context)!.security,
                 ),
                 SettingsItem(
                   onTap: () async {
@@ -59,7 +60,7 @@ class _AccountSettingsScreenState extends State<AccountSettingsScreen> {
                     withBackground: true,
                     backgroundColor: Colors.deepPurple,
                   ),
-                  title: 'Language',
+                  title: AppLocalizations.of(context)!.language,
                 ),
                 SettingsItem(
                   onTap: () {},
@@ -69,7 +70,7 @@ class _AccountSettingsScreenState extends State<AccountSettingsScreen> {
                     withBackground: true,
                     backgroundColor: Colors.green,
                   ),
-                  title: 'Account Info',
+                  title: AppLocalizations.of(context)!.account_info,
                 ),
                 SettingsItem(
                   onTap: () {},
@@ -79,7 +80,7 @@ class _AccountSettingsScreenState extends State<AccountSettingsScreen> {
                     withBackground: true,
                     backgroundColor: Colors.red,
                   ),
-                  title: "Delete account",
+                  title: AppLocalizations.of(context)!.delete_account,
                   titleStyle: const TextStyle(
                     color: Colors.redAccent,
                     fontWeight: FontWeight.bold,

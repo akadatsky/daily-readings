@@ -62,10 +62,10 @@ class AppLocalizationsUk extends AppLocalizations {
   String get register => 'Реєстрація';
 
   @override
-  String get dark_mode => 'Темна тема';
+  String get dark_mode => 'Темний режим';
 
   @override
-  String get light_mode => 'Світла тема';
+  String get light_mode => 'Світлий режим';
 
   @override
   String get account_settings => 'Налаштування аккаунта';
@@ -89,13 +89,13 @@ class AppLocalizationsUk extends AppLocalizations {
   String get language => 'Мова';
 
   @override
-  String get account_info => 'Інформація про обліковий запис';
+  String get account_info => 'Інформація про аккаунт';
 
   @override
   String get delete_account => 'Видалити аккаунт';
 
   @override
-  String get general => 'Загальний';
+  String get general => 'Загальні';
 
   @override
   String get theme => 'Тема';
