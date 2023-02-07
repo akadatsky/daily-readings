@@ -10,6 +10,7 @@ class SettingsScreen extends StatefulWidget {
   State<SettingsScreen> createState() => _SettingsScreenState();
 }
 
+
 class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
@@ -86,7 +87,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     backgroundColor: Colors.blue,
                   ),
                   title: 'Logout',
-                  subtitle: "Newsletter, App updates",
+                  subtitle: "Sign out of the account",
                 ),
               ],
             ),

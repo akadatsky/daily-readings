@@ -5,9 +5,6 @@ class AppLocalizationsEn extends AppLocalizations {
   AppLocalizationsEn([String locale = 'en']) : super(locale);
 
   @override
-  String get language => 'English';
-
-  @override
   String get morning => 'Morning';
 
   @override
@@ -63,4 +60,52 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get register => 'Register';
+
+  @override
+  String get dark_mode => 'Dark mode';
+
+  @override
+  String get light_mode => 'Light mode';
+
+  @override
+  String get account_settings => 'Account Settings';
+
+  @override
+  String get notifications => 'Notifications';
+
+  @override
+  String get logout => 'Logout';
+
+  @override
+  String get report_a_bug => 'Report a bug';
+
+  @override
+  String get send_feedback => 'Send feedback';
+
+  @override
+  String get security => 'Security';
+
+  @override
+  String get language => 'Language';
+
+  @override
+  String get account_info => 'Account info';
+
+  @override
+  String get delete_account => 'Delete account';
+
+  @override
+  String get general => 'General';
+
+  @override
+  String get theme => 'Theme';
+
+  @override
+  String get privacy_security_language => 'Privacy, Security, Language';
+
+  @override
+  String get newsletter_app_updates => 'Newsletter, App updates';
+
+  @override
+  String get sign_out => 'Sign out of the account';
 }

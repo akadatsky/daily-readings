@@ -1,5 +1,4 @@
 {
-    "language": "Русский",
     "morning": "Утро",
     "evening": "Вечер",
     "daily_readings_selection": "Выбор Ежедневных Чтений",
@@ -18,6 +17,21 @@
     "calendar": "Календарь",
     "spurgeon": "Сперджен",
     "ryle": "Райл",
-    "register": "Регистрация"
-
+    "register": "Регистрация",
+    "dark_mode": "Темная тема",
+    "light_mode": "Светлая тема",
+    "account_settings": "Настройки аккаунта",
+    "notifications": "Уведомления",
+    "logout": "Выйти",
+    "report_a_bug": "Сообщить об ошибке",
+    "send_feedback": "Отправить отзыв",
+    "security": "Безопасность",
+    "language": "Язык",
+    "account_info": "Информация об аккаунте",
+    "delete_account": "Удалить аккаунт",
+    "general": "Общий",
+    "theme": "Тема",
+    "privacy_security_language": "Конфиденциальность, безопасность, язык",
+    "newsletter_app_updates": "Информационный бюллетень, обновления приложения",
+    "sign_out": "Выйти из аккаунта"
 }

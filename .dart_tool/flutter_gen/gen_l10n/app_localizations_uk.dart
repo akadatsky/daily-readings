@@ -5,9 +5,6 @@ class AppLocalizationsUk extends AppLocalizations {
   AppLocalizationsUk([String locale = 'uk']) : super(locale);
 
   @override
-  String get language => 'Українська';
-
-  @override
   String get morning => 'Ранок';
 
   @override
@@ -63,4 +60,52 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get register => 'Реєстрація';
+
+  @override
+  String get dark_mode => 'Темна тема';
+
+  @override
+  String get light_mode => 'Світла тема';
+
+  @override
+  String get account_settings => 'Налаштування аккаунта';
+
+  @override
+  String get notifications => 'Сповіщення';
+
+  @override
+  String get logout => 'Вийти';
+
+  @override
+  String get report_a_bug => 'Повідомити про помилку';
+
+  @override
+  String get send_feedback => 'Надіслати відгук';
+
+  @override
+  String get security => 'Безпека';
+
+  @override
+  String get language => 'Мова';
+
+  @override
+  String get account_info => 'Інформація про обліковий запис';
+
+  @override
+  String get delete_account => 'Видалити аккаунт';
+
+  @override
+  String get general => 'Загальний';
+
+  @override
+  String get theme => 'Тема';
+
+  @override
+  String get privacy_security_language => 'Конфіденційність, безпека, мова';
+
+  @override
+  String get newsletter_app_updates => 'Інформаційний бюлетень, оновлення додатку';
+
+  @override
+  String get sign_out => 'Вийти з аккаунту';
 }

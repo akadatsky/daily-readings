@@ -5,9 +5,6 @@ class AppLocalizationsEs extends AppLocalizations {
   AppLocalizationsEs([String locale = 'es']) : super(locale);
 
   @override
-  String get language => 'Español';
-
-  @override
   String get morning => 'Mañana';
 
   @override
@@ -63,4 +60,52 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get register => 'Registro';
+
+  @override
+  String get dark_mode => 'Modo oscuro';
+
+  @override
+  String get light_mode => 'Modo de luz';
+
+  @override
+  String get account_settings => 'Configuración de cuenta';
+
+  @override
+  String get notifications => 'Notificaciones';
+
+  @override
+  String get logout => 'Cerrar sesión';
+
+  @override
+  String get report_a_bug => 'Reportar un error';
+
+  @override
+  String get send_feedback => 'Enviar comentarios';
+
+  @override
+  String get security => 'Seguridad';
+
+  @override
+  String get language => 'Idioma';
+
+  @override
+  String get account_info => 'Informacion de cuenta';
+
+  @override
+  String get delete_account => 'Borrar cuenta';
+
+  @override
+  String get general => 'General';
+
+  @override
+  String get theme => 'Tema';
+
+  @override
+  String get privacy_security_language => 'Privacidad, Seguridad, Idioma';
+
+  @override
+  String get newsletter_app_updates => 'Boletín, actualizaciones de la aplicación';
+
+  @override
+  String get sign_out => 'Salir de la cuenta';
 }

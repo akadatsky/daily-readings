@@ -5,9 +5,6 @@ class AppLocalizationsRu extends AppLocalizations {
   AppLocalizationsRu([String locale = 'ru']) : super(locale);
 
   @override
-  String get language => 'Русский';
-
-  @override
   String get morning => 'Утро';
 
   @override
@@ -63,4 +60,52 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get register => 'Регистрация';
+
+  @override
+  String get dark_mode => 'Темная тема';
+
+  @override
+  String get light_mode => 'Светлая тема';
+
+  @override
+  String get account_settings => 'Настройки аккаунта';
+
+  @override
+  String get notifications => 'Уведомления';
+
+  @override
+  String get logout => 'Выйти';
+
+  @override
+  String get report_a_bug => 'Сообщить об ошибке';
+
+  @override
+  String get send_feedback => 'Отправить отзыв';
+
+  @override
+  String get security => 'Безопасность';
+
+  @override
+  String get language => 'Язык';
+
+  @override
+  String get account_info => 'Информация об аккаунте';
+
+  @override
+  String get delete_account => 'Удалить аккаунт';
+
+  @override
+  String get general => 'Общий';
+
+  @override
+  String get theme => 'Тема';
+
+  @override
+  String get privacy_security_language => 'Конфиденциальность, безопасность, язык';
+
+  @override
+  String get newsletter_app_updates => 'Информационный бюллетень, обновления приложения';
+
+  @override
+  String get sign_out => 'Выйти из аккаунта';
 }

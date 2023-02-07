@@ -1,5 +1,4 @@
 {
-    "language": "Українська",
     "morning": "Ранок",
     "evening": "Вечір",
     "daily_readings_selection": "Підбірка Щоденних Читань",
@@ -18,5 +17,21 @@
     "calendar": "Календар",
     "spurgeon": "Сперджен",
     "ryle": "Райл",
-    "register": "Реєстрація"
+    "register": "Реєстрація",
+    "dark_mode": "Темна тема",
+    "light_mode": "Світла тема",
+    "account_settings": "Налаштування аккаунта",
+    "notifications": "Сповіщення",
+    "logout": "Вийти",
+    "report_a_bug": "Повідомити про помилку",
+    "send_feedback": "Надіслати відгук",
+    "security": "Безпека",
+    "language": "Мова",
+    "account_info": "Інформація про обліковий запис",
+    "delete_account": "Видалити аккаунт",
+    "general": "Загальний",
+    "theme": "Тема",
+    "privacy_security_language": "Конфіденційність, безпека, мова",
+    "newsletter_app_updates": "Інформаційний бюлетень, оновлення додатку",
+    "sign_out": "Вийти з аккаунту"
 }

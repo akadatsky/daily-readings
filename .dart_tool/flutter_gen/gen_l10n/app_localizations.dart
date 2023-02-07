@@ -97,12 +97,6 @@ abstract class AppLocalizations {
     Locale('uk')
   ];
 
-  /// No description provided for @language.
-  ///
-  /// In en, this message translates to:
-  /// **'English'**
-  String get language;
-
   /// No description provided for @morning.
   ///
   /// In en, this message translates to:
@@ -216,6 +210,102 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Register'**
   String get register;
+
+  /// No description provided for @dark_mode.
+  ///
+  /// In en, this message translates to:
+  /// **'Dark mode'**
+  String get dark_mode;
+
+  /// No description provided for @light_mode.
+  ///
+  /// In en, this message translates to:
+  /// **'Light mode'**
+  String get light_mode;
+
+  /// No description provided for @account_settings.
+  ///
+  /// In en, this message translates to:
+  /// **'Account Settings'**
+  String get account_settings;
+
+  /// No description provided for @notifications.
+  ///
+  /// In en, this message translates to:
+  /// **'Notifications'**
+  String get notifications;
+
+  /// No description provided for @logout.
+  ///
+  /// In en, this message translates to:
+  /// **'Logout'**
+  String get logout;
+
+  /// No description provided for @report_a_bug.
+  ///
+  /// In en, this message translates to:
+  /// **'Report a bug'**
+  String get report_a_bug;
+
+  /// No description provided for @send_feedback.
+  ///
+  /// In en, this message translates to:
+  /// **'Send feedback'**
+  String get send_feedback;
+
+  /// No description provided for @security.
+  ///
+  /// In en, this message translates to:
+  /// **'Security'**
+  String get security;
+
+  /// No description provided for @language.
+  ///
+  /// In en, this message translates to:
+  /// **'Language'**
+  String get language;
+
+  /// No description provided for @account_info.
+  ///
+  /// In en, this message translates to:
+  /// **'Account info'**
+  String get account_info;
+
+  /// No description provided for @delete_account.
+  ///
+  /// In en, this message translates to:
+  /// **'Delete account'**
+  String get delete_account;
+
+  /// No description provided for @general.
+  ///
+  /// In en, this message translates to:
+  /// **'General'**
+  String get general;
+
+  /// No description provided for @theme.
+  ///
+  /// In en, this message translates to:
+  /// **'Theme'**
+  String get theme;
+
+  /// No description provided for @privacy_security_language.
+  ///
+  /// In en, this message translates to:
+  /// **'Privacy, Security, Language'**
+  String get privacy_security_language;
+
+  /// No description provided for @newsletter_app_updates.
+  ///
+  /// In en, this message translates to:
+  /// **'Newsletter, App updates'**
+  String get newsletter_app_updates;
+
+  /// No description provided for @sign_out.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign out of the account'**
+  String get sign_out;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

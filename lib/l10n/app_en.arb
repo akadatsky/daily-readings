@@ -1,5 +1,4 @@
 {
-  "language": "English",
   "morning": "Morning",
   "evening": "Evening",
   "daily_readings_selection": "Daily Readings Selection",
@@ -18,5 +17,21 @@
   "calendar": "Calendar",
   "spurgeon": "Spurgeon",
   "ryle": "Ryle",
-  "register": "Register"
+  "register": "Register",
+  "dark_mode": "Dark mode",
+  "light_mode": "Light mode",
+  "account_settings": "Account Settings",
+  "notifications": "Notifications",
+  "logout": "Logout",
+  "report_a_bug": "Report a bug",
+  "send_feedback": "Send feedback",
+  "security": "Security",
+  "language": "Language",
+  "account_info": "Account info",
+  "delete_account": "Delete account",
+  "general": "General",
+  "theme": "Theme",
+  "privacy_security_language": "Privacy, Security, Language",
+  "newsletter_app_updates": "Newsletter, App updates",
+  "sign_out": "Sign out of the account"
 }
