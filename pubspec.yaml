@@ -72,6 +72,10 @@ dependencies:
   mockito: ^5.3.2
 
 
+  # Local
+  sqflite: ^2.2.4+1
+
+
 
 dev_dependencies:
   flutter_test:

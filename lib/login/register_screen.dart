@@ -10,6 +10,7 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 class RegisterScreen extends StatefulWidget {
   static String route = '/register';
 
+
   const RegisterScreen({super.key});
 
   @override
