@@ -48,9 +48,20 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           appBar: AppBar(
             elevation: 0,
             centerTitle: false,
-            title: SingleChildScrollView(
-              scrollDirection: Axis.horizontal,
-              child: Text(DateFormat.yMMMMd(Localizations.localeOf(context).languageCode).format(selectedDate)),
+            title: LayoutBuilder(
+              builder: (context, constraints) {
+                final width = constraints.maxWidth;
+                String dateFormat;
+                if (width < 200) {
+                  dateFormat = DateFormat.yMMMd(Localizations.localeOf(context).languageCode).format(selectedDate);
+                } else {
+                  dateFormat = DateFormat.yMMMMd(Localizations.localeOf(context).languageCode).format(selectedDate);
+                }
+                return SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Text(dateFormat),
+                );
+              },
             ),
             backgroundColor: const Color.fromARGB(255, 71, 123, 171),
             actions: [
