@@ -108,4 +108,31 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get sign_out => 'Вийти з аккаунту';
+
+  @override
+  String get register_now => 'Зареєструватися';
+
+  @override
+  String get email => 'Електронна пошта';
+
+  @override
+  String get password => 'Пароль';
+
+  @override
+  String get confirm_password => 'Підтвердження паролю';
+
+  @override
+  String get login => 'Вхід';
+
+  @override
+  String get function => 'Функція';
+
+  @override
+  String get user_administrator => 'Адміністратор користувачів';
+
+  @override
+  String get content_administrator => 'Контент-адміністратор';
+
+  @override
+  String get daily_readings => 'Щоденні Читання';
 }

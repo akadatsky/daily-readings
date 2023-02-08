@@ -108,4 +108,31 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get sign_out => 'Выйти из аккаунта';
+
+  @override
+  String get register_now => 'Зарегистрироваться';
+
+  @override
+  String get email => 'Электронная почта';
+
+  @override
+  String get password => 'Пароль';
+
+  @override
+  String get confirm_password => 'Подтвердите пароль';
+
+  @override
+  String get login => 'Войти';
+
+  @override
+  String get function => 'Функция';
+
+  @override
+  String get user_administrator => 'Администратор Пользователей';
+
+  @override
+  String get content_administrator => 'Администратор Контента';
+
+  @override
+  String get daily_readings => 'Ежедневные Чтения';
 }

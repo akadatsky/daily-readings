@@ -33,5 +33,14 @@
   "theme": "Theme",
   "privacy_security_language": "Privacy, Security, Language",
   "newsletter_app_updates": "Newsletter, App updates",
-  "sign_out": "Sign out of the account"
+  "sign_out": "Sign out of the account",
+  "register_now": "Register Now",
+  "email": "Email",
+  "password": "Password",
+  "confirm_password": "Confirm Password",
+  "login": "Login",
+  "function": "Function",
+  "user_administrator": "User Administrator",
+  "content_administrator": "Content Administrator",
+  "daily_readings": "Daily Readings"
 }

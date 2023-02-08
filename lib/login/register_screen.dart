@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'login_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 
 
@@ -25,8 +26,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
   final _auth = FirebaseAuth.instance;
 
   final TextEditingController passwordController = TextEditingController();
-  final TextEditingController confirmpassController =
-  TextEditingController();
+  final TextEditingController confirmpassController = TextEditingController();
   final TextEditingController name = TextEditingController();
   final TextEditingController emailController = TextEditingController();
   final TextEditingController mobile = TextEditingController();
@@ -34,12 +34,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
   bool _isObscure2 = true;
   File? file;
   var options = [
-  'User Administrator', //Student
-  'Content Administrator', //Teacher
+  'User Administrator', //Student була помилка якщо втсавити код для перекладу
+  'Content Administrator', //Teacher була помилка якщо втсавити код для перекладу
   ];
 
   var _currentItemSelected = "User Administrator";
-  var rool = "User Administrator";
+  var function = "User Administrator";
 
   @override
   Widget build(BuildContext context) {
@@ -70,9 +70,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         const SizedBox(
                           height: 80,
                         ),
-                        const Text(
-                          "Register Now",
-                          style: TextStyle(
+                        Text(
+                          AppLocalizations.of(context)!.register_now,
+                          textDirection: TextDirection.ltr,
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
                             fontSize: 40,
@@ -89,7 +91,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           decoration: InputDecoration(
                             filled: true,
                             fillColor: Colors.white,
-                            hintText: 'Email',
+                            hintText: AppLocalizations.of(context)!.email,
                             enabled: true,
                             contentPadding: const EdgeInsets.only(
                                 left: 14.0, bottom: 8.0, top: 8.0),
@@ -135,7 +137,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 }),
                             filled: true,
                             fillColor: Colors.white,
-                            hintText: 'Password',
+                            hintText: AppLocalizations.of(context)!.password,
                             enabled: true,
                             contentPadding: const EdgeInsets.only(
                                 left: 14.0, bottom: 8.0, top: 15.0),
@@ -179,7 +181,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 }),
                             filled: true,
                             fillColor: Colors.white,
-                            hintText: 'Confirm Password',
+                            hintText: AppLocalizations.of(context)!.confirm_password,
                             enabled: true,
                             contentPadding: const EdgeInsets.only(
                                 left: 14.0, bottom: 8.0, top: 15.0),
@@ -208,9 +210,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Text(
-                              "Rool : ",
-                              style: TextStyle(
+                             Text(
+                               "${AppLocalizations.of(context)!.function}: ",
+                              style: const TextStyle(
                                 fontSize: 20,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white,
@@ -238,7 +240,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               onChanged: (newValueSelected) {
                                 setState(() {
                                   _currentItemSelected = newValueSelected!;
-                                  rool = newValueSelected;
+                                  function = newValueSelected;
                                 });
                               },
                               value: _currentItemSelected,
@@ -268,9 +270,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                 );
                               },
                               color: Colors.white,
-                              child: const Text(
-                                "Login",
-                                style: TextStyle(
+                              child: Text(
+                                AppLocalizations.of(context)!.login,
+                                style: const TextStyle(
                                   fontSize: 20,
                                 ),
                               ),
@@ -286,12 +288,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                                   showProgress = true;
                                 });
                                 signUp(emailController.text,
-                                    passwordController.text, rool);
+                                    passwordController.text, function);
                               },
                               color: Colors.white,
-                              child: const Text(
-                                "Register",
-                                style: TextStyle(
+                              child: Text(
+                                AppLocalizations.of(context)!.register,
+                                style: const TextStyle(
                                   fontSize: 20,
                                 ),
                               ),
@@ -302,7 +304,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           height: 50,
                         ),
                         Text(
-                          "Daily Readings",
+                          AppLocalizations.of(context)!.daily_readings,
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             fontSize: 30,
@@ -321,21 +323,21 @@ class _RegisterScreenState extends State<RegisterScreen> {
     );
   }
 
-  void signUp(String email, String password, String rool) async {
+  void signUp(String email, String password, String function) async {
     const CircularProgressIndicator();
     if (_formkey.currentState!.validate()) {
       await _auth
           .createUserWithEmailAndPassword(email: email, password: password)
-          .then((value) => {postDetailsToFirestore(email, rool)})
+          .then((value) => {postDetailsToFirestore(email, function)})
           .catchError((e) {});
     }
   }
 
-  postDetailsToFirestore(String email, String rool) async {
+  postDetailsToFirestore(String email, String function) async {
     FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
     var user = _auth.currentUser;
     CollectionReference ref = FirebaseFirestore.instance.collection('users');
-    ref.doc(user!.uid).set({'email': emailController.text, 'rool': rool});
+    ref.doc(user!.uid).set({'email': emailController.text, 'function': function});
     Navigator.pushReplacement(
         context, MaterialPageRoute(builder: (context) => const LoginScreen()));
   }

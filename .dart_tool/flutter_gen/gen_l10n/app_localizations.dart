@@ -306,6 +306,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Sign out of the account'**
   String get sign_out;
+
+  /// No description provided for @register_now.
+  ///
+  /// In en, this message translates to:
+  /// **'Register Now'**
+  String get register_now;
+
+  /// No description provided for @email.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get email;
+
+  /// No description provided for @password.
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get password;
+
+  /// No description provided for @confirm_password.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm Password'**
+  String get confirm_password;
+
+  /// No description provided for @login.
+  ///
+  /// In en, this message translates to:
+  /// **'Login'**
+  String get login;
+
+  /// No description provided for @function.
+  ///
+  /// In en, this message translates to:
+  /// **'Function'**
+  String get function;
+
+  /// No description provided for @user_administrator.
+  ///
+  /// In en, this message translates to:
+  /// **'User Administrator'**
+  String get user_administrator;
+
+  /// No description provided for @content_administrator.
+  ///
+  /// In en, this message translates to:
+  /// **'Content Administrator'**
+  String get content_administrator;
+
+  /// No description provided for @daily_readings.
+  ///
+  /// In en, this message translates to:
+  /// **'Daily Readings'**
+  String get daily_readings;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

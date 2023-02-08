@@ -33,5 +33,15 @@
     "theme": "Тема",
     "privacy_security_language": "Конфиденциальность, безопасность, язык",
     "newsletter_app_updates": "Информационный бюллетень, обновления приложения",
-    "sign_out": "Выйти из аккаунта"
+    "sign_out": "Выйти из аккаунта",
+    "register_now": "Зарегистрироваться",
+    "email": "Электронная почта",
+    "password": "Пароль",
+    "confirm_password": "Подтвердите пароль",
+    "login": "Войти",
+    "function": "Функция",
+    "user_administrator": "Администратор Пользователей",
+    "content_administrator": "Администратор Контента",
+    "daily_readings": "Ежедневные Чтения"
+
 }

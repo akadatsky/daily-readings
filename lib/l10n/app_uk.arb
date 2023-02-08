@@ -33,5 +33,14 @@
     "theme": "Тема",
     "privacy_security_language": "Конфіденційність, безпека, мова",
     "newsletter_app_updates": "Інформаційний бюлетень, оновлення додатку",
-    "sign_out": "Вийти з аккаунту"
+    "sign_out": "Вийти з аккаунту",
+    "register_now": "Зареєструватися",
+    "email": "Електронна пошта",
+    "password": "Пароль",
+    "confirm_password": "Підтвердження паролю",
+    "login": "Вхід",
+    "function": "Функція",
+    "user_administrator": "Адміністратор користувачів",
+    "content_administrator": "Контент-адміністратор",
+    "daily_readings": "Щоденні Читання"
 }

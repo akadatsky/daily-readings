@@ -108,4 +108,31 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get sign_out => 'Sign out of the account';
+
+  @override
+  String get register_now => 'Register Now';
+
+  @override
+  String get email => 'Email';
+
+  @override
+  String get password => 'Password';
+
+  @override
+  String get confirm_password => 'Confirm Password';
+
+  @override
+  String get login => 'Login';
+
+  @override
+  String get function => 'Function';
+
+  @override
+  String get user_administrator => 'User Administrator';
+
+  @override
+  String get content_administrator => 'Content Administrator';
+
+  @override
+  String get daily_readings => 'Daily Readings';
 }

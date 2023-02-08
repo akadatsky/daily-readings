@@ -270,7 +270,7 @@ class _LoginScreenState extends State<LoginScreen> {
         .get()
         .then((DocumentSnapshot documentSnapshot) {
       if (documentSnapshot.exists) {
-        if (documentSnapshot.get('rool') == "Content Administrator") {
+        if (documentSnapshot.get('function') == "Content Administrator") {
           Navigator.pushReplacement(
             context,
             MaterialPageRoute(
