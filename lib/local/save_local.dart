@@ -1,17 +1,17 @@
 import 'dart:io' as io;
 import 'package:path/path.dart' as p;
 import 'package:sqflite/sqflite.dart' as sqflite;
-import 'package:sqflite/sqflite.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:sqflite/sqflite.dart';
 
 class SaveLocal {
   static final SaveLocal _instance = SaveLocal.internal();
 
   factory SaveLocal() => _instance;
 
-  static Database _db;
+  static Database? _db;
 
-  Future<Database> get db async {
+  Future<Database?> get db async {
     if (_db != null) return _db;
     _db = await initDb();
     return _db;
@@ -35,13 +35,13 @@ class SaveLocal {
   Future<int> addData(String title, String body) async {
     var dbClient = await db;
     int res =
-        await dbClient.insert("DailyReadings", {"title": title, "body": body});
+        await dbClient!.insert("DailyReadings", {"title": title, "body": body});
     return res;
   }
 
   Future<List<Map<String, dynamic>>> getData() async {
     var dbClient = await db;
-    var result = await dbClient.query("DailyReadings");
+    var result = await dbClient!.query("DailyReadings");
     return result;
   }
 }
