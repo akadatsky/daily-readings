@@ -5,11 +5,7 @@ import 'user_administrator.dart';
 import 'content_administrator.dart';
 import 'register_screen.dart';
 
-
-
 class LoginScreen extends StatefulWidget {
-
-
   const LoginScreen({super.key});
 
   @override
@@ -299,6 +295,8 @@ class _LoginScreenState extends State<LoginScreen> {
           email: email,
           password: password,
         );
+        User? user = userCredential.user;
+
         route();
       } on FirebaseAuthException catch (e) {
         if (e.code == 'user-not-found') {

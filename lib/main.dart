@@ -16,12 +16,19 @@ import 'drawer/privacy_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'login/register_screen.dart';
 
-
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-      name: "Daily Readings", options: dailyReadindDatabaseOption);
-  await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
+  /*
+  * Check if you have internet connection.
+  *
+  * If you internet, use the internet db, and grab the latest and download to local storage.
+  * If not, use local storage.
+  *
+  * User authentication - need to cache token and evaluate credentials local or remote and need to cache to local storage.
+  *
+  */
+  await Firebase.initializeApp(name: "Daily Readings", options: dailyReadindDatabaseOption);
+  //await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
   runApp(
     MultiProvider(providers: [
       ChangeNotifierProvider<SelectedDateProvider>(
@@ -76,4 +83,3 @@ class _MyAppState extends State<MyApp> {
         supportedLocales: AppLocalizations.supportedLocales,
       );
 }
-
