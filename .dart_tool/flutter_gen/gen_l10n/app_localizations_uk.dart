@@ -135,4 +135,19 @@ class AppLocalizationsUk extends AppLocalizations {
 
   @override
   String get daily_readings => 'Щоденні Читання';
+
+  @override
+  String get profile => 'Профіль';
+
+  @override
+  String get langEN => 'Англійська';
+
+  @override
+  String get langES => 'Іспанська';
+
+  @override
+  String get langRU => 'Російська';
+
+  @override
+  String get langUK => 'Українська';
 }

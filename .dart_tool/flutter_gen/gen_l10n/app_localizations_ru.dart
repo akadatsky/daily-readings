@@ -135,4 +135,19 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get daily_readings => 'Ежедневные Чтения';
+
+  @override
+  String get profile => 'Профиль';
+
+  @override
+  String get langEN => 'Английский';
+
+  @override
+  String get langES => 'Испанский';
+
+  @override
+  String get langRU => 'Русский';
+
+  @override
+  String get langUK => 'Украинский';
 }

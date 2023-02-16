@@ -360,6 +360,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Daily Readings'**
   String get daily_readings;
+
+  /// No description provided for @profile.
+  ///
+  /// In en, this message translates to:
+  /// **'Profile'**
+  String get profile;
+
+  /// No description provided for @langEN.
+  ///
+  /// In en, this message translates to:
+  /// **'English'**
+  String get langEN;
+
+  /// No description provided for @langES.
+  ///
+  /// In en, this message translates to:
+  /// **'Spanish'**
+  String get langES;
+
+  /// No description provided for @langRU.
+  ///
+  /// In en, this message translates to:
+  /// **'Russian'**
+  String get langRU;
+
+  /// No description provided for @langUK.
+  ///
+  /// In en, this message translates to:
+  /// **'Ukrainian'**
+  String get langUK;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
