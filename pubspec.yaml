@@ -74,6 +74,8 @@ dependencies:
 
   # Local
   sqflite: ^2.2.4+1
+  shared_preferences: ^2.0.17
+  path_provider: ^2.0.12
 
 
 

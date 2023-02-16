@@ -14,25 +14,22 @@ import 'drawer/help_screen.dart';
 import 'home_screen.dart';
 import 'drawer/privacy_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'l10n/setting_provider.dart';
+import 'l10n/shared_pref.dart';
 import 'login/register_screen.dart';
+import 'package:intl/intl.dart';
 
-Future<void> main() async {
+Future<void> main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
-  /*
-  * Check if you have internet connection.
-  *
-  * If you internet, use the internet db, and grab the latest and download to local storage.
-  * If not, use local storage.
-  *
-  * User authentication - need to cache token and evaluate credentials local or remote and need to cache to local storage.
-  *
-  */
-  await Firebase.initializeApp(name: "Daily Readings", options: dailyReadindDatabaseOption);
+  await Firebase.initializeApp(
+      name: "Daily Readings", options: dailyReadindDatabaseOption);
+  await SharedPref.getLang();
   //await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
   runApp(
     MultiProvider(providers: [
       ChangeNotifierProvider<SelectedDateProvider>(
           create: (context) => SelectedDateProvider()),
+      ChangeNotifierProvider(create: (context) => SettingProvider()),
     ], child: const MyApp()),
   );
 }
@@ -57,29 +54,29 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) => MaterialApp(
-        locale: _locale,
-        title: 'Daily Readings',
-        routes: {
-          HomeScreen.route: (context) => HomeScreen(setLocale),
-          RegisterScreen.route: (context) => const RegisterScreen(),
-          BibleScreen.route: (context) => const BibleScreen(),
-          StatsScreen.route: (context) => const StatsScreen(),
-          GoalsScreen.route: (context) => const GoalsScreen(),
-          AboutScreen.route: (context) => const AboutScreen(),
-          FeedbackScreen.route: (context) => const FeedbackScreen(),
-          CopyrightScreen.route: (context) => const CopyrightScreen(),
-          PrivacyScreen.route: (context) => const PrivacyScreen(),
-          HelpScreen.route: (context) => const HelpScreen(),
-        },
-        theme: theme.copyWith(
-          colorScheme: theme.colorScheme.copyWith(
-            primary: const Color(0xff477bab),
-          ),
-        ),
-        // home: const RegisterScreen(),
-        initialRoute: HomeScreen.route,
-        debugShowCheckedModeBanner: false,
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
-        supportedLocales: AppLocalizations.supportedLocales,
-      );
+    title: 'Daily Readings',
+    routes: {
+      HomeScreen.route: (context) => HomeScreen(setLocale),
+      RegisterScreen.route: (context) => const RegisterScreen(),
+      BibleScreen.route: (context) => const BibleScreen(),
+      StatsScreen.route: (context) => const StatsScreen(),
+      GoalsScreen.route: (context) => const GoalsScreen(),
+      AboutScreen.route: (context) => const AboutScreen(),
+      FeedbackScreen.route: (context) => const FeedbackScreen(),
+      CopyrightScreen.route: (context) => const CopyrightScreen(),
+      PrivacyScreen.route: (context) => const PrivacyScreen(),
+      HelpScreen.route: (context) => const HelpScreen(),
+    },
+    theme: theme.copyWith(
+      colorScheme: theme.colorScheme.copyWith(
+        primary: const Color(0xff477bab),
+      ),
+    ),
+    // home: const RegisterScreen(),
+    initialRoute: HomeScreen.route,
+    debugShowCheckedModeBanner: false,
+    localizationsDelegates: AppLocalizations.localizationsDelegates,
+    supportedLocales: AppLocalizations.supportedLocales,
+    locale: Locale(Provider.of<SettingProvider>(context).local ?? SharedPref.lang ?? 'en'),
+  );
 }

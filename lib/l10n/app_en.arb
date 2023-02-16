@@ -42,5 +42,10 @@
   "function": "Function",
   "user_administrator": "User Administrator",
   "content_administrator": "Content Administrator",
-  "daily_readings": "Daily Readings"
+  "daily_readings": "Daily Readings",
+  "profile": "Profile",
+  "langEN": "English",
+  "langES": "Spanish",
+  "langRU": "Russian",
+  "langUK": "Ukrainian"
 }

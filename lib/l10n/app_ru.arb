@@ -42,6 +42,11 @@
     "function": "Функция",
     "user_administrator": "Администратор Пользователей",
     "content_administrator": "Администратор Контента",
-    "daily_readings": "Ежедневные Чтения"
+    "daily_readings": "Ежедневные Чтения",
+    "profile": "Профиль",
+    "langEN": "Английский",
+    "langES": "Испанский",
+    "langRU": "Русский",
+    "langUK": "Украинский"
 
 }
