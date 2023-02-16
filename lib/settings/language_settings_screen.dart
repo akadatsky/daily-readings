@@ -38,7 +38,7 @@ class _LanguageSettingsScreenState extends State<LanguageSettingsScreen> {
         children: [
           RadioListTile<int>(
             title: Text(AppLocalizations.of(context)!.langEN),
-            subtitle: Text('English'),
+            subtitle: const Text('English'),
             value: 0,
             groupValue: selectedLanguage,
             onChanged: (value) {
@@ -47,7 +47,7 @@ class _LanguageSettingsScreenState extends State<LanguageSettingsScreen> {
           ),
           RadioListTile<int>(
             title: Text(AppLocalizations.of(context)!.langES),
-            subtitle: Text('Spanish'),
+            subtitle: const Text('Spanish'),
             value: 1,
             groupValue: selectedLanguage,
             onChanged: (value) {
@@ -56,7 +56,7 @@ class _LanguageSettingsScreenState extends State<LanguageSettingsScreen> {
           ),
           RadioListTile<int>(
             title: Text(AppLocalizations.of(context)!.langRU),
-            subtitle: Text('Russian'),
+            subtitle: const Text('Russian'),
             value: 2,
             groupValue: selectedLanguage,
             onChanged: (value) {
@@ -65,7 +65,7 @@ class _LanguageSettingsScreenState extends State<LanguageSettingsScreen> {
           ),
           RadioListTile<int>(
             title: Text(AppLocalizations.of(context)!.langUK),
-            subtitle: Text('Ukrainian'),
+            subtitle: const Text('Ukrainian'),
             value: 3,
             groupValue: selectedLanguage,
             onChanged: (value) {
