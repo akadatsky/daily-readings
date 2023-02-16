@@ -14,8 +14,15 @@ class LanguageSettingsScreen extends StatefulWidget {
 }
 
 class _LanguageSettingsScreenState extends State<LanguageSettingsScreen> {
-  int? val;
-  int idx = 0;
+  int? selectedLanguage;
+
+  void _saveSelectedLanguage(int value) {
+    SharedPref.addLang(AllLocale.all[value].languageCode);
+    setState(() {
+      selectedLanguage = value;
+    });
+    Provider.of<SettingProvider>(context, listen: false).updateLocal(AllLocale.all[value].languageCode);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,34 +30,53 @@ class _LanguageSettingsScreenState extends State<LanguageSettingsScreen> {
     SettingProvider prov = Provider.of(context);
 
     return Scaffold(
-        appBar: AppBar(
-          title: Text(AppLocalizations.of(context)!.language),
-          centerTitle: true,
-        ),
-        body: Column(
-          children: [
-            Wrap(
-              children: List.generate(AllLocale.all.length, (index) {
-                return RadioListTile(
-                  title: Text(
-                    AllLocale.all[index].languageCode == 'en'
-                        ? AppLocalizations.of(context)!.langEN
-                        : AllLocale.all[index].languageCode == 'es'
-                            ? AppLocalizations.of(context)!.langES
-                            : AllLocale.all[index].languageCode == 'ru'
-                                ? AppLocalizations.of(context)!.langRU
-                                : AppLocalizations.of(context)!.langUK,
-                  ),
-                  value: AllLocale.all[index].languageCode,
-                  groupValue: prov.local,
-                  onChanged: (String? value) {
-                    SharedPref.addLang(value!);
-                    prov.updateLocal(value);
-                  },
-                );
-              }),
-            ),
-          ],
-        ));
+      appBar: AppBar(
+        title: Text(AppLocalizations.of(context)!.language),
+        centerTitle: true,
+      ),
+      body: Column(
+        children: [
+          RadioListTile<int>(
+            title: Text(AppLocalizations.of(context)!.langEN),
+            subtitle: Text('English'),
+            value: 0,
+            groupValue: selectedLanguage,
+            onChanged: (value) {
+              _saveSelectedLanguage(value!);
+            },
+          ),
+          RadioListTile<int>(
+            title: Text(AppLocalizations.of(context)!.langES),
+            subtitle: Text('Spanish'),
+            value: 1,
+            groupValue: selectedLanguage,
+            onChanged: (value) {
+              _saveSelectedLanguage(value!);
+            },
+          ),
+          RadioListTile<int>(
+            title: Text(AppLocalizations.of(context)!.langRU),
+            subtitle: Text('Russian'),
+            value: 2,
+            groupValue: selectedLanguage,
+            onChanged: (value) {
+              _saveSelectedLanguage(value!);
+            },
+          ),
+          RadioListTile<int>(
+            title: Text(AppLocalizations.of(context)!.langUK),
+            subtitle: Text('Ukrainian'),
+            value: 3,
+            groupValue: selectedLanguage,
+            onChanged: (value) {
+              _saveSelectedLanguage(value!);
+            },
+          ),
+
+        ],
+      ),
+    );
   }
+
+
 }
