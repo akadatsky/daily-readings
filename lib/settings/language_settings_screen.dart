@@ -21,7 +21,8 @@ class _LanguageSettingsScreenState extends State<LanguageSettingsScreen> {
     setState(() {
       selectedLanguage = value;
     });
-    Provider.of<SettingProvider>(context, listen: false).updateLocal(AllLocale.all[value].languageCode);
+    Provider.of<SettingProvider>(context, listen: false)
+        .updateLocal(AllLocale.all[value].languageCode);
   }
 
   @override
@@ -37,7 +38,7 @@ class _LanguageSettingsScreenState extends State<LanguageSettingsScreen> {
       body: Column(
         children: [
           RadioListTile<int>(
-            title: Text(AppLocalizations.of(context)!.langEN),
+            title: const Text('English'),
             subtitle: const Text('English'),
             value: 0,
             groupValue: selectedLanguage,
@@ -46,7 +47,7 @@ class _LanguageSettingsScreenState extends State<LanguageSettingsScreen> {
             },
           ),
           RadioListTile<int>(
-            title: Text(AppLocalizations.of(context)!.langES),
+            title: const Text('Español'),
             subtitle: const Text('Spanish'),
             value: 1,
             groupValue: selectedLanguage,
@@ -55,7 +56,7 @@ class _LanguageSettingsScreenState extends State<LanguageSettingsScreen> {
             },
           ),
           RadioListTile<int>(
-            title: Text(AppLocalizations.of(context)!.langRU),
+            title: const Text('Русский'),
             subtitle: const Text('Russian'),
             value: 2,
             groupValue: selectedLanguage,
@@ -64,7 +65,7 @@ class _LanguageSettingsScreenState extends State<LanguageSettingsScreen> {
             },
           ),
           RadioListTile<int>(
-            title: Text(AppLocalizations.of(context)!.langUK),
+            title: const Text('Українська'),
             subtitle: const Text('Ukrainian'),
             value: 3,
             groupValue: selectedLanguage,
@@ -72,11 +73,8 @@ class _LanguageSettingsScreenState extends State<LanguageSettingsScreen> {
               _saveSelectedLanguage(value!);
             },
           ),
-
         ],
       ),
     );
   }
-
-
 }

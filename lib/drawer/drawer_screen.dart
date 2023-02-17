@@ -153,8 +153,16 @@ class _DrawerScreenState extends State<DrawerScreen> {
               await Navigator.pushNamed(context, HelpScreen.route);
             },
           ),
-          Text("${AppLocalizations.of(context)!.app_version}: X.X.X", textAlign: TextAlign.center),
-          Text("${AppLocalizations.of(context)!.content_version}: XXX", textAlign: TextAlign.center),
+          const Divider(height: 0, color: Colors.grey),
+          Padding(
+            padding: const EdgeInsets.fromLTRB(0, 15, 0, 15),
+            child: Column(
+              children: [
+                Text("${AppLocalizations.of(context)!.app_version}: X.X.X", textAlign: TextAlign.center),
+                Text("${AppLocalizations.of(context)!.content_version}: XXX", textAlign: TextAlign.center),
+              ],
+            ),
+          ),
         ],
       ),
     );
