@@ -6,7 +6,6 @@ import '../l10n/app_local.dart';
 import '../l10n/setting_provider.dart';
 import '../l10n/shared_pref.dart';
 
-
 class LanguageSettingsScreen extends StatefulWidget {
   const LanguageSettingsScreen({Key? key}) : super(key: key);
 
@@ -31,7 +30,6 @@ class _LanguageSettingsScreenState extends State<LanguageSettingsScreen> {
       });
     });
   }
-
 
   void _saveSelectedLanguage(int value) {
     SharedPref.addLang(AllLocale.all[value].languageCode);
