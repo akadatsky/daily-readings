@@ -80,6 +80,7 @@ dependencies:
 
   firebase_storage: ^11.0.13
   image_cropper: ^3.0.1
+  flutter_holo_date_picker: ^1.1.0
 
 
 
