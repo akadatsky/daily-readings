@@ -129,8 +129,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           decoration: InputDecoration(
                             suffixIcon: IconButton(
                                 icon: Icon(_isObscure
-                                    ? Icons.visibility_off
-                                    : Icons.visibility),
+                                    ? Icons.visibility
+                                    : Icons.visibility_off),
                                 onPressed: () {
                                   setState(() {
                                     _isObscure = !_isObscure;
@@ -173,8 +173,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                           decoration: InputDecoration(
                             suffixIcon: IconButton(
                                 icon: Icon(_isObscure2
-                                    ? Icons.visibility_off
-                                    : Icons.visibility),
+                                    ? Icons.visibility
+                                    : Icons.visibility_off),
                                 onPressed: () {
                                   setState(() {
                                     _isObscure2 = !_isObscure2;

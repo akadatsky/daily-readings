@@ -30,7 +30,7 @@ class _LoginScreenState extends State<LoginScreen> {
             Container(
               color: Colors.blueGrey,
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height * 0.70,
+              height: MediaQuery.of(context).size.height * 1.00,
               child: Center(
                 child: Container(
                   margin: const EdgeInsets.all(12),
@@ -52,7 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                         const SizedBox(
-                          height: 20,
+                          height: 40,
                         ),
                         TextFormField(
                           controller: emailController,
@@ -77,7 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               return "Email cannot be empty";
                             }
                             if (!RegExp(
-                                    "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
+                                "^[a-zA-Z0-9+_.-]+@[a-zA-Z0-9.-]+.[a-z]")
                                 .hasMatch(value)) {
                               return ("Please enter a valid email");
                             } else {
@@ -142,7 +142,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         MaterialButton(
                           shape: const RoundedRectangleBorder(
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(20.0))),
+                              BorderRadius.all(Radius.circular(20.0))),
                           elevation: 5.0,
                           height: 40,
                           onPressed: () {
@@ -178,80 +178,80 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
               ),
             ),
-            Container(
-              color: Colors.white,
-              width: MediaQuery.of(context).size.width,
-              child: Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    MaterialButton(
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(20.0),
-                        ),
-                      ),
-                      elevation: 5.0,
-                      height: 40,
-                      onPressed: () {
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                            builder: (context) => const RegisterScreen(),
-                          ),
-                        );
-                      },
-                      color: Colors.blue[900],
-                      child: const Text(
-                        "Register Now",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 20,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 15,
-                    ),
-                    const Text(
-                      "Made by",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 40,
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          "Daily ",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 30,
-                            color: Colors.blue[900],
-                          ),
-                        ),
-                        Text(
-                          "Readings",
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 30,
-                            color: Colors.yellowAccent[400],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
+            // Container(
+            //   color: Colors.white,
+            //   width: MediaQuery.of(context).size.width,
+            //   child: Center(
+            //     child: Column(
+            //       mainAxisAlignment: MainAxisAlignment.center,
+            //       crossAxisAlignment: CrossAxisAlignment.center,
+            //       children: [
+            //         const SizedBox(
+            //           height: 20,
+            //         ),
+            //         MaterialButton(
+            //           shape: const RoundedRectangleBorder(
+            //             borderRadius: BorderRadius.all(
+            //               Radius.circular(20.0),
+            //             ),
+            //           ),
+            //           elevation: 5.0,
+            //           height: 40,
+            //           onPressed: () {
+            //             Navigator.pushReplacement(
+            //               context,
+            //               MaterialPageRoute(
+            //                 builder: (context) => const RegisterScreen(),
+            //               ),
+            //             );
+            //           },
+            //           color: Colors.blue[900],
+            //           child: const Text(
+            //             "Register Now",
+            //             style: TextStyle(
+            //               color: Colors.white,
+            //               fontSize: 20,
+            //             ),
+            //           ),
+            //         ),
+            //         const SizedBox(
+            //           height: 15,
+            //         ),
+            //         const Text(
+            //           "Made by",
+            //           style: TextStyle(
+            //             fontWeight: FontWeight.bold,
+            //             fontSize: 40,
+            //           ),
+            //         ),
+            //         const SizedBox(
+            //           height: 5,
+            //         ),
+            //         Row(
+            //           mainAxisAlignment: MainAxisAlignment.center,
+            //           children: [
+            //             Text(
+            //               "Daily ",
+            //               style: TextStyle(
+            //                 fontWeight: FontWeight.bold,
+            //                 fontSize: 30,
+            //                 color: Colors.blue[900],
+            //               ),
+            //             ),
+            //             Text(
+            //               "Readings",
+            //               style: TextStyle(
+            //                 fontWeight: FontWeight.bold,
+            //                 fontSize: 30,
+            //                 color: Colors.yellowAccent[400],
+            //               ),
+            //             ),
+            //           ],
+            //         ),
+            //       ],
+            //     ),
+            //   ),
+            // ),
           ],
         ),
       ),
@@ -291,7 +291,7 @@ class _LoginScreenState extends State<LoginScreen> {
     if (_formkey.currentState!.validate()) {
       try {
         UserCredential userCredential =
-            await FirebaseAuth.instance.signInWithEmailAndPassword(
+        await FirebaseAuth.instance.signInWithEmailAndPassword(
           email: email,
           password: password,
         );

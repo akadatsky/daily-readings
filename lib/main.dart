@@ -24,7 +24,7 @@ Future<void> main(List<String> args) async {
   await Firebase.initializeApp(
       name: "Daily Readings", options: dailyReadindDatabaseOption);
   await SharedPref.getLang();
-  //await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
+  // await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
   runApp(
     MultiProvider(providers: [
       ChangeNotifierProvider<SelectedDateProvider>(
