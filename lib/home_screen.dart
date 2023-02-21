@@ -6,7 +6,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'index.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
   static String route = '/home';
@@ -25,6 +25,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   late HashMap authorHashMap = HashMap<Author, String>();
 
   final DatabaseReference databaseReference = FirebaseDatabase.instance.ref();
+  final String cacheKey = 'dailyReadings';
 
   @override
   void initState() {
@@ -53,9 +54,13 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 final width = constraints.maxWidth;
                 String dateFormat;
                 if (width < 200) {
-                  dateFormat = DateFormat.yMMMd(Localizations.localeOf(context).languageCode).format(selectedDate);
+                  dateFormat = DateFormat.yMMMd(
+                      Localizations.localeOf(context).languageCode)
+                      .format(selectedDate);
                 } else {
-                  dateFormat = DateFormat.yMMMMd(Localizations.localeOf(context).languageCode).format(selectedDate);
+                  dateFormat = DateFormat.yMMMMd(
+                      Localizations.localeOf(context).languageCode)
+                      .format(selectedDate);
                 }
                 return SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
@@ -122,7 +127,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       .first
                       ?.description;
 
-
                   return DefaultTabController(
                     length: 2,
                     child: Scaffold(
@@ -186,14 +190,17 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   Future<List<DailyReading?>> getDailyReadingFromDatabase(
       DateTime? selectedDate) async {
     selectedDate ??= DateTime.now();
-
     String formattedDate = DateFormat('dd.MM').format(selectedDate);
 
-    DataSnapshot snapshot = await databaseReference.get();
-    if (snapshot.exists) {
-      final data = jsonDecode(jsonEncode(snapshot.value));
+    // Check if the data is already saved in the cache
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? cachedData = prefs.getString(cacheKey);
+
+    if (cachedData != null) {
+      final data = jsonDecode(cachedData);
       List<DailyReading> readings = List<DailyReading>.from(
-          data.map((x) => DailyReading.fromJson(x as Map<String, dynamic>)));
+        data.map((x) => DailyReading.fromJson(x as Map<String, dynamic>)),
+      );
 
       List<DailyReading> todaysReadings = readings
           .where((element) => element.date!.contains(formattedDate))
@@ -203,6 +210,27 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           .toList();
 
       return todaysReadings;
+    } else {
+      // If the data is not in the cache, fetch it from the database
+      DataSnapshot snapshot = await databaseReference.get();
+      if (snapshot.exists) {
+        final data = jsonDecode(jsonEncode(snapshot.value));
+        List<DailyReading> readings = List<DailyReading>.from(
+          data.map((x) => DailyReading.fromJson(x as Map<String, dynamic>)),
+        );
+
+        List<DailyReading> todaysReadings = readings
+            .where((element) => element.date!.contains(formattedDate))
+            .where((element) => _author != null
+            ? element.author!.contains(authorHashMap[_author])
+            : true)
+            .toList();
+
+        // Save the data in the cache
+        await prefs.setString(cacheKey, jsonEncode(data));
+
+        return todaysReadings;
+      }
     }
     return List.empty();
   }
