@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'account_settings_screen.dart';
 import '../index.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 class SettingsScreen extends StatefulWidget {
@@ -14,6 +15,30 @@ class SettingsScreen extends StatefulWidget {
 
 
 class _SettingsScreenState extends State<SettingsScreen> {
+  bool _isDarkModeEnabled = false;
+
+  void _toggleDarkMode(bool value) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _isDarkModeEnabled = value;
+      prefs.setBool('isDarkModeEnabled', value);
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadDarkMode();
+  }
+
+  void _loadDarkMode() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      _isDarkModeEnabled = prefs.getBool('isDarkModeEnabled') ?? false;
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,8 +67,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   title: AppLocalizations.of(context)!.dark_mode,
                   subtitle: AppLocalizations.of(context)!.theme,
                   trailing: Switch.adaptive(
-                    value: false,
-                    onChanged: (value) {},
+                    value: _isDarkModeEnabled,
+                    onChanged: _toggleDarkMode,
                   ),
                 ),
               ],

@@ -59,7 +59,7 @@ class _CalendarState extends State<Calendar> {
         actions: [
           IconButton(
             onPressed: () => _selectDate(context),
-            icon: const Icon(Icons.calendar_today),
+            icon: const Icon(Icons.insert_invitation),
           ),
         ],
       ),

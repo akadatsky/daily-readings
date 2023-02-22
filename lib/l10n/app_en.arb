@@ -47,5 +47,6 @@
   "langEN": "English",
   "langES": "Spanish",
   "langRU": "Russian",
-  "langUK": "Ukrainian"
+  "langUK": "Ukrainian",
+  "select_date": "Select Date"
 }

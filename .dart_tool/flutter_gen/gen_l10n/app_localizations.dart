@@ -390,6 +390,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Ukrainian'**
   String get langUK;
+
+  /// No description provided for @select_date.
+  ///
+  /// In en, this message translates to:
+  /// **'Select Date'**
+  String get select_date;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

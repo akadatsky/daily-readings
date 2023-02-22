@@ -19,6 +19,7 @@ import 'l10n/shared_pref.dart';
 import 'login/register_screen.dart';
 import 'package:intl/intl.dart';
 
+
 Future<void> main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -54,32 +55,32 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) => MaterialApp(
-        title: 'Daily Readings',
-        routes: {
-          HomeScreen.route: (context) => HomeScreen(setLocale),
-          RegisterScreen.route: (context) => const RegisterScreen(),
-          BibleScreen.route: (context) => const BibleScreen(),
-          StatsScreen.route: (context) => const StatsScreen(),
-          GoalsScreen.route: (context) => const GoalsScreen(),
-          AboutScreen.route: (context) => const AboutScreen(),
-          FeedbackScreen.route: (context) => const FeedbackScreen(),
-          CopyrightScreen.route: (context) => const CopyrightScreen(),
-          PrivacyScreen.route: (context) => const PrivacyScreen(),
-          HelpScreen.route: (context) => const HelpScreen(),
-        },
-        theme: theme.copyWith(
-          colorScheme: theme.colorScheme.copyWith(
-            primary: const Color(0xff477bab),
-          ),
-        ),
+    title: 'Daily Readings',
+    routes: {
+      HomeScreen.route: (context) => HomeScreen(setLocale),
+      RegisterScreen.route: (context) => const RegisterScreen(),
+      BibleScreen.route: (context) => const BibleScreen(),
+      StatsScreen.route: (context) => const StatsScreen(),
+      GoalsScreen.route: (context) => const GoalsScreen(),
+      AboutScreen.route: (context) => const AboutScreen(),
+      FeedbackScreen.route: (context) => const FeedbackScreen(),
+      CopyrightScreen.route: (context) => const CopyrightScreen(),
+      PrivacyScreen.route: (context) => const PrivacyScreen(),
+      HelpScreen.route: (context) => const HelpScreen(),
+    },
+    theme: theme.copyWith(
+      colorScheme: theme.colorScheme.copyWith(
+        primary: const Color(0xff477bab),
+      ),
+    ),
 
-        // home: const RegisterScreen(),
-        initialRoute: HomeScreen.route,
-        debugShowCheckedModeBanner: false,
-        localizationsDelegates: AppLocalizations.localizationsDelegates,
-        supportedLocales: AppLocalizations.supportedLocales,
-        locale: Locale(Provider.of<SettingProvider>(context).local ??
-            SharedPref.lang ??
-            'en'),
-      );
+    // home: const RegisterScreen(),
+    initialRoute: HomeScreen.route,
+    debugShowCheckedModeBanner: false,
+    localizationsDelegates: AppLocalizations.localizationsDelegates,
+    supportedLocales: AppLocalizations.supportedLocales,
+    locale: Locale(Provider.of<SettingProvider>(context).local ??
+        SharedPref.lang ??
+        'en'),
+  );
 }
