@@ -20,6 +20,7 @@ import 'login/register_screen.dart';
 import 'package:intl/intl.dart';
 
 
+
 Future<void> main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
@@ -38,7 +39,7 @@ Future<void> main(List<String> args) async {
 final ThemeData theme = ThemeData();
 
 class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   State<MyApp> createState() => _MyAppState();
@@ -47,6 +48,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   Locale? _locale;
 
+
   void setLocale(Locale locale) {
     setState(() {
       _locale = locale;
@@ -54,33 +56,45 @@ class _MyAppState extends State<MyApp> {
   }
 
   @override
-  Widget build(BuildContext context) => MaterialApp(
-    title: 'Daily Readings',
-    routes: {
-      HomeScreen.route: (context) => HomeScreen(setLocale),
-      RegisterScreen.route: (context) => const RegisterScreen(),
-      BibleScreen.route: (context) => const BibleScreen(),
-      StatsScreen.route: (context) => const StatsScreen(),
-      GoalsScreen.route: (context) => const GoalsScreen(),
-      AboutScreen.route: (context) => const AboutScreen(),
-      FeedbackScreen.route: (context) => const FeedbackScreen(),
-      CopyrightScreen.route: (context) => const CopyrightScreen(),
-      PrivacyScreen.route: (context) => const PrivacyScreen(),
-      HelpScreen.route: (context) => const HelpScreen(),
-    },
-    theme: theme.copyWith(
-      colorScheme: theme.colorScheme.copyWith(
-        primary: const Color(0xff477bab),
-      ),
-    ),
+  Widget build(BuildContext context) =>
+      MaterialApp(
+        title: 'Daily Readings',
+        routes: {
+          HomeScreen.route: (context) => HomeScreen(setLocale),
+          RegisterScreen.route: (context) => const RegisterScreen(),
+          BibleScreen.route: (context) => const BibleScreen(),
+          StatsScreen.route: (context) => const StatsScreen(),
+          GoalsScreen.route: (context) => const GoalsScreen(),
+          AboutScreen.route: (context) => const AboutScreen(),
+          FeedbackScreen.route: (context) => const FeedbackScreen(),
+          CopyrightScreen.route: (context) => const CopyrightScreen(),
+          PrivacyScreen.route: (context) => const PrivacyScreen(),
+          HelpScreen.route: (context) => const HelpScreen(),
+        },
+        theme: theme.copyWith(
+          colorScheme: theme.colorScheme.copyWith(
+            primary: const Color(0xff477bab),
+          ),
+        ),
 
-    // home: const RegisterScreen(),
-    initialRoute: HomeScreen.route,
-    debugShowCheckedModeBanner: false,
-    localizationsDelegates: AppLocalizations.localizationsDelegates,
-    supportedLocales: AppLocalizations.supportedLocales,
-    locale: Locale(Provider.of<SettingProvider>(context).local ??
-        SharedPref.lang ??
-        'en'),
-  );
+        // theme: themeProvider.darkMode
+        //     ? ThemeData.dark().copyWith(
+        //   colorScheme: const ColorScheme.dark(primary: Color(0xff477bab)),
+        // )
+        //     : ThemeData.dark().copyWith(
+        //   colorScheme: const ColorScheme.light(primary: Color(0xff040405)),
+        // ),
+
+
+        // home: const RegisterScreen(),
+        initialRoute: HomeScreen.route,
+        debugShowCheckedModeBanner: false,
+        localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: AppLocalizations.supportedLocales,
+        locale: Locale(Provider
+            .of<SettingProvider>(context)
+            .local ??
+            SharedPref.lang ??
+            'en'),
+      );
 }
