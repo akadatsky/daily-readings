@@ -56,8 +56,9 @@ class _MyAppState extends State<MyApp> {
   }
 
   @override
-  Widget build(BuildContext context) =>
-      MaterialApp(
+  Widget build(BuildContext context) {
+    final themeProvider = Provider.of<SettingProvider>(context);
+    return MaterialApp(
         title: 'Daily Readings',
         routes: {
           HomeScreen.route: (context) => HomeScreen(setLocale),
@@ -97,4 +98,5 @@ class _MyAppState extends State<MyApp> {
             SharedPref.lang ??
             'en'),
       );
+  }
 }

@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'user_administrator.dart';
 import 'content_administrator.dart';
 import 'register_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -43,9 +44,9 @@ class _LoginScreenState extends State<LoginScreen> {
                         const SizedBox(
                           height: 30,
                         ),
-                        const Text(
-                          "Login",
-                          style: TextStyle(
+                        Text(
+                          AppLocalizations.of(context)!.login,
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.white,
                             fontSize: 40,
@@ -59,7 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           decoration: InputDecoration(
                             filled: true,
                             fillColor: Colors.white,
-                            hintText: 'Email',
+                            hintText: AppLocalizations.of(context)!.email,
                             enabled: true,
                             contentPadding: const EdgeInsets.only(
                                 left: 14.0, bottom: 8.0, top: 8.0),
@@ -107,7 +108,7 @@ class _LoginScreenState extends State<LoginScreen> {
                                 }),
                             filled: true,
                             fillColor: Colors.white,
-                            hintText: 'Password',
+                            hintText: AppLocalizations.of(context)!.password,
                             enabled: true,
                             contentPadding: const EdgeInsets.only(
                                 left: 14.0, bottom: 8.0, top: 15.0),
@@ -153,9 +154,9 @@ class _LoginScreenState extends State<LoginScreen> {
                                 emailController.text, passwordController.text);
                           },
                           color: Colors.white,
-                          child: const Text(
-                            "Login",
-                            style: TextStyle(
+                          child: Text(
+                            AppLocalizations.of(context)!.login,
+                            style: const TextStyle(
                               fontSize: 20,
                             ),
                           ),
