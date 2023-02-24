@@ -25,19 +25,19 @@ class _LanguageSettingsScreenState extends State<LanguageSettingsScreen> {
   void _getSelectedLanguage() async {
     SharedPref.getLang().then((value) {
       setState(() {
-        selectedLanguage = AllLocale.all
+        selectedLanguage = AllLocale.availableLocales
             .indexWhere((element) => element.languageCode == value);
       });
     });
   }
 
   void _saveSelectedLanguage(int value) {
-    SharedPref.addLang(AllLocale.all[value].languageCode);
+    SharedPref.addLang(AllLocale.availableLocales[value].languageCode);
     setState(() {
       selectedLanguage = value;
     });
     Provider.of<SettingProvider>(context, listen: false)
-        .updateLocal(AllLocale.all[value].languageCode);
+        .updateLocal(AllLocale.availableLocales[value].languageCode);
   }
 
   @override
@@ -71,9 +71,18 @@ class _LanguageSettingsScreenState extends State<LanguageSettingsScreen> {
             },
           ),
           RadioListTile<int>(
+            title: const Text('Português'),
+            subtitle: const Text('Portuguese'),
+            value: 2,
+            groupValue: selectedLanguage,
+            onChanged: (value) {
+              _saveSelectedLanguage(value!);
+            },
+          ),
+          RadioListTile<int>(
             title: const Text('Русский'),
             subtitle: const Text('Russian'),
-            value: 2,
+            value: 3,
             groupValue: selectedLanguage,
             onChanged: (value) {
               _saveSelectedLanguage(value!);
@@ -82,7 +91,7 @@ class _LanguageSettingsScreenState extends State<LanguageSettingsScreen> {
           RadioListTile<int>(
             title: const Text('Українська'),
             subtitle: const Text('Ukrainian'),
-            value: 3,
+            value: 4,
             groupValue: selectedLanguage,
             onChanged: (value) {
               _saveSelectedLanguage(value!);

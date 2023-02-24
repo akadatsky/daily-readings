@@ -1,5 +1,5 @@
 export 'calendar.dart';
-export 'daily_reading.model.dart';
+export 'daily_reading_model.dart';
 export 'drawer/index.dart';
 export 'firebase_options.dart';
 export 'home_screen.dart';

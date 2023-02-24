@@ -20,11 +20,9 @@ import 'login/register_screen.dart';
 import 'package:intl/intl.dart';
 
 
-
 Future<void> main(List<String> args) async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-      name: "Daily Readings", options: dailyReadindDatabaseOption);
+  await Firebase.initializeApp(name: "Daily Readings", options: dailyReadindDatabaseOption);
   await SharedPref.getLang();
   // await FirebaseAuth.instance.useAuthEmulator('localhost', 9099);
   runApp(

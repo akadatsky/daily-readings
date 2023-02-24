@@ -152,5 +152,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get langUK => 'Ukrainian';
 
   @override
+  String get langPT => 'Portuguese';
+
+  @override
   String get select_date => 'Select Date';
 }
