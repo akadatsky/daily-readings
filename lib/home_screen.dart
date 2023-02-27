@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import 'index.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'reading_description_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   static String route = '/home';
@@ -55,11 +56,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 String dateFormat;
                 if (width < 200) {
                   dateFormat = DateFormat.yMMMd(
-                      Localizations.localeOf(context).languageCode)
+                          Localizations.localeOf(context).languageCode)
                       .format(selectedDate);
                 } else {
                   dateFormat = DateFormat.yMMMMd(
-                      Localizations.localeOf(context).languageCode)
+                          Localizations.localeOf(context).languageCode)
                       .format(selectedDate);
                 }
                 return SingleChildScrollView(
@@ -129,46 +130,52 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
                   return DefaultTabController(
                     length: 2,
-                    child: Scaffold(
-                      appBar: AppBar(
-                        elevation: 0,
-                        backgroundColor:
-                        const Color.fromARGB(255, 71, 123, 171),
-                        flexibleSpace: TabBar(
-                          labelColor: Colors.white,
-                          tabs: [
-                            Tab(
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  const Icon(Icons.wb_sunny),
-                                  const SizedBox(width: 8),
-                                  Text(AppLocalizations.of(context)!.morning),
-                                ],
-                              ),
+                    child: PageView(
+                      children: [
+                        Scaffold(
+                          appBar: AppBar(
+                            elevation: 0,
+                            backgroundColor:
+                                const Color.fromARGB(255, 71, 123, 171),
+                            flexibleSpace: TabBar(
+                              labelColor: Colors.white,
+                              tabs: [
+                                Tab(
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      const Icon(Icons.wb_sunny),
+                                      const SizedBox(width: 8),
+                                      Text(AppLocalizations.of(context)!
+                                          .morning),
+                                    ],
+                                  ),
+                                ),
+                                Tab(
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      const Icon(Icons.wb_twighlight),
+                                      const SizedBox(width: 8),
+                                      Text(AppLocalizations.of(context)!
+                                          .evening),
+                                    ],
+                                  ),
+                                ),
+                              ],
                             ),
-                            Tab(
-                              child: Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  const Icon(Icons.wb_twighlight),
-                                  const SizedBox(width: 8),
-                                  Text(AppLocalizations.of(context)!.evening),
-                                ],
-                              ),
+                          ),
+                          body: Padding(
+                            padding: const EdgeInsets.all(18.0),
+                            child: TabBarView(
+                              children: [
+                                ReadingDescriptionScreen(morningDescription),
+                                ReadingDescriptionScreen(eveningDescription),
+                              ],
                             ),
-                          ],
+                          ),
                         ),
-                      ),
-                      body: Padding(
-                        padding: const EdgeInsets.all(18.0),
-                        child: TabBarView(
-                          children: [
-                            ReadingDescriptionScreen(morningDescription),
-                            ReadingDescriptionScreen(eveningDescription),
-                          ],
-                        ),
-                      ),
+                      ],
                     ),
                   );
                 } else if (snapshot.hasError) {
@@ -205,8 +212,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       List<DailyReading> todaysReadings = readings
           .where((element) => element.date!.contains(formattedDate))
           .where((element) => _author != null
-          ? element.author!.contains(authorHashMap[_author])
-          : true)
+              ? element.author!.contains(authorHashMap[_author])
+              : true)
           .toList();
 
       return todaysReadings;
@@ -222,8 +229,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         List<DailyReading> todaysReadings = readings
             .where((element) => element.date!.contains(formattedDate))
             .where((element) => _author != null
-            ? element.author!.contains(authorHashMap[_author])
-            : true)
+                ? element.author!.contains(authorHashMap[_author])
+                : true)
             .toList();
 
         // Save the data in the cache
