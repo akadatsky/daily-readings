@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 import 'index.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'reading_description_screen.dart';
+
 
 class HomeScreen extends StatefulWidget {
   static String route = '/home';
@@ -26,7 +26,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   late HashMap authorHashMap = HashMap<Author, String>();
 
   final DatabaseReference databaseReference = FirebaseDatabase.instance.ref();
+
   final String cacheKey = 'dailyReadings';
+
+  // late TabController _controller;
 
   @override
   void initState() {
@@ -43,6 +46,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 //-----------------------------------------------------------------
   @override
   Widget build(BuildContext context) {
+
+    final PageController _pageController  = PageController(initialPage: 0);
+
     return Consumer<SelectedDateProvider>(
       builder: (_, provider, child) {
         DateTime? selectedDate = provider.selectedDate;
@@ -129,6 +135,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       ?.description;
 
                   return PageView(
+                    controller: _pageController,
                     children: [
                       DefaultTabController(
                         length: 2,
@@ -168,6 +175,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                           body: Padding(
                             padding: const EdgeInsets.all(18.0),
                             child: TabBarView(
+                              controller: _pageController,
                               children: [
                                 ReadingDescriptionScreen(morningDescription),
                                 ReadingDescriptionScreen(eveningDescription),
