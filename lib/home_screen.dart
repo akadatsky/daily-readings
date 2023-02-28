@@ -40,26 +40,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     super.initState();
   }
 
-  // void _goToNextDay() {
-  //   final provider = Provider.of<SelectedDateProvider>(context, listen: false);
-  //   DateTime? selectedDate = provider.selectedDate;
-  //   final currentHour = DateTime.now().hour;
-  //
-  //   // Check if it is evening, and we need to switch to the next day
-  //   if(currentHour >= 18) {
-  //     selectedDate = selectedDate!.add(const Duration(days: 1));
-  //   }
-  //
-  //   // Move to the next morning or evening
-  //   if(currentHour >= 6 && currentHour < 18) {
-  //     selectedDate = selectedDate!.add(const Duration(hours: 12));
-  //   } else {
-  //     selectedDate = selectedDate!.add(const Duration(hours: 6));
-  //   }
-  //   // Update the provider with the new date
-  //   provider.updateSelectedDate(selectedDate);
-  // }
-
 //-----------------------------------------------------------------
   @override
   Widget build(BuildContext context) {
@@ -74,13 +54,13 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               builder: (context, constraints) {
                 final width = constraints.maxWidth;
                 String dateFormat;
-                if (width < 250) {
-                  dateFormat = DateFormat.yMd(
-                      Localizations.localeOf(context).languageCode)
+                if (width < 200) {
+                  dateFormat = DateFormat.yMMMd(
+                          Localizations.localeOf(context).languageCode)
                       .format(selectedDate);
                 } else {
                   dateFormat = DateFormat.yMMMMd(
-                      Localizations.localeOf(context).languageCode)
+                          Localizations.localeOf(context).languageCode)
                       .format(selectedDate);
                 }
                 return SingleChildScrollView(
@@ -193,17 +173,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                 ReadingDescriptionScreen(eveningDescription),
                               ],
                             ),
-                          ),
-                        ),
-                      ),
-                      DefaultTabController(
-                        length: 2,
-                        child: Scaffold(
-                          appBar: AppBar(
-                            title: const Text('test'),
-                          ),
-                          body: const Center(
-                            child: Text('Text'),
                           ),
                         ),
                       ),
