@@ -82,6 +82,9 @@ dependencies:
   image_cropper: ^3.0.1
   flutter_holo_date_picker: ^1.1.0
 
+  # Theme
+  flex_color_scheme: ^6.1.2
+
 
 
 dev_dependencies:

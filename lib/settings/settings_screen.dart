@@ -4,15 +4,16 @@ import 'account_settings_screen.dart';
 import '../index.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flex_color_scheme/flex_color_scheme.dart';
 
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
 
+
   @override
   State<SettingsScreen> createState() => _SettingsScreenState();
 }
-
 
 class _SettingsScreenState extends State<SettingsScreen> {
   bool _isDarkModeEnabled = false;
@@ -37,7 +38,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
       _isDarkModeEnabled = prefs.getBool('isDarkModeEnabled') ?? false;
     });
   }
-
 
   @override
   Widget build(BuildContext context) {
@@ -68,7 +68,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   subtitle: AppLocalizations.of(context)!.theme,
                   trailing: Switch.adaptive(
                     value: _isDarkModeEnabled,
-                    onChanged: _toggleDarkMode,
+                    onChanged: (value) {
+                      _toggleDarkMode(value);
+                    },
                   ),
                 ),
               ],
@@ -92,7 +94,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     backgroundColor: Colors.green,
                   ),
                   title: AppLocalizations.of(context)!.account_settings,
-                  subtitle: AppLocalizations.of(context)!.privacy_security_language,
+                  subtitle:
+                      AppLocalizations.of(context)!.privacy_security_language,
                 ),
                 SettingsItem(
                   onTap: () {},
@@ -103,7 +106,8 @@ class _SettingsScreenState extends State<SettingsScreen> {
                     backgroundColor: Colors.deepOrangeAccent,
                   ),
                   title: AppLocalizations.of(context)!.notifications,
-                  subtitle: AppLocalizations.of(context)!.newsletter_app_updates,
+                  subtitle:
+                      AppLocalizations.of(context)!.newsletter_app_updates,
                 ),
                 SettingsItem(
                   onTap: () {},

@@ -8,7 +8,6 @@ import 'index.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
 class HomeScreen extends StatefulWidget {
   static String route = '/home';
 
@@ -26,10 +25,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   late HashMap authorHashMap = HashMap<Author, String>();
 
   final DatabaseReference databaseReference = FirebaseDatabase.instance.ref();
-
   final String cacheKey = 'dailyReadings';
 
-  // late TabController _controller;
+  late TabController _controller;
 
   @override
   void initState() {
@@ -46,9 +44,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 //-----------------------------------------------------------------
   @override
   Widget build(BuildContext context) {
-
     final PageController _pageController  = PageController(initialPage: 0);
-
     return Consumer<SelectedDateProvider>(
       builder: (_, provider, child) {
         DateTime? selectedDate = provider.selectedDate;
@@ -75,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                 );
               },
             ),
-            backgroundColor: const Color.fromARGB(255, 71, 123, 171),
+            // backgroundColor: const Color.fromARGB(255, 71, 123, 171),
             actions: [
               IconButton(
                   onPressed: () {
@@ -134,16 +130,25 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                       .first
                       ?.description;
 
-                  return PageView(
+                  return PageView.builder(
                     controller: _pageController,
-                    children: [
-                      DefaultTabController(
+                    physics: const AlwaysScrollableScrollPhysics(),
+                    itemCount: 7, // кількість сторінок, які можна переглянути
+                    itemBuilder: (context, index) {
+                      final today = DateTime.now().add(Duration(days: index));
+                      final morningDescription = todaysReadings
+                          .where((element) => element!.time == const TimeOfDay(hour: 8, minute: 0))
+                          .map((element) => element!.description)
+                          .first;
+                      final eveningDescription = todaysReadings
+                          .where((element) => element!.time == const TimeOfDay(hour: 18, minute: 0))
+                          .map((element) => element!.description)
+                          .first;
+                      return DefaultTabController(
                         length: 2,
                         child: Scaffold(
                           appBar: AppBar(
                             elevation: 0,
-                            backgroundColor:
-                                const Color.fromARGB(255, 71, 123, 171),
                             flexibleSpace: TabBar(
                               labelColor: Colors.white,
                               tabs: [
@@ -153,8 +158,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                     children: [
                                       const Icon(Icons.wb_sunny),
                                       const SizedBox(width: 8),
-                                      Text(AppLocalizations.of(context)!
-                                          .morning),
+                                      Text(AppLocalizations.of(context)!.morning),
                                     ],
                                   ),
                                 ),
@@ -164,8 +168,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                                     children: [
                                       const Icon(Icons.wb_twighlight),
                                       const SizedBox(width: 8),
-                                      Text(AppLocalizations.of(context)!
-                                          .evening),
+                                      Text(AppLocalizations.of(context)!.evening),
                                     ],
                                   ),
                                 ),
@@ -175,7 +178,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                           body: Padding(
                             padding: const EdgeInsets.all(18.0),
                             child: TabBarView(
-                              controller: _pageController,
                               children: [
                                 ReadingDescriptionScreen(morningDescription),
                                 ReadingDescriptionScreen(eveningDescription),
@@ -183,9 +185,10 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                             ),
                           ),
                         ),
-                      ),
-                    ],
+                      );
+                    },
                   );
+
                 } else if (snapshot.hasError) {
                   return const Text('Error getting data');
                 } else {
