@@ -1,12 +1,14 @@
 import 'dart:collection';
 import 'dart:convert';
 import 'package:firebase_database/firebase_database.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'index.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+
 
 class HomeScreen extends StatefulWidget {
   static String route = '/home';
@@ -25,6 +27,9 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   late HashMap authorHashMap = HashMap<Author, String>();
 
   final DatabaseReference databaseReference = FirebaseDatabase.instance.ref();
+
+  final storage = FirebaseStorage.instance;
+  final storageRef = FirebaseStorage.instance.ref();
 
   final String cacheKey = 'dailyReadings';
 
@@ -46,20 +51,8 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     final PageController _pageController = PageController(initialPage: 0);
+
     return Consumer<SelectedDateProvider>(
-        builder: (_, provider, child) {
-          DateTime? selectedDate = provider.selectedDate;
-          return GestureDetector(
-              onVerticalDragUpdate: (details) {},
-              onHorizontalDragUpdate: (details) {
-                if (details.delta.direction > 0) {
-                  provider.selectedDate = selectedDate.add(const Duration(days: 1);
-                      } else if (details.delta.direction <= 0) {
-                    provider.selectedDate = selectedDate.add(const Duration(days: 1);
-                    }
-                        setState(() {});
-              },
-    child: Consumer<SelectedDateProvider>(
       builder: (_, provider, child) {
         DateTime? selectedDate = provider.selectedDate;
         return Scaffold(
@@ -208,7 +201,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
           ),
         );
       },
-    ),);
+    );
   }
 
 //-----------------------------------------------------------------
