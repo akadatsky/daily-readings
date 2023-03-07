@@ -79,12 +79,13 @@ dependencies:
 
 
   firebase_storage: ^11.0.13
+  cached_network_image: ^3.2.3
   image_cropper: ^3.0.1
+
   flutter_holo_date_picker: ^1.1.0
 
   # Theme
   flex_color_scheme: ^6.1.2
-
 
 
 dev_dependencies:
@@ -100,7 +101,7 @@ dev_dependencies:
 
 dependency_overrides:
   intl: ^0.17.0
-  
+
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
 
