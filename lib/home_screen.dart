@@ -1,14 +1,13 @@
 import 'dart:collection';
 import 'dart:convert';
+import 'package:daily_readings/ui/calendar_pager.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'index.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 
 class HomeScreen extends StatefulWidget {
   static String route = '/home';
@@ -33,7 +32,7 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 
   final String cacheKey = 'dailyReadings';
 
-  // late TabController _controller;
+  final textController = TextEditingController();
 
   @override
   void initState() {
@@ -50,8 +49,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 //-----------------------------------------------------------------
   @override
   Widget build(BuildContext context) {
-    final PageController _pageController = PageController(initialPage: 0);
-
     return Consumer<SelectedDateProvider>(
       builder: (_, provider, child) {
         DateTime? selectedDate = provider.selectedDate;
@@ -72,9 +69,11 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                           Localizations.localeOf(context).languageCode)
                       .format(selectedDate);
                 }
-                return SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: Text(dateFormat),
+                textController.text = dateFormat;
+                return TextField(
+                  readOnly: true,
+                  controller: textController,
+                  style: const TextStyle(color: Colors.white),
                 );
               },
             ),
@@ -119,84 +118,51 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                   _author = value;
                 });
               }),
-          body: FutureBuilder<List<DailyReading?>>(
-            future: getDailyReadingFromDatabase(selectedDate),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.done) {
-                if (snapshot.hasData) {
-                  List<DailyReading?>? todaysReadings = snapshot.data;
-                  if (todaysReadings!.isEmpty) {
-                    return const Text('No reading');
-                  }
-                  String? morningDescription = todaysReadings
-                      .where((element) => element!.time!.contains('Morning'))
-                      .first
-                      ?.description;
-                  String? eveningDescription = todaysReadings
-                      .where((element) => element!.time!.contains('Evening'))
-                      .first
-                      ?.description;
+          body: CalendarPager(
+            controller: CalendarPagerController(selectedDate),
+            builder: (date, isMorning) {
+              Future.delayed(
+                const Duration(milliseconds: 10),
+                () {
+                  // TODO create better approach to update date in appbar
+                  textController.text = DateFormat.yMMMd(
+                          Localizations.localeOf(context).languageCode)
+                      .format(date);
+                },
+              );
+              return FutureBuilder<List<DailyReading?>>(
+                future: getDailyReadingFromDatabase(date),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.done) {
+                    if (snapshot.hasData) {
+                      List<DailyReading?>? todaysReadings = snapshot.data;
+                      if (todaysReadings!.isEmpty) {
+                        return const Text('No reading');
+                      }
+                      String? morningDescription = todaysReadings
+                          .where(
+                              (element) => element!.time!.contains('Morning'))
+                          .first
+                          ?.description;
+                      String? eveningDescription = todaysReadings
+                          .where(
+                              (element) => element!.time!.contains('Evening'))
+                          .first
+                          ?.description;
 
-                  return PageView(
-                    controller: _pageController,
-                    children: [
-                      DefaultTabController(
-                        length: 2,
-                        child: Scaffold(
-                          appBar: AppBar(
-                            elevation: 0,
-                            backgroundColor:
-                                const Color.fromARGB(255, 71, 123, 171),
-                            flexibleSpace: TabBar(
-                              labelColor: Colors.white,
-                              tabs: [
-                                Tab(
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      const Icon(Icons.wb_sunny),
-                                      const SizedBox(width: 8),
-                                      Text(AppLocalizations.of(context)!
-                                          .morning),
-                                    ],
-                                  ),
-                                ),
-                                Tab(
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      const Icon(Icons.wb_twighlight),
-                                      const SizedBox(width: 8),
-                                      Text(AppLocalizations.of(context)!
-                                          .evening),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                          body: Padding(
-                            padding: const EdgeInsets.all(18.0),
-                            child: TabBarView(
-                              // controller: _pageController,
-                              children: [
-                                ReadingDescriptionScreen(morningDescription),
-                                ReadingDescriptionScreen(eveningDescription),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  );
-                } else if (snapshot.hasError) {
-                  return const Text('Error getting data');
-                } else {
-                  return const Text('No reading for today');
-                }
-              } else {
-                return const Center(child: CircularProgressIndicator());
-              }
+                      return ReadingDescriptionScreen(
+                        isMorning ? morningDescription : eveningDescription,
+                      );
+                    } else if (snapshot.hasError) {
+                      return const Text('Error getting data');
+                    } else {
+                      return const Text('No reading for today');
+                    }
+                  } else {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+                },
+              );
             },
           ),
         );
