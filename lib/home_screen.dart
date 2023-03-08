@@ -9,7 +9,7 @@ import 'package:provider/provider.dart';
 import 'index.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   static String route = '/home';
 
   const HomeScreen(this.setLocale, {Key? key}) : super(key: key);
@@ -17,11 +17,48 @@ class HomeScreen extends StatefulWidget {
   final void Function(Locale locale) setLocale;
 
   @override
-  State<HomeScreen> createState() => _HomeScreenState();
+  Widget build(BuildContext context) {
+    return Consumer<SelectedDateProvider>(
+      builder: (_, provider, child) {
+        return ChangeNotifierProvider(
+          create: (_) => DateCounter(),
+          child: HomeScreenContent(
+            setLocale: setLocale,
+            selectedDate: provider.selectedDate,
+          ),
+        );
+      },
+    );
+  }
+}
+
+class DateCounter with ChangeNotifier {
+  DateTime _count = DateTime.now();
+
+  DateTime get count => _count;
+
+  void update(DateTime value) {
+    _count = value;
+    notifyListeners();
+  }
+}
+
+class HomeScreenContent extends StatefulWidget {
+  final void Function(Locale locale) setLocale;
+  final DateTime selectedDate;
+
+  const HomeScreenContent({
+    Key? key,
+    required this.setLocale,
+    required this.selectedDate,
+  }) : super(key: key);
+
+  @override
+  State<HomeScreenContent> createState() => _HomeScreenContentState();
 }
 
 //-----------------------------------------------------------------
-class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
+class _HomeScreenContentState extends State<HomeScreenContent> {
   late Author? _author;
   late HashMap authorHashMap = HashMap<Author, String>();
 
@@ -31,8 +68,6 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   final storageRef = FirebaseStorage.instance.ref();
 
   final String cacheKey = 'dailyReadings';
-
-  final textController = TextEditingController();
 
   @override
   void initState() {
@@ -49,124 +84,93 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
 //-----------------------------------------------------------------
   @override
   Widget build(BuildContext context) {
-    return Consumer<SelectedDateProvider>(
-      builder: (_, provider, child) {
-        DateTime? selectedDate = provider.selectedDate;
-        return Scaffold(
-          appBar: AppBar(
-            elevation: 0,
-            centerTitle: false,
-            title: LayoutBuilder(
-              builder: (context, constraints) {
-                final width = constraints.maxWidth;
-                String dateFormat;
-                if (width < 200) {
-                  dateFormat = DateFormat.yMMMd(
-                          Localizations.localeOf(context).languageCode)
-                      .format(selectedDate);
-                } else {
-                  dateFormat = DateFormat.yMMMMd(
-                          Localizations.localeOf(context).languageCode)
-                      .format(selectedDate);
-                }
-                textController.text = dateFormat;
-                return TextField(
-                  readOnly: true,
-                  controller: textController,
-                  style: const TextStyle(color: Colors.white),
+    return Scaffold(
+      appBar: AppBar(
+        elevation: 0,
+        centerTitle: false,
+        title: AppBarDateLabel(),
+        backgroundColor: const Color.fromARGB(255, 71, 123, 171),
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const GoalsScreen(),
+                  ),
                 );
               },
-            ),
-            backgroundColor: const Color.fromARGB(255, 71, 123, 171),
-            actions: [
-              IconButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const GoalsScreen(),
-                      ),
-                    );
-                  },
-                  icon: const Icon(Icons.check_circle_outline)),
-              IconButton(
-                  onPressed: () async {
-                    await Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const SettingsScreen(),
-                      ),
-                    );
-                  },
-                  icon: const Icon(Icons.settings_rounded)),
-              IconButton(
-                  onPressed: () async {
-                    await Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => const Calendar(),
-                      ),
-                    );
-                  },
-                  icon: const Icon(Icons.calendar_month_sharp)),
-            ],
-          ),
-          drawer: DrawerScreen(
-              author: _author,
-              onAuthorChanged: (value) {
-                setState(() {
-                  _author = value;
-                });
-              }),
-          body: CalendarPager(
-            controller: CalendarPagerController(selectedDate),
-            builder: (date, isMorning) {
-              Future.delayed(
-                const Duration(milliseconds: 10),
-                () {
-                  // TODO create better approach to update date in appbar
-                  textController.text = DateFormat.yMMMd(
-                          Localizations.localeOf(context).languageCode)
-                      .format(date);
-                },
-              );
-              return FutureBuilder<List<DailyReading?>>(
-                future: getDailyReadingFromDatabase(date),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.done) {
-                    if (snapshot.hasData) {
-                      List<DailyReading?>? todaysReadings = snapshot.data;
-                      if (todaysReadings!.isEmpty) {
-                        return const Text('No reading');
-                      }
-                      String? morningDescription = todaysReadings
-                          .where(
-                              (element) => element!.time!.contains('Morning'))
-                          .first
-                          ?.description;
-                      String? eveningDescription = todaysReadings
-                          .where(
-                              (element) => element!.time!.contains('Evening'))
-                          .first
-                          ?.description;
-
-                      return ReadingDescriptionScreen(
-                        isMorning ? morningDescription : eveningDescription,
-                      );
-                    } else if (snapshot.hasError) {
-                      return const Text('Error getting data');
-                    } else {
-                      return const Text('No reading for today');
-                    }
-                  } else {
-                    return const Center(child: CircularProgressIndicator());
+              icon: const Icon(Icons.check_circle_outline)),
+          IconButton(
+              onPressed: () async {
+                await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const SettingsScreen(),
+                  ),
+                );
+              },
+              icon: const Icon(Icons.settings_rounded)),
+          IconButton(
+              onPressed: () async {
+                await Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Calendar(),
+                  ),
+                );
+              },
+              icon: const Icon(Icons.calendar_month_sharp)),
+        ],
+      ),
+      drawer: DrawerScreen(
+          author: _author,
+          onAuthorChanged: (value) {
+            setState(() {
+              _author = value;
+            });
+          }),
+      body: CalendarPager(
+        controller: CalendarPagerController(widget.selectedDate),
+        pageChangedListener: (date) {
+          Future.delayed(const Duration(milliseconds: 100), () {
+            context.read<DateCounter>().update(date);
+          });
+        },
+        builder: (date, isMorning) {
+          return FutureBuilder<List<DailyReading?>>(
+            future: getDailyReadingFromDatabase(date),
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.done) {
+                if (snapshot.hasData) {
+                  List<DailyReading?>? todaysReadings = snapshot.data;
+                  if (todaysReadings!.isEmpty) {
+                    return const Text('No reading');
                   }
-                },
-              );
+                  String? morningDescription = todaysReadings
+                      .where((element) => element!.time!.contains('Morning'))
+                      .first
+                      ?.description;
+                  String? eveningDescription = todaysReadings
+                      .where((element) => element!.time!.contains('Evening'))
+                      .first
+                      ?.description;
+
+                  return ReadingDescriptionScreen(
+                    isMorning ? morningDescription : eveningDescription,
+                  );
+                } else if (snapshot.hasError) {
+                  return const Text('Error getting data');
+                } else {
+                  return const Text('No reading for today');
+                }
+              } else {
+                return const Center(child: CircularProgressIndicator());
+              }
             },
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 
@@ -219,4 +223,34 @@ class _HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     return List.empty();
   }
 //-----------------------------------------------------------------
+}
+
+class AppBarDateLabel extends StatelessWidget {
+  const AppBarDateLabel({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final width = constraints.maxWidth;
+        final dateToDisplay = context.watch<DateCounter>().count;
+        String dateFormat;
+        if (width < 200) {
+          dateFormat =
+              DateFormat.yMMMd(Localizations.localeOf(context).languageCode)
+                  .format(dateToDisplay);
+        } else {
+          dateFormat =
+              DateFormat.yMMMMd(Localizations.localeOf(context).languageCode)
+                  .format(dateToDisplay);
+        }
+        return SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Text(dateFormat),
+        );
+      },
+    );
+  }
 }
