@@ -88,7 +88,7 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
       appBar: AppBar(
         elevation: 0,
         centerTitle: false,
-        title: AppBarDateLabel(),
+        title: const AppBarDateLabel(),
         backgroundColor: const Color.fromARGB(255, 71, 123, 171),
         actions: [
           IconButton(
@@ -156,8 +156,11 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
                       .first
                       ?.description;
 
-                  return ReadingDescriptionScreen(
-                    isMorning ? morningDescription : eveningDescription,
+                  return Padding(
+                    padding: const EdgeInsets.fromLTRB(18, 1, 18, 1),
+                    child: ReadingDescriptionScreen(
+                      isMorning ? morningDescription : eveningDescription,
+                    ),
                   );
                 } else if (snapshot.hasError) {
                   return const Text('Error getting data');
