@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 typedef PageBuilder = Widget Function(DateTime date, bool isMorning);
+typedef PageListener = void Function(DateTime date);
 
 class CalendarPagerController {
   DateTime selectedDate;
@@ -12,10 +13,12 @@ class CalendarPagerController {
 class CalendarPager extends StatelessWidget {
   final CalendarPagerController controller;
   final PageBuilder builder;
+  final PageListener pageChangedListener;
 
   const CalendarPager({
     required this.controller,
     required this.builder,
+    required this.pageChangedListener,
     super.key,
   });
 
@@ -56,6 +59,7 @@ class CalendarPager extends StatelessWidget {
         body: CalendarPage(
           controller: controller,
           builder: builder,
+          pageChangedListener: pageChangedListener,
         ),
       ),
     );
@@ -65,10 +69,12 @@ class CalendarPager extends StatelessWidget {
 class CalendarPage extends StatefulWidget {
   final CalendarPagerController controller;
   final PageBuilder builder;
+  final PageListener pageChangedListener;
 
   const CalendarPage({
     required this.controller,
     required this.builder,
+    required this.pageChangedListener,
     super.key,
   });
 
@@ -81,7 +87,28 @@ class _CalendarPageState extends State<CalendarPage> {
   final PageController _pageController = PageController(
     initialPage: maxInt ~/ 2,
   );
-  var isMorning = true;
+  var currentPage = maxInt ~/ 2;
+
+  bool isMorning = true;
+
+  bool get isEvening => !isMorning;
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback(
+      (_) {
+        TabController tabController = DefaultTabController.of(context)!;
+        tabController.addListener(() {
+          if (tabController.indexIsChanging) {
+            // print('//===============================');
+            // print(tabController.index);
+            // print(tabController.previousIndex);
+          }
+        });
+      },
+    );
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -89,6 +116,13 @@ class _CalendarPageState extends State<CalendarPage> {
       controller: _pageController,
       onPageChanged: _onPageChanged,
       itemBuilder: (context, position) {
+        var nextDate = widget.controller.selectedDate;
+        if (position > currentPage && isEvening) {
+          nextDate = nextDate.add(const Duration(days: 1));
+        }
+        if (position > currentPage && isMorning) {
+          nextDate = nextDate.subtract(const Duration(days: 1));
+        }
         return widget.builder.call(
           widget.controller.selectedDate,
           isMorning,
@@ -98,9 +132,7 @@ class _CalendarPageState extends State<CalendarPage> {
   }
 
   void _onPageChanged(int newPage) {
-    isMorning = !isMorning;
-    DefaultTabController.of(context)?.animateTo(isMorning ? 0 : 1);
-    if (newPage > (_pageController.page ?? 0) && !isMorning) {
+    if (newPage > (_pageController.page ?? 0) && isEvening) {
       widget.controller.selectedDate = widget.controller.selectedDate.add(
         const Duration(days: 1),
       );
@@ -109,5 +141,10 @@ class _CalendarPageState extends State<CalendarPage> {
         const Duration(days: 1),
       );
     }
+    isMorning = !isMorning;
+    widget.pageChangedListener.call(widget.controller.selectedDate);
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      DefaultTabController.of(context)?.animateTo(isMorning ? 0 : 1);
+    });
   }
 }

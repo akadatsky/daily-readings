@@ -132,13 +132,15 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
           }),
       body: CalendarPager(
         controller: CalendarPagerController(widget.selectedDate),
+        pageChangedListener: (date) {
+          Future.delayed(const Duration(milliseconds: 100), () {
+            context.read<DateCounter>().update(date);
+          });
+        },
         builder: (date, isMorning) {
           return FutureBuilder<List<DailyReading?>>(
             future: getDailyReadingFromDatabase(date),
             builder: (context, snapshot) {
-              Future.delayed(const Duration(milliseconds: 100), () {
-                context.read<DateCounter>().update(date);
-              });
               if (snapshot.connectionState == ConnectionState.done) {
                 if (snapshot.hasData) {
                   List<DailyReading?>? todaysReadings = snapshot.data;
