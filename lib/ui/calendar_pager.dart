@@ -56,10 +56,18 @@ class _CalendarPagerState extends State<CalendarPager>
           controller: tabController,
           onTap: (page) {
             if (page == 0 && isEvening) {
-              _pageController.jumpToPage(currentPage - 1);
+              _pageController.animateToPage(
+                currentPage - 1,
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.ease,
+              );
             }
             if (page == 1 && isMorning) {
-              _pageController.jumpToPage(currentPage + 1);
+              _pageController.animateToPage(
+                currentPage + 1,
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.ease,
+              );
             }
           },
           labelColor: Colors.white,
@@ -95,12 +103,16 @@ class _CalendarPagerState extends State<CalendarPager>
           if (position > currentPage && isEvening) {
             nextDate = nextDate.add(const Duration(days: 1));
           }
-          if (position > currentPage && isMorning) {
+          if (position < currentPage && isMorning) {
             nextDate = nextDate.subtract(const Duration(days: 1));
           }
+          var nextTimeOfTheDay = isMorning;
+          if (position != currentPage) {
+            nextTimeOfTheDay = !isMorning;
+          }
           return widget.builder.call(
-            widget.controller.selectedDate,
-            isMorning,
+            nextDate,
+            nextTimeOfTheDay,
           );
         },
       ),
@@ -122,5 +134,6 @@ class _CalendarPagerState extends State<CalendarPager>
     WidgetsBinding.instance.addPostFrameCallback((_) {
       tabController.animateTo(isMorning ? 0 : 1);
     });
+    currentPage = newPage;
   }
 }

@@ -22,9 +22,16 @@ class HomeScreen extends StatelessWidget {
       builder: (_, provider, child) {
         return ChangeNotifierProvider(
           create: (_) => DateCounter(),
-          child: HomeScreenContent(
-            setLocale: setLocale,
-            selectedDate: provider.selectedDate,
+          child: Builder(
+            builder: (context) {
+              Future.delayed(const Duration(milliseconds: 100), () {
+                context.read<DateCounter>().update(provider.selectedDate);
+              });
+              return HomeScreenContent(
+                setLocale: setLocale,
+                selectedDate: provider.selectedDate,
+              );
+            },
           ),
         );
       },
@@ -169,7 +176,6 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
                       ),
                     ],
                   );
-
                 } else if (snapshot.hasError) {
                   return const Text('Error getting data');
                 } else {
