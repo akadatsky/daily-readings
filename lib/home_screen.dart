@@ -22,9 +22,16 @@ class HomeScreen extends StatelessWidget {
       builder: (_, provider, child) {
         return ChangeNotifierProvider(
           create: (_) => DateCounter(),
-          child: HomeScreenContent(
-            setLocale: setLocale,
-            selectedDate: provider.selectedDate,
+          child: Builder(
+            builder: (context) {
+              Future.delayed(const Duration(milliseconds: 100), () {
+                context.read<DateCounter>().update(provider.selectedDate);
+              });
+              return HomeScreenContent(
+                setLocale: setLocale,
+                selectedDate: provider.selectedDate,
+              );
+            },
           ),
         );
       },
@@ -88,7 +95,7 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
       appBar: AppBar(
         elevation: 0,
         centerTitle: false,
-        title: AppBarDateLabel(),
+        title: const AppBarDateLabel(),
         backgroundColor: const Color.fromARGB(255, 71, 123, 171),
         actions: [
           IconButton(
