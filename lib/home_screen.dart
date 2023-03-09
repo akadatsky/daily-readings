@@ -65,6 +65,7 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
   final DatabaseReference databaseReference = FirebaseDatabase.instance.ref();
 
   final storage = FirebaseStorage.instance;
+
   final storageRef = FirebaseStorage.instance.ref();
 
   final String cacheKey = 'dailyReadings';
@@ -156,6 +157,9 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
                       .first
                       ?.description;
 
+                  Image.network(
+                      'https://firebasestorage.googleapis.com/v0/b/daily-readings-63a7d.appspot.com/o/Photos%20for%20Daily%20Readings%2FEvening%2FApril.jpg?alt=media&token=b2b6c729-414b-4fdc-b228-bf1f624ebeb2');
+
                   return Padding(
                     padding: const EdgeInsets.fromLTRB(18, 1, 18, 1),
                     child: ReadingDescriptionScreen(
@@ -196,8 +200,8 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
       List<DailyReading> todaysReadings = readings
           .where((element) => element.date!.contains(formattedDate))
           .where((element) => _author != null
-          ? element.author!.contains(authorHashMap[_author])
-          : true)
+              ? element.author!.contains(authorHashMap[_author])
+              : true)
           .toList();
 
       return todaysReadings;
@@ -213,8 +217,8 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
         List<DailyReading> todaysReadings = readings
             .where((element) => element.date!.contains(formattedDate))
             .where((element) => _author != null
-            ? element.author!.contains(authorHashMap[_author])
-            : true)
+                ? element.author!.contains(authorHashMap[_author])
+                : true)
             .toList();
 
         // Save the data in the cache
