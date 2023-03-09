@@ -157,7 +157,7 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
                       .first
                       ?.description;
 
-                  return Column(
+                  return ListView(
                     children: [
                       Image.network(
                           'https://firebasestorage.googleapis.com/v0/b/daily-readings-63a7d.appspot.com/o/Photos%20for%20Daily%20Readings%2FEvening%2FApril.jpg?alt=media&token=b2b6c729-414b-4fdc-b228-bf1f624ebeb2'),
@@ -169,6 +169,7 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
                       ),
                     ],
                   );
+
                 } else if (snapshot.hasError) {
                   return const Text('Error getting data');
                 } else {
