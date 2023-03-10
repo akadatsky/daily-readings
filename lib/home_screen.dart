@@ -8,6 +8,7 @@ import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'index.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'ui/theme_provider.dart';
 
 class HomeScreen extends StatelessWidget {
   static String route = '/home';
@@ -65,17 +66,16 @@ class HomeScreenContent extends StatefulWidget {
 }
 
 //-----------------------------------------------------------------
-class _HomeScreenContentState extends State<HomeScreenContent> {
+class _HomeScreenContentState extends State<HomeScreenContent>
+    with TickerProviderStateMixin {
   late Author? _author;
   late HashMap authorHashMap = HashMap<Author, String>();
 
   final DatabaseReference databaseReference = FirebaseDatabase.instance.ref();
+  final String cacheKey = 'dailyReadings';
 
   final storage = FirebaseStorage.instance;
-
   final storageRef = FirebaseStorage.instance.ref();
-
-  final String cacheKey = 'dailyReadings';
 
   @override
   void initState() {
@@ -92,103 +92,105 @@ class _HomeScreenContentState extends State<HomeScreenContent> {
 //-----------------------------------------------------------------
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        centerTitle: false,
-        title: const AppBarDateLabel(),
-        backgroundColor: const Color.fromARGB(255, 71, 123, 171),
-        actions: [
-          IconButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const GoalsScreen(),
-                  ),
-                );
-              },
-              icon: const Icon(Icons.check_circle_outline)),
-          IconButton(
-              onPressed: () async {
-                await Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const SettingsScreen(),
-                  ),
-                );
-              },
-              icon: const Icon(Icons.settings_rounded)),
-          IconButton(
-              onPressed: () async {
-                await Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const Calendar(),
-                  ),
-                );
-              },
-              icon: const Icon(Icons.calendar_month_sharp)),
-        ],
-      ),
-      drawer: DrawerScreen(
-          author: _author,
-          onAuthorChanged: (value) {
-            setState(() {
-              _author = value;
-            });
-          }),
-      body: CalendarPager(
-        controller: CalendarPagerController(widget.selectedDate),
-        pageChangedListener: (date) {
-          Future.delayed(const Duration(milliseconds: 100), () {
-            context.read<DateCounter>().update(date);
-          });
-        },
-        builder: (date, isMorning) {
-          return FutureBuilder<List<DailyReading?>>(
-            future: getDailyReadingFromDatabase(date),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.done) {
-                if (snapshot.hasData) {
-                  List<DailyReading?>? todaysReadings = snapshot.data;
-                  if (todaysReadings!.isEmpty) {
-                    return const Text('No reading');
-                  }
-                  String? morningDescription = todaysReadings
-                      .where((element) => element!.time!.contains('Morning'))
-                      .first
-                      ?.description;
-                  String? eveningDescription = todaysReadings
-                      .where((element) => element!.time!.contains('Evening'))
-                      .first
-                      ?.description;
-
-                  return ListView(
-                    children: [
-                      Image.network(
-                          'https://firebasestorage.googleapis.com/v0/b/daily-readings-63a7d.appspot.com/o/Photos%20for%20Daily%20Readings%2FEvening%2FApril.jpg?alt=media&token=b2b6c729-414b-4fdc-b228-bf1f624ebeb2'),
-                      Padding(
-                        padding: const EdgeInsets.fromLTRB(18, 1, 18, 1),
-                        child: ReadingDescriptionScreen(
-                          isMorning ? morningDescription : eveningDescription,
-                        ),
-                      ),
-                    ],
+    return Consumer<ThemeProvider>(builder: (context, themeProvider, child) {
+      return Scaffold(
+        appBar: AppBar(
+          elevation: 0,
+          centerTitle: false,
+          title: const AppBarDateLabel(),
+          // backgroundColor: const Color.fromARGB(255, 71, 123, 171),
+          actions: [
+            IconButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const GoalsScreen(),
+                    ),
                   );
-                } else if (snapshot.hasError) {
-                  return const Text('Error getting data');
+                },
+                icon: const Icon(Icons.check_circle_outline)),
+            IconButton(
+                onPressed: () async {
+                  await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SettingsScreen(),
+                    ),
+                  );
+                },
+                icon: const Icon(Icons.settings_rounded)),
+            IconButton(
+                onPressed: () async {
+                  await Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const Calendar(),
+                    ),
+                  );
+                },
+                icon: const Icon(Icons.calendar_month_sharp)),
+          ],
+        ),
+        drawer: DrawerScreen(
+            author: _author,
+            onAuthorChanged: (value) {
+              setState(() {
+                _author = value;
+              });
+            }),
+        body: CalendarPager(
+          controller: CalendarPagerController(widget.selectedDate),
+          pageChangedListener: (date) {
+            Future.delayed(const Duration(milliseconds: 100), () {
+              context.read<DateCounter>().update(date);
+            });
+          },
+          builder: (date, isMorning) {
+            return FutureBuilder<List<DailyReading?>>(
+              future: getDailyReadingFromDatabase(date),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.done) {
+                  if (snapshot.hasData) {
+                    List<DailyReading?>? todaysReadings = snapshot.data;
+                    if (todaysReadings!.isEmpty) {
+                      return const Text('No reading');
+                    }
+                    String? morningDescription = todaysReadings
+                        .where((element) => element!.time!.contains('Morning'))
+                        .first
+                        ?.description;
+                    String? eveningDescription = todaysReadings
+                        .where((element) => element!.time!.contains('Evening'))
+                        .first
+                        ?.description;
+
+                    return ListView(
+                      children: [
+                        Image.network(
+                            'https://firebasestorage.googleapis.com/v0/b/daily-readings-63a7d.appspot.com/o/Photos%20for%20Daily%20Readings%2FEvening%2FApril.jpg?alt=media&token=b2b6c729-414b-4fdc-b228-bf1f624ebeb2'),
+                        Padding(
+                          padding: const EdgeInsets.fromLTRB(18, 1, 18, 1),
+                          child: ReadingDescriptionScreen(
+                            isMorning ? morningDescription : eveningDescription,
+                          ),
+                        ),
+                      ],
+                    );
+                  } else if (snapshot.hasError) {
+                    return const Text('Error getting data');
+                  } else {
+                    return const Text('No reading for today');
+                  }
                 } else {
-                  return const Text('No reading for today');
+                  return const Center(child: CircularProgressIndicator());
                 }
-              } else {
-                return const Center(child: CircularProgressIndicator());
-              }
-            },
-          );
-        },
-      ),
-    );
+              },
+            );
+          },
+        ),
+      );
+    });
   }
 
 //-----------------------------------------------------------------

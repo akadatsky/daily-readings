@@ -51,21 +51,21 @@ class _CalendarPagerState extends State<CalendarPager>
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: const Color.fromARGB(255, 71, 123, 171),
+        // backgroundColor: const Color.fromARGB(255, 71, 123, 171),
         flexibleSpace: TabBar(
           controller: tabController,
           onTap: (page) {
             if (page == 0 && isEvening) {
               _pageController.animateToPage(
                 currentPage - 1,
-                duration: const Duration(milliseconds: 300),
+                duration: const Duration(milliseconds: 800),
                 curve: Curves.ease,
               );
             }
             if (page == 1 && isMorning) {
               _pageController.animateToPage(
                 currentPage + 1,
-                duration: const Duration(milliseconds: 300),
+                duration: const Duration(milliseconds: 800),
                 curve: Curves.ease,
               );
             }
@@ -78,7 +78,8 @@ class _CalendarPagerState extends State<CalendarPager>
                 children: [
                   const Icon(Icons.wb_sunny),
                   const SizedBox(width: 8),
-                  Text(AppLocalizations.of(context)!.morning),
+                  Text(AppLocalizations.of(context)!.morning,
+                      style: const TextStyle(color: Colors.white)),
                 ],
               ),
             ),
@@ -88,7 +89,8 @@ class _CalendarPagerState extends State<CalendarPager>
                 children: [
                   const Icon(Icons.wb_twighlight),
                   const SizedBox(width: 8),
-                  Text(AppLocalizations.of(context)!.evening),
+                  Text(AppLocalizations.of(context)!.evening,
+                      style: const TextStyle(color: Colors.white)),
                 ],
               ),
             ),

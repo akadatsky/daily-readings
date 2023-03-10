@@ -1,15 +1,15 @@
 import 'package:babstrap_settings_screen/babstrap_settings_screen.dart';
 import 'package:flutter/material.dart';
+import '../ui/theme_provider.dart';
 import 'account_settings_screen.dart';
 import '../index.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'package:flex_color_scheme/flex_color_scheme.dart';
+import 'package:provider/provider.dart';
 
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
-
 
   @override
   State<SettingsScreen> createState() => _SettingsScreenState();
@@ -17,14 +17,6 @@ class SettingsScreen extends StatefulWidget {
 
 class _SettingsScreenState extends State<SettingsScreen> {
   bool _isDarkModeEnabled = false;
-
-  void _toggleDarkMode(bool value) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    setState(() {
-      _isDarkModeEnabled = value;
-      prefs.setBool('isDarkModeEnabled', value);
-    });
-  }
 
   @override
   void initState() {
@@ -41,9 +33,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+
     return Scaffold(
       appBar: AppBar(
-        title: Text(AppLocalizations.of(context)!.settings),
+        title: Text(AppLocalizations.of(context)!.settings,
+          // style: const TextStyle(color: Colors.white)
+        ),
+        // backgroundColor: const Color.fromARGB(255, 71, 123, 171),
         centerTitle: true,
       ),
       body: Padding(
@@ -57,7 +54,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
             SettingsGroup(
               items: [
                 SettingsItem(
-                  onTap: () {},
+                  onTap: () {
+                    themeProvider.setThemeMode(
+                        _isDarkModeEnabled ? ThemeMode.dark : ThemeMode.light);
+                  },
                   icons: Icons.dark_mode_rounded,
                   iconStyle: IconStyle(
                     iconsColor: Colors.white,
@@ -68,8 +68,16 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   subtitle: AppLocalizations.of(context)!.theme,
                   trailing: Switch.adaptive(
                     value: _isDarkModeEnabled,
-                    onChanged: (value) {
-                      _toggleDarkMode(value);
+                    onChanged: (value) async {
+                      SharedPreferences prefs =
+                      await SharedPreferences.getInstance();
+                      setState(() {
+                        _isDarkModeEnabled = value;
+                        prefs.setBool('isDarkModeEnabled', value);
+                        themeProvider.setThemeMode(_isDarkModeEnabled
+                            ? ThemeMode.dark
+                            : ThemeMode.light);
+                      });
                     },
                   ),
                 ),
@@ -95,7 +103,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ),
                   title: AppLocalizations.of(context)!.account_settings,
                   subtitle:
-                      AppLocalizations.of(context)!.privacy_security_language,
+                  AppLocalizations.of(context)!.privacy_security_language,
                 ),
                 SettingsItem(
                   onTap: () {},
@@ -107,7 +115,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   ),
                   title: AppLocalizations.of(context)!.notifications,
                   subtitle:
-                      AppLocalizations.of(context)!.newsletter_app_updates,
+                  AppLocalizations.of(context)!.newsletter_app_updates,
                 ),
                 SettingsItem(
                   onTap: () {},

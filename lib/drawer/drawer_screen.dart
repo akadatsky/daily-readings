@@ -70,6 +70,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
           ListTile(
             title: Text(AppLocalizations.of(context)!.home),
             leading: const Icon(Icons.home),
+            iconColor: Colors.grey[600],
             onTap: () async {
               Navigator.pop(context); // Close the drawer
               await Navigator.pushNamedAndRemoveUntil(
@@ -82,6 +83,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
           ListTile(
             title: Text(AppLocalizations.of(context)!.register),
             leading: const Icon(Icons.account_circle),
+            iconColor: Colors.grey[600],
             onTap: () async {
               Navigator.pop(context); // Close the drawer
               await Navigator.pushNamed(
@@ -91,6 +93,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
           ListTile(
             title: Text(AppLocalizations.of(context)!.bible),
             leading: const Icon(Icons.book),
+            iconColor: Colors.grey[600],
             onTap: () async {
               Navigator.pop(context); // Close the drawer
               await Navigator.pushNamed(
@@ -100,6 +103,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
           ListTile(
             title: Text(AppLocalizations.of(context)!.stats),
             leading: const Icon(Icons.stacked_bar_chart),
+            iconColor: Colors.grey[600],
             onTap: () async {
               Navigator.pop(context);
               await Navigator.pushNamed(context, StatsScreen.route);
@@ -108,6 +112,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
           ListTile(
             title: Text(AppLocalizations.of(context)!.daily_goals),
             leading: const Icon(Icons.looks_one_sharp),
+            iconColor: Colors.grey[600],
             onTap: () async {
               Navigator.pop(context);
               await Navigator.pushNamed(context, GoalsScreen.route);
@@ -116,6 +121,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
           ListTile(
             title: Text(AppLocalizations.of(context)!.about),
             leading: const Icon(Icons.people_alt_rounded),
+            iconColor: Colors.grey[600],
             onTap: () async {
               Navigator.pop(context);
               await Navigator.pushNamed(context, AboutScreen.route);
@@ -124,6 +130,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
           ListTile(
             title: Text(AppLocalizations.of(context)!.feedback),
             leading: const Icon(Icons.format_quote),
+            iconColor: Colors.grey[600],
             onTap: () async {
               Navigator.pop(context);
               await Navigator.pushNamed(context, FeedbackScreen.route);
@@ -132,6 +139,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
           ListTile(
             title: Text(AppLocalizations.of(context)!.copyright),
             leading: const Icon(Icons.copyright),
+            iconColor: Colors.grey[600],
             onTap: () async {
               Navigator.pop(context);
               await Navigator.pushNamed(context, CopyrightScreen.route);
@@ -140,6 +148,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
           ListTile(
             title: Text(AppLocalizations.of(context)!.privacy),
             leading: const Icon(Icons.back_hand),
+            iconColor: Colors.grey[600],
             onTap: () async {
               Navigator.pop(context);
               await Navigator.pushNamed(context, PrivacyScreen.route);
@@ -148,6 +157,7 @@ class _DrawerScreenState extends State<DrawerScreen> {
           ListTile(
             title: Text(AppLocalizations.of(context)!.help),
             leading: const Icon(Icons.question_mark),
+            iconColor: Colors.grey[600],
             onTap: () async {
               Navigator.pop(context);
               await Navigator.pushNamed(context, HelpScreen.route);
