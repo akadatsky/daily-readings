@@ -59,14 +59,14 @@ class _CalendarPagerState extends State<CalendarPager>
             if (page == 0 && isEvening) {
               _pageController.animateToPage(
                 currentPage - 1,
-                duration: const Duration(milliseconds: 800),
+                duration: const Duration(milliseconds: 700),
                 curve: Curves.ease,
               );
             }
             if (page == 1 && isMorning) {
               _pageController.animateToPage(
                 currentPage + 1,
-                duration: const Duration(milliseconds: 800),
+                duration: const Duration(milliseconds: 700),
                 curve: Curves.ease,
               );
             }

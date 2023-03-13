@@ -165,18 +165,42 @@ class _HomeScreenContentState extends State<HomeScreenContent>
                         .first
                         ?.description;
 
-                    return ListView(
+                    return Stack(
                       children: [
                         Image.network(
                             'https://firebasestorage.googleapis.com/v0/b/daily-readings-63a7d.appspot.com/o/Photos%20for%20Daily%20Readings%2FEvening%2FApril.jpg?alt=media&token=b2b6c729-414b-4fdc-b228-bf1f624ebeb2'),
+                        Positioned(
+                          top: 80,
+                          left: 30,
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: const [
+                              Text(
+                                'Title',
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 18),
+                              ),
+                              SizedBox(
+                                height: 30,
+                              ),
+                              Text(
+                                'Reference',
+                                style: TextStyle(
+                                    color: Colors.white, fontSize: 18),
+                              ),
+                            ],
+                          ),
+                        ),
+
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(18, 1, 18, 1),
+                          padding: const EdgeInsets.fromLTRB(18, 303, 18, 1),
                           child: ReadingDescriptionScreen(
                             isMorning ? morningDescription : eveningDescription,
                           ),
                         ),
                       ],
                     );
+
                   } else if (snapshot.hasError) {
                     return const Text('Error getting data');
                   } else {
