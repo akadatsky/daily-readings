@@ -54,6 +54,7 @@ class _CalendarPagerState extends State<CalendarPager>
         // backgroundColor: const Color.fromARGB(255, 71, 123, 171),
         flexibleSpace: TabBar(
           controller: tabController,
+          indicatorColor: Colors.white,
           onTap: (page) {
             if (page == 0 && isEvening) {
               _pageController.animateToPage(
@@ -78,8 +79,7 @@ class _CalendarPagerState extends State<CalendarPager>
                 children: [
                   const Icon(Icons.wb_sunny),
                   const SizedBox(width: 8),
-                  Text(AppLocalizations.of(context)!.morning,
-                      style: const TextStyle(color: Colors.white)),
+                  Text(AppLocalizations.of(context)!.morning),
                 ],
               ),
             ),
@@ -89,8 +89,7 @@ class _CalendarPagerState extends State<CalendarPager>
                 children: [
                   const Icon(Icons.wb_twighlight),
                   const SizedBox(width: 8),
-                  Text(AppLocalizations.of(context)!.evening,
-                      style: const TextStyle(color: Colors.white)),
+                  Text(AppLocalizations.of(context)!.evening),
                 ],
               ),
             ),
