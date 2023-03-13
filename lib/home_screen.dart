@@ -178,7 +178,7 @@ class _HomeScreenContentState extends State<HomeScreenContent>
                               Text(
                                 'Title',
                                 style: TextStyle(
-                                    color: Colors.white, fontSize: 18),
+                                    color: Colors.white, fontSize: 18, backgroundColor: Colors.black45),
                               ),
                               SizedBox(
                                 height: 30,
@@ -186,7 +186,7 @@ class _HomeScreenContentState extends State<HomeScreenContent>
                               Text(
                                 'Reference',
                                 style: TextStyle(
-                                    color: Colors.white, fontSize: 18),
+                                    color: Colors.white, fontSize: 18, backgroundColor: Colors.black45),
                               ),
                             ],
                           ),
