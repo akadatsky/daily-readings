@@ -39,7 +39,7 @@ Future<void> main(List<String> args) async {
   );
 }
 
-final ThemeData theme = ThemeData();
+// final ThemeData theme = ThemeData();
 
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);

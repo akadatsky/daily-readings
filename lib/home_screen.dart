@@ -170,23 +170,27 @@ class _HomeScreenContentState extends State<HomeScreenContent>
                         Image.network(
                             'https://firebasestorage.googleapis.com/v0/b/daily-readings-63a7d.appspot.com/o/Photos%20for%20Daily%20Readings%2FEvening%2FApril.jpg?alt=media&token=b2b6c729-414b-4fdc-b228-bf1f624ebeb2'),
                         Positioned(
-                          top: 80,
-                          left: 30,
+                          top: 220,
+                          left: 3,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: const [
                               Text(
-                                'Title',
+                                '‘Let anyone who thinks that he stands take heed lest he fall’',
                                 style: TextStyle(
-                                    color: Colors.white, fontSize: 18, backgroundColor: Colors.black45),
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    backgroundColor: Colors.black45),
                               ),
                               SizedBox(
-                                height: 30,
+                                height: 12,
                               ),
                               Text(
-                                'Reference',
+                                '1 Corinthians 10:12',
                                 style: TextStyle(
-                                    color: Colors.white, fontSize: 18, backgroundColor: Colors.black45),
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    backgroundColor: Colors.black45),
                               ),
                             ],
                           ),
@@ -200,7 +204,6 @@ class _HomeScreenContentState extends State<HomeScreenContent>
                         ),
                       ],
                     );
-
                   } else if (snapshot.hasError) {
                     return const Text('Error getting data');
                   } else {
@@ -235,9 +238,10 @@ class _HomeScreenContentState extends State<HomeScreenContent>
 
       List<DailyReading> todaysReadings = readings
           .where((element) => element.date!.contains(formattedDate))
-          .where((element) => _author != null
-              ? element.author!.contains(authorHashMap[_author])
-              : true)
+          .where((element) =>
+      _author != null
+          ? element.author!.contains(authorHashMap[_author])
+          : true)
           .toList();
 
       return todaysReadings;
@@ -252,9 +256,10 @@ class _HomeScreenContentState extends State<HomeScreenContent>
 
         List<DailyReading> todaysReadings = readings
             .where((element) => element.date!.contains(formattedDate))
-            .where((element) => _author != null
-                ? element.author!.contains(authorHashMap[_author])
-                : true)
+            .where((element) =>
+        _author != null
+            ? element.author!.contains(authorHashMap[_author])
+            : true)
             .toList();
 
         // Save the data in the cache
@@ -278,15 +283,21 @@ class AppBarDateLabel extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         final width = constraints.maxWidth;
-        final dateToDisplay = context.watch<DateCounter>().count;
+        final dateToDisplay = context
+            .watch<DateCounter>()
+            .count;
         String dateFormat;
         if (width < 200) {
           dateFormat =
-              DateFormat.yMMMd(Localizations.localeOf(context).languageCode)
+              DateFormat.yMMMd(Localizations
+                  .localeOf(context)
+                  .languageCode)
                   .format(dateToDisplay);
         } else {
           dateFormat =
-              DateFormat.yMMMMd(Localizations.localeOf(context).languageCode)
+              DateFormat.yMMMMd(Localizations
+                  .localeOf(context)
+                  .languageCode)
                   .format(dateToDisplay);
         }
         return SingleChildScrollView(
