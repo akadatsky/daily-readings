@@ -167,37 +167,63 @@ class _HomeScreenContentState extends State<HomeScreenContent>
 
                     return Stack(
                       children: [
-                        Image.network(
-                            'https://firebasestorage.googleapis.com/v0/b/daily-readings-63a7d.appspot.com/o/Photos%20for%20Daily%20Readings%2FEvening%2FApril.jpg?alt=media&token=b2b6c729-414b-4fdc-b228-bf1f624ebeb2'),
-                        Positioned(
-                          top: 220,
-                          left: 3,
+                        Image(
+                          image: const AssetImage('assets/April.jpg'),
+                          width: double.infinity,
+                          height: MediaQuery.of(context).size.height * 0.37,
+                          fit: BoxFit.fill,
+                        ),
+                        Padding(
+                          padding:
+                          const EdgeInsets.only(top: 10.0, left: 10.0),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const [
-                              Text(
-                                '‘Let anyone who thinks that he stands take heed lest he fall’',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 16,
-                                    backgroundColor: Colors.black45),
+                            children: [
+                              Row(
+                                children: const [
+                                  Expanded(
+                                    child: Text(
+                                      '’Let anyone who thinks that he stands take heed lest he fall’',
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 16,
+                                        backgroundColor: Colors.black45,
+                                      ),
+                                      softWrap: true,
+                                      maxLines: 4,
+                                      overflow: TextOverflow.fade,
+                                    ),
+                                  ),
+                                ],
                               ),
-                              SizedBox(
+                              const SizedBox(
                                 height: 12,
                               ),
-                              Text(
-                                '1 Corinthians 10:12',
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontSize: 16,
-                                    backgroundColor: Colors.black45),
+                              Row(
+                                children: [
+                                  Row(
+                                    children: const [
+                                      Text(
+                                        '1 Corinthians 10:12',
+                                        style: TextStyle(
+                                          color: Colors.white,
+                                          fontSize: 16,
+                                          backgroundColor: Colors.black45,
+                                        ),
+                                        softWrap: true,
+                                        maxLines: 2,
+                                        overflow: TextOverflow.fade,
+                                      ),
+                                    ],
+                                  ),
+                                ],
                               ),
                             ],
                           ),
                         ),
-
                         Padding(
-                          padding: const EdgeInsets.fromLTRB(18, 303, 18, 1),
+                          padding:  EdgeInsets.only(left: 18, top:  MediaQuery.of(context).size.height * 0.375, right: 18, bottom: 1),
+                          //EdgeInsets.fromLTRB(18, 303, 18, 1),
                           child: ReadingDescriptionScreen(
                             isMorning ? morningDescription : eveningDescription,
                           ),
@@ -238,8 +264,7 @@ class _HomeScreenContentState extends State<HomeScreenContent>
 
       List<DailyReading> todaysReadings = readings
           .where((element) => element.date!.contains(formattedDate))
-          .where((element) =>
-      _author != null
+          .where((element) => _author != null
           ? element.author!.contains(authorHashMap[_author])
           : true)
           .toList();
@@ -256,8 +281,7 @@ class _HomeScreenContentState extends State<HomeScreenContent>
 
         List<DailyReading> todaysReadings = readings
             .where((element) => element.date!.contains(formattedDate))
-            .where((element) =>
-        _author != null
+            .where((element) => _author != null
             ? element.author!.contains(authorHashMap[_author])
             : true)
             .toList();
@@ -283,21 +307,15 @@ class AppBarDateLabel extends StatelessWidget {
     return LayoutBuilder(
       builder: (context, constraints) {
         final width = constraints.maxWidth;
-        final dateToDisplay = context
-            .watch<DateCounter>()
-            .count;
+        final dateToDisplay = context.watch<DateCounter>().count;
         String dateFormat;
         if (width < 200) {
           dateFormat =
-              DateFormat.yMMMd(Localizations
-                  .localeOf(context)
-                  .languageCode)
+              DateFormat.yMMMd(Localizations.localeOf(context).languageCode)
                   .format(dateToDisplay);
         } else {
           dateFormat =
-              DateFormat.yMMMMd(Localizations
-                  .localeOf(context)
-                  .languageCode)
+              DateFormat.yMMMMd(Localizations.localeOf(context).languageCode)
                   .format(dateToDisplay);
         }
         return SingleChildScrollView(

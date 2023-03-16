@@ -58,6 +58,7 @@ class _DailyReadingsSeasonsPhotoState extends State<DailyReadingsSeasonsPhoto> {
       'https://firebasestorage.googleapis.com/v0/b/daily-readings-63a7d.appspot.com/o/Photos%20for%20Daily%20Readings%2FEvening%2FNov.jpg?alt=media&token=5e3e1e24-3070-45b4-abe4-2e776cfc9a9a';
   String eveningDecemberUrl =
       'https://firebasestorage.googleapis.com/v0/b/daily-readings-63a7d.appspot.com/o/Photos%20for%20Daily%20Readings%2FEvening%2FDec.jpg?alt=media&token=dbf94f34-ffab-4b38-aacb-d9c5218587be';
+  late String image;
 
   @override
   Widget build(BuildContext context) {
