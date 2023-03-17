@@ -68,7 +68,7 @@ class AppLocalizationsUk extends AppLocalizations {
   String get light_mode => 'Світлий режим';
 
   @override
-  String get account_settings => 'Налаштування аккаунта';
+  String get account_settings => 'Налаштування акаунта';
 
   @override
   String get notifications => 'Сповіщення';
@@ -89,10 +89,10 @@ class AppLocalizationsUk extends AppLocalizations {
   String get language => 'Мова';
 
   @override
-  String get account_info => 'Інформація про аккаунт';
+  String get account_info => 'Інформація про акаунт';
 
   @override
-  String get delete_account => 'Видалити аккаунт';
+  String get delete_account => 'Видалити акаунт';
 
   @override
   String get general => 'Загальні';
@@ -107,7 +107,7 @@ class AppLocalizationsUk extends AppLocalizations {
   String get newsletter_app_updates => 'Інформаційний бюлетень, оновлення додатку';
 
   @override
-  String get sign_out => 'Вийти з аккаунту';
+  String get sign_out => 'Вийти з акаунту';
 
   @override
   String get register_now => 'Зареєструватися';
