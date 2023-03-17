@@ -165,15 +165,186 @@ class _HomeScreenContentState extends State<HomeScreenContent>
                         .first
                         ?.description;
 
+                    var now = DateTime.now();
+                    var month = now.month;
+                    var image;
+
                     return SingleChildScrollView(
                       child: Stack(
                         children: [
-                          Image(
-                            image: const AssetImage('assets/Morning/April.jpg'),
-                            width: double.infinity,
-                            height: MediaQuery.of(context).size.height * 0.37,
-                            fit: BoxFit.fill,
-                          ),
+                          if (morningDescription != null) {
+                            if (month == 1) {
+                              Image(
+                                image: const AssetImage('assets/Morning/Jan.jpg'),
+                                width: double.infinity,
+                                height: MediaQuery.of(context).size.height * 0.37,
+                                fit: BoxFit.fill,
+                              ),
+                            } else if (month == 2) {
+                              Image(
+                                image: const AssetImage('assets/Morning/Feb.jpg'),
+                                width: double.infinity,
+                                height: MediaQuery.of(context).size.height * 0.37,
+                                fit: BoxFit.fill,
+                              ),
+                            } else if (month == 3) {
+                              Image(
+                                image: const AssetImage('assets/Morning/March.jpg'),
+                                width: double.infinity,
+                                height: MediaQuery.of(context).size.height * 0.37,
+                                fit: BoxFit.fill,
+                              ),
+                            } else if (month == 4) {
+                              Image(
+                                image: const AssetImage('assets/Morning/April.jpg'),
+                                width: double.infinity,
+                                height: MediaQuery.of(context).size.height * 0.37,
+                                fit: BoxFit.fill,
+                              ),
+                            } else if (month == 5) {
+                              Image(
+                                image: const AssetImage('assets/Morning/May.jpg'),
+                                width: double.infinity,
+                                height: MediaQuery.of(context).size.height * 0.37,
+                                fit: BoxFit.fill,
+                              ),
+                            } else if (month == 6) {
+                              Image(
+                                image: const AssetImage('assets/Morning/June.jpg'),
+                                width: double.infinity,
+                                height: MediaQuery.of(context).size.height * 0.37,
+                                fit: BoxFit.fill,
+                              ),
+                            } else if (month == 7) {
+                              Image(
+                                image: const AssetImage('assets/Morning/July.jpg'),
+                                width: double.infinity,
+                                height: MediaQuery.of(context).size.height * 0.37,
+                                fit: BoxFit.fill,
+                              ),
+                            } else if (month == 8) {
+                              Image(
+                                image: const AssetImage('assets/Morning/Aug.jpg'),
+                                width: double.infinity,
+                                height: MediaQuery.of(context).size.height * 0.37,
+                                fit: BoxFit.fill,
+                              ),
+                            } else if (month == 9) {
+                              Image(
+                                image: const AssetImage('assets/Morning/Sept.jpg'),
+                                width: double.infinity,
+                                height: MediaQuery.of(context).size.height * 0.37,
+                                fit: BoxFit.fill,
+                              ),
+                            } else if (month == 10) {
+                              Image(
+                                image: const AssetImage('assets/Morning/Oct.jpg'),
+                                width: double.infinity,
+                                height: MediaQuery.of(context).size.height * 0.37,
+                                fit: BoxFit.fill,
+                              ),
+                            } else if (month == 11) {
+                              Image(
+                                image: const AssetImage('assets/Morning/Nov.jpg'),
+                                width: double.infinity,
+                                height: MediaQuery.of(context).size.height * 0.37,
+                                fit: BoxFit.fill,
+                              ),
+                            } else {
+                              Image(
+                                image: const AssetImage('assets/Morning/Dec.jpg'),
+                                width: double.infinity,
+                                height: MediaQuery.of(context).size.height * 0.37,
+                                fit: BoxFit.fill,
+                              ),
+                            }
+                          } else {
+                            if (month == 1) {
+                              Image(
+                                image: const AssetImage('assets/Evening/Jan.jpg'),
+                                width: double.infinity,
+                                height: MediaQuery.of(context).size.height * 0.37,
+                                fit: BoxFit.fill,
+                              ),
+                            } else if (month == 2) {
+                              Image(
+                                image: const AssetImage('assets/Evening/Feb.jpg'),
+                                width: double.infinity,
+                                height: MediaQuery.of(context).size.height * 0.37,
+                                fit: BoxFit.fill,
+                              ),
+                            } else if (month == 3) {
+                              Image(
+                                image: const AssetImage('assets/Evening/March.jpg'),
+                                width: double.infinity,
+                                height: MediaQuery.of(context).size.height * 0.37,
+                                fit: BoxFit.fill,
+                              ),
+                            } else if (month == 4) {
+                              Image(
+                                image: const AssetImage('assets/Evening/April.jpg'),
+                                width: double.infinity,
+                                height: MediaQuery.of(context).size.height * 0.37,
+                                fit: BoxFit.fill,
+                              ),
+                            } else if (month == 5) {
+                              Image(
+                                image: const AssetImage('assets/Evening/May.jpg'),
+                                width: double.infinity,
+                                height: MediaQuery.of(context).size.height * 0.37,
+                                fit: BoxFit.fill,
+                              ),
+                            } else if (month == 6) {
+                              Image(
+                                image: const AssetImage('assets/Evening/June.jpg'),
+                                width: double.infinity,
+                                height: MediaQuery.of(context).size.height * 0.37,
+                                fit: BoxFit.fill,
+                              ),
+                            } else if (month == 7) {
+                              Image(
+                                image: const AssetImage('assets/Evening/July.jpg'),
+                                width: double.infinity,
+                                height: MediaQuery.of(context).size.height * 0.37,
+                                fit: BoxFit.fill,
+                              ),
+                            } else if (month == 8) {
+                              Image(
+                                image: const AssetImage('assets/Evening/Aug.jpg'),
+                                width: double.infinity,
+                                height: MediaQuery.of(context).size.height * 0.37,
+                                fit: BoxFit.fill,
+                              ),
+                            } else if (month == 9) {
+                              Image(
+                                image: const AssetImage('assets/Evening/Sept.jpg'),
+                                width: double.infinity,
+                                height: MediaQuery.of(context).size.height * 0.37,
+                                fit: BoxFit.fill,
+                              ),
+                            } else if (month == 10) {
+                              Image(
+                                image: const AssetImage('assets/Evening/Oct.jpg'),
+                                width: double.infinity,
+                                height: MediaQuery.of(context).size.height * 0.37,
+                                fit: BoxFit.fill,
+                              ),
+                            } else if (month == 11) {
+                              Image(
+                                image: const AssetImage('assets/Evening/Nov.jpg'),
+                                width: double.infinity,
+                                height: MediaQuery.of(context).size.height * 0.37,
+                                fit: BoxFit.fill,
+                              ),
+                            } else {
+                              Image(
+                                image: const AssetImage('assets/Evening/Dec.jpg'),
+                                width: double.infinity,
+                                height: MediaQuery.of(context).size.height * 0.37,
+                                fit: BoxFit.fill,
+                              ),
+                            }
+                          }
                           Padding(
                             padding:
                             const EdgeInsets.only(top: 10.0, left: 10.0),
