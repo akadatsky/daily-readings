@@ -4,9 +4,9 @@ enum Month {january, february, march, april, may, june, july, august, september,
   october, november, december}
 
 extension MonthExtension on Month {
-   String get morningImage => 'assets/Morning/$_imageAsset';
-   String get eveningImage => 'assets/Evening/$_imageAsset';
-   String get _imageAsset => 
+   String get morningImage => 'assets/Morning/$imageAsset';
+   String get eveningImage => 'assets/Evening/$imageAsset';
+   String get imageAsset =>
       {
         Month.january: 'assets/Morning/Jan.jpg',
         Month.february: 'assets/Morning/Feb.jpg',
@@ -38,7 +38,7 @@ class PhotoStack extends StatelessWidget {
   Widget build(BuildContext context) => Stack(children: [
     hasImage
     ? Image(
-      image: const AssetImage('assets/Morning/Jan.jpg'),
+      image: AssetImage(month.imageAsset),
       width: double.infinity,
       height: MediaQuery.of(context).size.height * 0.37,
       fit: BoxFit.fill,
