@@ -7,17 +7,17 @@ extension MonthExtension on Month {
    String get imageAsset =>
       {
         Month.january: 'assets/Morning/Jan.jpg',
-        Month.february: 'assets/Morning/Jan.jpg',
-        Month.march: 'assets/Morning/Jan.jpg',
-        Month.april: 'assets/Morning/Jan.jpg',
-        Month.may: 'assets/Morning/Jan.jpg',
-        Month.june: 'assets/Morning/Jan.jpg',
-        Month.july: 'assets/Morning/Jan.jpg',
-        Month.august: 'assets/Morning/Jan.jpg',
-        Month.september: 'assets/Morning/Jan.jpg',
-        Month.october: 'assets/Morning/Jan.jpg',
-        Month.november: 'assets/Morning/Jan.jpg',
-        Month.december: 'assets/Morning/Jan.jpg',
+        Month.february: 'assets/Morning/Feb.jpg',
+        Month.march: 'assets/Morning/March.jpg',
+        Month.april: 'assets/Morning/April.jpg',
+        Month.may: 'assets/Morning/May.jpg',
+        Month.june: 'assets/Morning/June.jpg',
+        Month.july: 'assets/Morning/July.jpg',
+        Month.august: 'assets/Morning/Aug.jpg',
+        Month.september: 'assets/Morning/Sept.jpg',
+        Month.october: 'assets/Morning/Oct.jpg',
+        Month.november: 'assets/Morning/Nov.jpg',
+        Month.december: 'assets/Morning/Dec.jpg',
 
       }[this] ??
   '';
