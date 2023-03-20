@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+
+
 class DailyReadingsSeasonsPhoto extends StatefulWidget {
   const DailyReadingsSeasonsPhoto({Key? key}) : super(key: key);
 
