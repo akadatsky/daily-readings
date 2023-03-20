@@ -4,7 +4,9 @@ enum Month {january, february, march, april, may, june, july, august, september,
   october, november, december}
 
 extension MonthExtension on Month {
-   String get imageAsset =>
+   String get morningImage => 'assets/Morning/$_imageAsset';
+   String get eveningImage => 'assets/Evening/$_imageAsset';
+   String get _imageAsset => 
       {
         Month.january: 'assets/Morning/Jan.jpg',
         Month.february: 'assets/Morning/Feb.jpg',
