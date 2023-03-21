@@ -4,6 +4,7 @@ import 'package:daily_readings/photos/enum_photo.dart';
 import 'package:daily_readings/ui/calendar_pager.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
@@ -78,16 +79,13 @@ class _HomeScreenContentState extends State<HomeScreenContent>
 
   String getImageName(bool isMorning, Month month) {
     String time = isMorning ? 'morning' : 'evening';
-    String monthName = month.toString().split('.').last.toLowerCase();
-    return '$time_$monthName.jpg';
+    String monthName = describeEnum(month).toLowerCase();
+    return '${time}_$monthName';
   }
-
 
 
   // final storage = FirebaseStorage.instance;
   // final storageRef = FirebaseStorage.instance.ref();
-
-
 
 
   @override
@@ -194,7 +192,7 @@ class _HomeScreenContentState extends State<HomeScreenContent>
                       child: Stack(
                         children: [
                            Image.asset(
-                      'assets/Morning/$imageAsset'
+                              'assets/Morning/$imageAsset',
                               width: double.infinity,
                               height: MediaQuery.of(context).size.height * 0.37,
                               fit: BoxFit.fill,
