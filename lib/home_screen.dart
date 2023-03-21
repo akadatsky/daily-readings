@@ -1,5 +1,6 @@
 import 'dart:collection';
 import 'dart:convert';
+import 'package:daily_readings/photos/enum_photo.dart';
 import 'package:daily_readings/ui/calendar_pager.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -70,12 +71,24 @@ class _HomeScreenContentState extends State<HomeScreenContent>
     with TickerProviderStateMixin {
   late Author? _author;
   late HashMap authorHashMap = HashMap<Author, String>();
+  late Month currentMonth = Month.january;
 
   final DatabaseReference databaseReference = FirebaseDatabase.instance.ref();
   final String cacheKey = 'dailyReadings';
 
-  final storage = FirebaseStorage.instance;
-  final storageRef = FirebaseStorage.instance.ref();
+  String getImageName(bool isMorning, Month month) {
+    String time = isMorning ? 'morning' : 'evening';
+    String monthName = month.toString().split('.').last.toLowerCase();
+    return '$time_$monthName.jpg';
+  }
+
+
+
+  // final storage = FirebaseStorage.instance;
+  // final storageRef = FirebaseStorage.instance.ref();
+
+
+
 
   @override
   void initState() {
@@ -147,6 +160,14 @@ class _HomeScreenContentState extends State<HomeScreenContent>
             });
           },
           builder: (date, isMorning) {
+            var month = Month.values[date.month - 1];
+            if(currentMonth != month) {
+              setState(() {
+                currentMonth = month;
+              });
+            }
+            String imageName = getImageName(isMorning, month);
+
             return FutureBuilder<List<DailyReading?>>(
               future: getDailyReadingFromDatabase(date),
               builder: (context, snapshot) {
@@ -172,218 +193,8 @@ class _HomeScreenContentState extends State<HomeScreenContent>
                     return SingleChildScrollView(
                       child: Stack(
                         children: [
-                          Visibility(
-                            visible: morningDescription != null && month == 1,
-                            child: Image(
-                              image: const AssetImage('assets/Morning/Jan.jpg'),
-                              width: double.infinity,
-                              height: MediaQuery.of(context).size.height * 0.37,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                          Visibility(
-                            visible: morningDescription != null && month == 2,
-                            child: Image(
-                              image: const AssetImage('assets/Morning/Feb.jpg'),
-                              width: double.infinity,
-                              height: MediaQuery.of(context).size.height * 0.37,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                          Visibility(
-                            visible: morningDescription != null && month == 3,
-                            child: Image(
-                              image: const AssetImage('assets/Morning/March.jpg'),
-                              width: double.infinity,
-                              height: MediaQuery.of(context).size.height * 0.37,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                          Visibility(
-                            visible: morningDescription != null && month == 4,
-                            child: Image(
-                              image: const AssetImage('assets/Morning/April.jpg'),
-                              width: double.infinity,
-                              height: MediaQuery.of(context).size.height * 0.37,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                          Visibility(
-                            visible: morningDescription != null && month == 5,
-                            child: Image(
-                              image: const AssetImage('assets/Morning/May.jpg'),
-                              width: double.infinity,
-                              height: MediaQuery.of(context).size.height * 0.37,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                          Visibility(
-                            visible: morningDescription != null && month == 6,
-                            child: Image(
-                              image: const AssetImage('assets/Morning/June.jpg'),
-                              width: double.infinity,
-                              height: MediaQuery.of(context).size.height * 0.37,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                          Visibility(
-                            visible: morningDescription != null && month == 7,
-                            child: Image(
-                              image: const AssetImage('assets/Morning/July.jpg'),
-                              width: double.infinity,
-                              height: MediaQuery.of(context).size.height * 0.37,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                          Visibility(
-                            visible: morningDescription != null && month == 8,
-                            child: Image(
-                              image: const AssetImage('assets/Morning/Aug.jpg'),
-                              width: double.infinity,
-                              height: MediaQuery.of(context).size.height * 0.37,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                          Visibility(
-                            visible: morningDescription != null && month == 9,
-                            child: Image(
-                              image: const AssetImage('assets/Morning/Sept.jpg'),
-                              width: double.infinity,
-                              height: MediaQuery.of(context).size.height * 0.37,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                          Visibility(
-                            visible: morningDescription != null && month == 10,
-                            child: Image(
-                              image: const AssetImage('assets/Morning/Oct.jpg'),
-                              width: double.infinity,
-                              height: MediaQuery.of(context).size.height * 0.37,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                          Visibility(
-                            visible: morningDescription != null && month == 11,
-                            child: Image(
-                              image: const AssetImage('assets/Morning/Nov.jpg'),
-                              width: double.infinity,
-                              height: MediaQuery.of(context).size.height * 0.37,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                          Visibility(
-                            visible: morningDescription != null && month == 12,
-                            child: Image(
-                              image: const AssetImage('assets/Morning/Dec.jpg'),
-                              width: double.infinity,
-                              height: MediaQuery.of(context).size.height * 0.37,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-
-                          Visibility(
-                            visible: eveningDescription != null && month == 1,
-                            child: Image(
-                              image: const AssetImage('assets/Evening/Jan.jpg'),
-                              width: double.infinity,
-                              height: MediaQuery.of(context).size.height * 0.37,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                          Visibility(
-                            visible: eveningDescription != null && month == 2,
-                            child: Image(
-                              image: const AssetImage('assets/Evening/Feb.jpg'),
-                              width: double.infinity,
-                              height: MediaQuery.of(context).size.height * 0.37,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                          Visibility(
-                            visible: eveningDescription != null && month == 3,
-                            child: Image(
-                              image: const AssetImage('assets/Evening/March.jpg'),
-                              width: double.infinity,
-                              height: MediaQuery.of(context).size.height * 0.37,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                          Visibility(
-                            visible: eveningDescription != null && month == 4,
-                            child: Image(
-                              image: const AssetImage('assets/Evening/April.jpg'),
-                              width: double.infinity,
-                              height: MediaQuery.of(context).size.height * 0.37,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                          Visibility(
-                            visible: eveningDescription != null && month == 5,
-                            child: Image(
-                              image: const AssetImage('assets/Evening/May.jpg'),
-                              width: double.infinity,
-                              height: MediaQuery.of(context).size.height * 0.37,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                          Visibility(
-                            visible: eveningDescription != null && month == 6,
-                            child: Image(
-                              image: const AssetImage('assets/Evening/June.jpg'),
-                              width: double.infinity,
-                              height: MediaQuery.of(context).size.height * 0.37,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                          Visibility(
-                            visible: eveningDescription != null && month == 7,
-                            child: Image(
-                              image: const AssetImage('assets/Evening/July.jpg'),
-                              width: double.infinity,
-                              height: MediaQuery.of(context).size.height * 0.37,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                          Visibility(
-                            visible: eveningDescription != null && month == 8,
-                            child: Image(
-                              image: const AssetImage('assets/Evening/Aug.jpg'),
-                              width: double.infinity,
-                              height: MediaQuery.of(context).size.height * 0.37,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                          Visibility(
-                            visible: eveningDescription != null && month == 9,
-                            child: Image(
-                              image: const AssetImage('assets/Evening/Sept.jpg'),
-                              width: double.infinity,
-                              height: MediaQuery.of(context).size.height * 0.37,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                          Visibility(
-                            visible: eveningDescription != null && month == 10,
-                            child: Image(
-                              image: const AssetImage('assets/Evening/Oct.jpg'),
-                              width: double.infinity,
-                              height: MediaQuery.of(context).size.height * 0.37,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                          Visibility(
-                            visible: eveningDescription != null && month == 11,
-                            child: Image(
-                              image: const AssetImage('assets/Evening/Nov.jpg'),
-                              width: double.infinity,
-                              height: MediaQuery.of(context).size.height * 0.37,
-                              fit: BoxFit.fill,
-                            ),
-                          ),
-                          Visibility(
-                            visible: eveningDescription != null && month == 12,
-                            child: Image(
-                              image: const AssetImage('assets/Evening/Dec.jpg'),
+                           Image.asset(
+                      'assets/Morning/$imageAsset'
                               width: double.infinity,
                               height: MediaQuery.of(context).size.height * 0.37,
                               fit: BoxFit.fill,
