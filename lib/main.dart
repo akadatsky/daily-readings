@@ -81,11 +81,6 @@ class _MyAppState extends State<MyApp> {
           PrivacyScreen.route: (context) => const PrivacyScreen(),
           HelpScreen.route: (context) => const HelpScreen(),
         },
-        // theme: theme.copyWith(
-        //   colorScheme: theme.colorScheme.copyWith(
-        //     primary: const Color(0xff477bab),
-        //   ),
-        // ),
 
         theme: themeProvider.isDarkModeEnabled
             ? ThemeData.light().copyWith(
