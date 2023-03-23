@@ -34,6 +34,10 @@ babstrap_settings_screen
 2.12
 file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/babstrap_settings_screen-0.1.5+1/
 file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/babstrap_settings_screen-0.1.5+1/lib/
+bible
+2.12
+file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/bible-1.0.0/
+file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/bible-1.0.0/lib/
 boolean_selector
 2.12
 file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/boolean_selector-2.1.0/
@@ -122,6 +126,10 @@ crypto
 2.14
 file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/crypto-3.0.2/
 file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/crypto-3.0.2/lib/
+csslib
+2.12
+file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/csslib-0.17.2/
+file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/csslib-0.17.2/lib/
 cupertino_icons
 2.12
 file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/cupertino_icons-1.0.5/
@@ -310,6 +318,10 @@ graphs
 2.12
 file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/graphs-2.2.0/
 file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/graphs-2.2.0/lib/
+html
+2.17
+file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/html-0.15.2/
+file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/html-0.15.2/lib/
 http
 2.14
 file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/http-0.13.5/
@@ -482,6 +494,10 @@ recase
 2.12
 file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/recase-4.1.0/
 file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/recase-4.1.0/lib/
+reference_parser
+2.12
+file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/reference_parser-3.0.0/
+file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/reference_parser-3.0.0/lib/
 responsive_builder
 2.12
 file:///C:/tools/flutter/.pub-cache/hosted/pub.dartlang.org/responsive_builder-0.5.1/
