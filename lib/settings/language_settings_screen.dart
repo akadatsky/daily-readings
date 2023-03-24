@@ -14,7 +14,7 @@ class LanguageSettingsScreen extends StatefulWidget {
 }
 
 class _LanguageSettingsScreenState extends State<LanguageSettingsScreen> {
-  int? selectedLanguage;
+  int selectedLanguage = 0;
 
   @override
   void initState() {
@@ -27,6 +27,9 @@ class _LanguageSettingsScreenState extends State<LanguageSettingsScreen> {
       setState(() {
         selectedLanguage = AllLocale.availableLocales
             .indexWhere((element) => element.languageCode == value);
+        if (selectedLanguage == -1) {
+          selectedLanguage = 0;
+        }
       });
     });
   }
