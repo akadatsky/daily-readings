@@ -6,6 +6,7 @@ import '../ui/theme_provider.dart';
 import 'goals_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:bible/bible.dart' as Bible;
+import 'package:sqflite/sqflite.dart';
 
 
 

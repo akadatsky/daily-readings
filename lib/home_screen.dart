@@ -10,6 +10,7 @@ import 'package:provider/provider.dart';
 import 'index.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'ui/theme_provider.dart';
+import 'package:asset_cache/asset_cache.dart';
 
 class HomeScreen extends StatelessWidget {
   static String route = '/home';
@@ -77,6 +78,10 @@ class _HomeScreenContentState extends State<HomeScreenContent>
 
   final storage = FirebaseStorage.instance;
   final storageRef = FirebaseStorage.instance.ref();
+
+  final imageCache = ImageAssetCache(basePath: 'assets/');
+
+
 
   @override
   void initState() {
@@ -305,6 +310,21 @@ class _HomeScreenContentState extends State<HomeScreenContent>
     }
     return List.empty();
   }
+//-----------------------------------------------------------------
+//   FutureBuilder<>(
+//   future: imageAssets.load(),
+//   builder: (context, snapshot) {
+//   if (snapshot.hasData) {
+//   return CustomPaint(
+//   painter: MyImagePainter(snapshot.data!),
+//   );
+//   } else {
+//   return const Text('loading..');
+//   }
+//   },
+//   ),
+
+
 //-----------------------------------------------------------------
 }
 
