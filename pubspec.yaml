@@ -122,6 +122,9 @@ flutter:
     - assets/letter.jpg
     - assets/profilepic.jpg
 
+    - assets/bible/ESV.xml
+    - assets/bible/KJV.xml
+
     - assets/Morning/Jan.jpg
     - assets/Morning/Feb.jpg
     - assets/Morning/March.jpg
@@ -147,6 +150,8 @@ flutter:
     - assets/Evening/Oct.jpg
     - assets/Evening/Nov.jpg
     - assets/Evening/Dec.jpg
+
+
 
 
 
