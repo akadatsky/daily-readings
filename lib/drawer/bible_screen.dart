@@ -1,16 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:provider/provider.dart';
-import '../calendar.dart';
-import '../settings/settings_screen.dart';
-import '../ui/theme_provider.dart';
-import 'goals_screen.dart';
-import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:bible/bible.dart' as Bible;
-import 'package:sqflite/sqflite.dart';
-import 'dart:async';
+§import 'dart:async';
 import 'package:flutter/services.dart' show rootBundle;
-import 'package:xml/xml.dart' as xml;
+import 'package:xml/xml.dart';
 
 class BibleScreen extends StatefulWidget {
   const BibleScreen({Key? key}) : super(key: key);
@@ -38,7 +30,7 @@ class _BibleScreenState extends State<BibleScreen> {
   Future<void> _loadBibleData() async {
     // Downloading the Bible XML file from assets
     final xmlString = await rootBundle.loadString('assets/bible/ESV.xml');
-    final document = xml.parse(xmlString);
+    final document = XmlDocument.parse(xmlString);
     final books = document.findAllElements('BIBLEBOOK');
 
     // Getting a list of Bible book titles and a chapter list of the selected Bible book

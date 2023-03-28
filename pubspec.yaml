@@ -125,31 +125,31 @@ flutter:
     - assets/bible/ESV.xml
     - assets/bible/KJV.xml
 
-    - assets/Morning/Jan.jpg
-    - assets/Morning/Feb.jpg
-    - assets/Morning/March.jpg
-    - assets/Morning/April.jpg
-    - assets/Morning/May.jpg
-    - assets/Morning/June.jpg
-    - assets/Morning/July.jpg
-    - assets/Morning/Aug.jpg
-    - assets/Morning/Sept.jpg
-    - assets/Morning/Oct.jpg
-    - assets/Morning/Nov.jpg
-    - assets/Morning/Dec.jpg
+    - assets/Morning/Jan.jpeg
+    - assets/Morning/Feb.jpeg
+    - assets/Morning/March.jpeg
+    - assets/Morning/April.jpeg
+    - assets/Morning/May.jpeg
+    - assets/Morning/June.jpeg
+    - assets/Morning/July.jpeg
+    - assets/Morning/Aug.jpeg
+    - assets/Morning/Sept.jpeg
+    - assets/Morning/Oct.jpeg
+    - assets/Morning/Nov.jpeg
+    - assets/Morning/Dec.jpeg
 
-    - assets/Evening/Jan.jpg
-    - assets/Evening/Feb.jpg
-    - assets/Evening/March.jpg
-    - assets/Evening/April.jpg
-    - assets/Evening/May.jpg
-    - assets/Evening/June.jpg
-    - assets/Evening/July.jpg
-    - assets/Evening/Aug.jpg
-    - assets/Evening/Sept.jpg
-    - assets/Evening/Oct.jpg
-    - assets/Evening/Nov.jpg
-    - assets/Evening/Dec.jpg
+    - assets/Evening/Jan.jpeg
+    - assets/Evening/Feb.jpeg
+    - assets/Evening/March.jpeg
+    - assets/Evening/April.jpeg
+    - assets/Evening/May.jpeg
+    - assets/Evening/June.jpeg
+    - assets/Evening/July.jpeg
+    - assets/Evening/Aug.jpeg
+    - assets/Evening/Sept.jpeg
+    - assets/Evening/Oct.jpeg
+    - assets/Evening/Nov.jpeg
+    - assets/Evening/Dec.jpeg
 
 
 

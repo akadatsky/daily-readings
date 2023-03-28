@@ -16,9 +16,9 @@ enum MonthAsset {
 
   const MonthAsset(this.name);
 
-  String get morningPath => 'assets/Morning/$name.jpg';
+  String get morningPath => 'assets/Morning/$name.jpeg';
 
-  String get eveningPath => 'assets/Evening/$name.jpg';
+  String get eveningPath => 'assets/Evening/$name.jpeg';
 
   String path(bool isMorning) => isMorning ? morningPath : eveningPath;
 }
